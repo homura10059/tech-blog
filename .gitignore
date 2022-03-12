@@ -34,3 +34,5 @@ yarn-error.log*
 .vercel
 
 .idea
+
+_posts/.obsidian
