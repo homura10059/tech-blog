@@ -1,4 +1,4 @@
-export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID ?? ''
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID ?? ''
 
 export const pageview = (url: string): void => {
   // GA_TRACKING_ID が設定されていない場合は、処理終了
