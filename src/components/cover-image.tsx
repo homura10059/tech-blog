@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import cx from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -13,11 +13,11 @@ const CoverImage = ({ title, src, slug }: Props) => {
     <Image
       src={src}
       alt={`Cover Image for ${title}`}
-      className={cn('shadow-sm', {
+      className={cx('shadow-sm', {
         'hover:shadow-lg transition-shadow duration-200': slug
       })}
-      width={1000}
-      height={500}
+      width={2000}
+      height={1000}
     />
   )
   return (

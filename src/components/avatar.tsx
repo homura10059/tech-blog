@@ -1,4 +1,5 @@
-import Image from 'next/image'
+import ImageWithUnknownDimensions from './headless/ImageWithUnknownDimensions'
+
 type Props = {
   name: string
   picture: string
@@ -6,13 +7,12 @@ type Props = {
 
 const Avatar = ({ name, picture }: Props) => {
   return (
-    <div className="flex items-center">
-      <Image
+    <div className="flex items-center gap-x-2">
+      <ImageWithUnknownDimensions
         src={picture}
-        className="w-12 h-12 rounded-full mr-4"
         alt={name}
-        width={50}
-        height={50}
+        sizeClassName="w-12 h-12"
+        imageClassName="rounded-full mr-"
       />
       <div className="text-xl font-bold">{name}</div>
     </div>
