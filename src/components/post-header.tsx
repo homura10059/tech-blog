@@ -1,4 +1,4 @@
-import Author from '../types/author'
+import Author from '../domain/model/author'
 import Avatar from './avatar'
 import CoverImage from './cover-image'
 import DateFormatter from './date-formatter'

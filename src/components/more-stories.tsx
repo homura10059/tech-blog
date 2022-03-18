@@ -1,4 +1,4 @@
-import Post from '../types/post'
+import Post from '../domain/model/post'
 import PostPreview from './post-preview'
 
 type Props = {
