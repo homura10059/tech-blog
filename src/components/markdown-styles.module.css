@@ -1,18 +1,19 @@
 .markdown {
-  @apply text-lg leading-relaxed;
-}
+  @apply prose prose-invert tracking-wide;
 
-.markdown p,
-.markdown ul,
-.markdown ol,
-.markdown blockquote {
-  @apply my-6;
-}
+  /* Headings */
+  @apply prose-headings:mb-4 prose-headings:border-b prose-headings:border-background-light prose-headings:pb-1 prose-headings:font-normal prose-headings:leading-snug prose-headings:text-background-light;
+  @apply prose-h2:mt-12 prose-h2:text-2xl;
+  @apply prose-h3:mt-8 prose-h3:text-xl;
+  @apply prose-h4:mt-8;
 
-.markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
-}
+  /* a */
+  @apply prose-a:text-primary-light prose-a:no-underline hover:prose-a:underline prose-a:visited:text-primary-dark;
 
-.markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  /* コード */
+  @apply prose-code:before:content-none prose-code:after:content-none;
+  @apply prose-pre:rounded-tl-none prose-pre:bg-[#0d1117] prose-pre:p-2 prose-pre:shadow-lg;
+
+  /* ul, li */
+  @apply marker:text-primary-dark prose-li:p-0 prose-li:m-1;
 }
