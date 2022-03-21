@@ -47,7 +47,6 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-storybook": "^0.5.7",
     "postcss": "8.4.5",
     "prettier": "^2.5.1",
     "storybook-addon-next": "^1.6.2",
