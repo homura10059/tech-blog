@@ -30,6 +30,7 @@ const Meta = () => {
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       <meta name="description" content={`${BLOG_TITLE}`} />
       <meta property="og:image" content="/assets/blog/cover/default.jpg" />
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     </Head>
   )
 }
