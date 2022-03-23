@@ -1,5 +1,5 @@
 import Post from '../domain/model/post'
-import PostPreview from './post-preview'
+import PostPreview from './domain/post/post-preview'
 
 type Props = {
   posts: Post[]

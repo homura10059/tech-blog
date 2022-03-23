@@ -1,7 +1,7 @@
-import Author from '../domain/model/author'
-import Avatar from './avatar'
-import CoverImage from './cover-image'
-import DateFormatter from './date-formatter'
+import Author from '../../../domain/model/author'
+import Avatar from '../../avatar'
+import CoverImage from '../../cover-image'
+import DateFormatter from '../../date-formatter'
 import PostTitle from './post-title'
 
 type Props = {
