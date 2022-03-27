@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import Script from 'next/script'
 import { useEffect } from 'react'
 
+import Header from '../components/domain/header/header'
 import { GA_TRACKING_ID, pageview } from '../lib/gtag'
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
@@ -43,7 +44,10 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           </Script>
         </>
       )}
-      <Component {...pageProps} />
+      <>
+        <Header />
+        <Component {...pageProps} />
+      </>
     </>
   )
 }
