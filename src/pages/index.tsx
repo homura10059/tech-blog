@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
+import Layout from '../components/domain/layout'
 import Container from '../components/headless/container'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
-import Layout from '../components/layout'
 import MoreStories from '../components/more-stories'
 import Post from '../domain/model/post'
 import { getAllPosts } from '../lib/api'
