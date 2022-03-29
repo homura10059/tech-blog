@@ -1,11 +1,12 @@
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
+import PageTitle from '../../components/headless/Headding/page-title'
 
 const Disclaimer: React.VFC = () => {
   return (
     <Layout>
       <Container>
-        <h2 className="mb-4 pb-1 font-normal leading-snug">免責事項</h2>
+        <PageTitle>免責事項</PageTitle>
         <p>
           当ブログからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。
           また当ブログのコンテンツ・情報について、できる限り正確な情報を提供するように努めておりますが、正確性や安全性を保証するものではありません。情報が古くなっていることもございます。
