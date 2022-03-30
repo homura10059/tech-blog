@@ -1,13 +1,19 @@
+import Head from 'next/head'
+
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import PageTitle from '../../components/headless/Headding/page-title'
 import SectionTitle from '../../components/headless/Headding/section-title'
 import LinkText from '../../components/headless/link-text'
+import { BLOG_TITLE } from '../../lib/constants'
 
 const About: React.VFC = () => {
   return (
     <Layout>
       <Container>
+        <Head>
+          <title>About | {BLOG_TITLE}</title>
+        </Head>
         <PageTitle>このブログについて</PageTitle>
         <SectionTitle>概要</SectionTitle>
         <p>
