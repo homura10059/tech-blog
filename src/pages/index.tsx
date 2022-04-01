@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
 import Layout from '../components/domain/layout'
+import HeroPost from '../components/domain/post/hero-post'
 import Container from '../components/headless/container'
-import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import MoreStories from '../components/more-stories'
 import Post from '../domain/model/post'
@@ -29,7 +29,6 @@ const Index = ({ allPosts }: Props) => {
               title={heroPost.title}
               coverImage={heroPost.coverImage}
               date={heroPost.date}
-              author={heroPost.author}
               slug={heroPost.slug}
               excerpt={heroPost.excerpt}
             />
@@ -48,7 +47,6 @@ export const getStaticProps = async () => {
     'title',
     'date',
     'slug',
-    'author',
     'coverImage',
     'excerpt'
   ])
