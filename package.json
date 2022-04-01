@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "env TAILWIND_MODE=watch NODE_ENV=development next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint --fix",
     "typecheck": "tsc",
@@ -56,6 +57,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "next-sitemap": "^2.5.17",
     "postcss": "8.4.5",
     "prettier": "^2.5.1",
     "storybook-addon-next": "^1.6.2",
