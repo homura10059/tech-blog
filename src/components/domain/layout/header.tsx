@@ -1,8 +1,11 @@
-import { Disclosure } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { MenuIcon, RssIcon, XIcon } from '@heroicons/react/outline'
 import cx from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Fragment } from 'react'
+
+import Logo from '../icon/logo'
 
 type Nav = {
   name: string
@@ -15,7 +18,11 @@ const navigation: Nav[] = [
   { name: 'About', href: '/about', asCurrent: [] }
 ]
 
-import Logo from '../icon/logo'
+const rssFeeds = [
+  { name: 'feed', href: '/rss/feed.xml' },
+  { name: 'atom', href: '/rss/atom.xml' },
+  { name: 'json', href: '/rss/feed.json' }
+]
 
 const Header: React.VFC = () => {
   const router = useRouter()
@@ -44,6 +51,7 @@ const Header: React.VFC = () => {
                   )}
                 </Disclosure.Button>
               </div>
+              {/* Left menu*/}
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <Link href={'/'}>
@@ -71,6 +79,45 @@ const Header: React.VFC = () => {
                     ))}
                   </div>
                 </div>
+              </div>
+              {/* Right menu*/}
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <Menu as="div" className="ml-3 relative">
+                  <div>
+                    <Menu.Button className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                      <span className="sr-only">RSS Feeds</span>
+                      <RssIcon className="h-6 w-6" aria-hidden="true" />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      {rssFeeds.map(feed => (
+                        <Menu.Item key={feed.name}>
+                          {({ active }) => (
+                            <Link href={feed.href}>
+                              <a
+                                className={cx(
+                                  active ? 'bg-gray-100' : '',
+                                  'block px-4 py-2 text-sm text-gray-700'
+                                )}
+                              >
+                                {feed.name}
+                              </a>
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      ))}
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
               </div>
             </div>
           </div>
