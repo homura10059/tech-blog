@@ -65,28 +65,30 @@ const Profile: React.VFC = () => {
         <Head>
           <title>Profile | {BLOG_TITLE}</title>
         </Head>
-        <PageTitle>
-          <div className="flex items-center">
-            <Logo width={48} height={48} />
-            homura (@homura10059)
-          </div>
-        </PageTitle>
-        <SectionTitle>About</SectionTitle>
-        <p>Web Developer & Engineering Manager</p>
-        <SectionTitle>Account</SectionTitle>
-        <ul>
-          {accountList.map(({ name, icon, href }) => (
-            <li key={name}>
-              <div className="flex items-center">
-                <FontAwesomeIcon
-                  icon={icon}
-                  className="w-5 h-5 text-surface inline-block"
-                />
-                <LinkText href={href}>{name}</LinkText>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="max-w-2xl mx-auto">
+          <PageTitle>
+            <div className="flex items-center gap-x-1">
+              <Logo width={32} height={32} />
+              homura (@homura10059)
+            </div>
+          </PageTitle>
+          <SectionTitle>About</SectionTitle>
+          <p>Web Developer & Engineering Manager</p>
+          <SectionTitle>Account</SectionTitle>
+          <ul>
+            {accountList.map(({ name, icon, href }) => (
+              <li key={name}>
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={icon}
+                    className="w-5 h-5 text-surface inline-block"
+                  />
+                  <LinkText href={href}>{name}</LinkText>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Container>
     </Layout>
   )

@@ -13,11 +13,13 @@ const PrivacyPolicy: React.VFC = () => {
         <Head>
           <title>Privacy Policy | {BLOG_TITLE}</title>
         </Head>
-        <PageTitle>プライバシーポリシー</PageTitle>
-        <SectionTitle>アクセス解析ツールについて</SectionTitle>
-        <p>
-          当ブログでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。このGoogleアナリティクスはトラフィックデータの収集のためにクッキー（Cookie）を使用しております。トラフィックデータは匿名で収集されており、個人を特定するものではありません。
-        </p>
+        <div className="max-w-2xl mx-auto">
+          <PageTitle>プライバシーポリシー</PageTitle>
+          <SectionTitle>アクセス解析ツールについて</SectionTitle>
+          <p>
+            当ブログでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。このGoogleアナリティクスはトラフィックデータの収集のためにクッキー（Cookie）を使用しております。トラフィックデータは匿名で収集されており、個人を特定するものではありません。
+          </p>
+        </div>
       </Container>
     </Layout>
   )
