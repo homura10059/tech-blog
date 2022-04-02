@@ -8,6 +8,7 @@ import MoreStories from '../components/more-stories'
 import Post from '../domain/model/post'
 import { getAllPosts } from '../lib/api'
 import { BLOG_TITLE } from '../lib/constants'
+import generatedRssFeed from '../lib/feed'
 
 type Props = {
   allPosts: Post[]
@@ -43,6 +44,9 @@ const Index = ({ allPosts }: Props) => {
 export default Index
 
 export const getStaticProps = async () => {
+  // フィード情報の生成
+  await generatedRssFeed()
+
   const allPosts = getAllPosts([
     'title',
     'date',

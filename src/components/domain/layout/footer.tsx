@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { getCopyright } from '../../../lib/copyright'
 import Container from '../../headless/container'
 
 const Footer: React.VFC = () => {
@@ -15,7 +16,7 @@ const Footer: React.VFC = () => {
               <a className="mx-3 font-bold hover:underline">Disclaimer</a>
             </Link>
           </div>
-          <p>©2022 homura10059. All rights reserved.</p>
+          <p>{getCopyright()}</p>
         </div>
       </Container>
     </footer>
