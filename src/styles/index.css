@@ -4,6 +4,4 @@
 
 #__next {
     @apply bg-background-dark text-surface;
-    /* iOS Safari で右側に余白ができてしまう対策 */
-    overflow: hidden;
 }
