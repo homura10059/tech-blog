@@ -1,7 +1,9 @@
+import { differenceInYears, parseISO } from 'date-fns'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
+import Warning from '../../components/domain/banners/warning'
 import Layout from '../../components/domain/layout'
 import PostBody from '../../components/domain/post/post-body'
 import PostHeader from '../../components/domain/post/post-header'
@@ -23,6 +25,8 @@ const Post = ({ post, morePosts, preview }: Props) => {
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+  const date = parseISO(post.date)
+  const diff = differenceInYears(new Date(), date)
   return (
     <Layout preview={preview}>
       <Container>
@@ -37,6 +41,13 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 </title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
+              {diff > 1 && (
+                <div className="mt-2 mb-5">
+                  <Warning
+                    text={`この記事は最終更新日から${diff}年以上が経過しています。`}
+                  />
+                </div>
+              )}
               <PostHeader
                 title={post.title}
                 coverImage={post.coverImage}
