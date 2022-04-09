@@ -4,13 +4,14 @@ import Header from './header'
 
 type Props = {
   preview?: boolean
+  title?: string
   children: React.ReactNode
 }
 
-const Layout = ({ preview, children }: Props) => {
+const Layout = ({ preview, title, children }: Props) => {
   return (
     <>
-      <Meta />
+      <Meta title={title} />
       <Header />
       <div className="min-h-screen">
         <main>{children}</main>

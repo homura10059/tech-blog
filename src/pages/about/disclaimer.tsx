@@ -1,17 +1,11 @@
-import Head from 'next/head'
-
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import PageTitle from '../../components/headless/Headding/page-title'
-import { BLOG_TITLE } from '../../lib/constants'
 
 const Disclaimer: React.VFC = () => {
   return (
-    <Layout>
+    <Layout title="Disclaimer">
       <Container>
-        <Head>
-          <title>Disclaimer| {BLOG_TITLE}</title>
-        </Head>
         <div className="max-w-2xl mx-auto">
           <PageTitle>免責事項</PageTitle>
           <p>

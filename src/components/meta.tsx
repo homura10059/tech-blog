@@ -2,7 +2,11 @@ import Head from 'next/head'
 
 import { BLOG_TITLE } from '../lib/constants'
 
-const Meta = () => {
+type Props = {
+  title?: string
+}
+
+const Meta: React.VFC<Props> = ({ title }) => {
   return (
     <Head>
       <link
@@ -31,6 +35,7 @@ const Meta = () => {
       <meta name="description" content={`${BLOG_TITLE}`} />
       <meta property="og:image" content="/assets/blog/cover/default.jpg" />
       <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+      <title>{title ? `${title} | ${BLOG_TITLE}` : BLOG_TITLE}</title>
     </Head>
   )
 }

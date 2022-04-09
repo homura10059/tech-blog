@@ -11,7 +11,6 @@ import PostTitle from '../../components/domain/post/post-title'
 import Container from '../../components/headless/container'
 import PostType from '../../domain/model/post'
 import { getAllPosts, getPostBySlug } from '../../lib/api'
-import { BLOG_TITLE } from '../../lib/constants'
 import markdownToHtml from '../../lib/markdownToHtml'
 
 type Props = {
@@ -28,7 +27,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
   const date = parseISO(post.date)
   const diff = differenceInYears(new Date(), date)
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} title={post.title}>
       <Container>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -36,9 +35,6 @@ const Post = ({ post, morePosts, preview }: Props) => {
           <>
             <article className="mb-32">
               <Head>
-                <title>
-                  {post.title} | {BLOG_TITLE}
-                </title>
                 <meta property="og:image" content={post.ogImage.url} />
               </Head>
               {diff > 1 && (

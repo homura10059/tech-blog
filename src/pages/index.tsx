@@ -1,5 +1,3 @@
-import Head from 'next/head'
-
 import Layout from '../components/domain/layout'
 import HeroPost from '../components/domain/post/hero-post'
 import Container from '../components/headless/container'
@@ -7,7 +5,6 @@ import Intro from '../components/intro'
 import MoreStories from '../components/more-stories'
 import Post from '../domain/model/post'
 import { getAllPosts } from '../lib/api'
-import { BLOG_TITLE } from '../lib/constants'
 import generatedRssFeed from '../lib/feed'
 
 type Props = {
@@ -20,9 +17,6 @@ const Index = ({ allPosts }: Props) => {
   return (
     <>
       <Layout>
-        <Head>
-          <title>{BLOG_TITLE}</title>
-        </Head>
         <Container>
           <Intro />
           {heroPost && (

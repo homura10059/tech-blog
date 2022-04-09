@@ -7,7 +7,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { faBlog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Head from 'next/head'
 
 import Logo from '../components/domain/icon/logo'
 import Layout from '../components/domain/layout'
@@ -15,7 +14,6 @@ import Container from '../components/headless/container'
 import PageTitle from '../components/headless/Headding/page-title'
 import SectionTitle from '../components/headless/Headding/section-title'
 import LinkText from '../components/headless/link-text'
-import { BLOG_TITLE } from '../lib/constants'
 
 library.add(
   faGithub as IconDefinition,
@@ -60,11 +58,8 @@ const accountList: Account[] = [
 
 const Profile: React.VFC = () => {
   return (
-    <Layout>
+    <Layout title="Profile">
       <Container>
-        <Head>
-          <title>Profile | {BLOG_TITLE}</title>
-        </Head>
         <div className="max-w-2xl mx-auto">
           <PageTitle>
             <div className="flex items-center gap-x-1">
