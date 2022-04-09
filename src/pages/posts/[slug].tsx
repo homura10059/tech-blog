@@ -12,6 +12,7 @@ import Container from '../../components/headless/container'
 import PostType from '../../domain/model/post'
 import { getAllPosts, getPostBySlug } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
+import { createOGP } from '../../lib/ogp'
 
 type Props = {
   post: PostType
@@ -27,16 +28,21 @@ const Post = ({ post, morePosts, preview }: Props) => {
   const date = parseISO(post.date)
   const diff = differenceInYears(new Date(), date)
   return (
-    <Layout preview={preview} title={post.title}>
+    <Layout
+      preview={preview}
+      og={createOGP({
+        title: post.title,
+        path: router.asPath,
+        description: post.excerpt,
+        image: post.ogImage.url
+      })}
+    >
       <Container>
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
             <article className="mb-32">
-              <Head>
-                <meta property="og:image" content={post.ogImage.url} />
-              </Head>
               {diff > 1 && (
                 <div className="mt-2 mb-5">
                   <Warning
@@ -72,6 +78,7 @@ export async function getStaticProps({ params }: Params) {
     'date',
     'slug',
     'content',
+    'excerpt',
     'ogImage',
     'coverImage'
   ])

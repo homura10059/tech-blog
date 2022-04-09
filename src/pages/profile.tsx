@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { faBlog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRouter } from 'next/router'
 
 import Logo from '../components/domain/icon/logo'
 import Layout from '../components/domain/layout'
@@ -14,6 +15,7 @@ import Container from '../components/headless/container'
 import PageTitle from '../components/headless/Headding/page-title'
 import SectionTitle from '../components/headless/Headding/section-title'
 import LinkText from '../components/headless/link-text'
+import { createOGP } from '../lib/ogp'
 
 library.add(
   faGithub as IconDefinition,
@@ -57,8 +59,9 @@ const accountList: Account[] = [
 ]
 
 const Profile: React.VFC = () => {
+  const router = useRouter()
   return (
-    <Layout title="Profile">
+    <Layout og={createOGP({ title: 'Profile', path: router.asPath })}>
       <Container>
         <div className="max-w-2xl mx-auto">
           <PageTitle>

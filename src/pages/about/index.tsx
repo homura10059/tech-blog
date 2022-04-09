@@ -1,12 +1,17 @@
+import { useRouter } from 'next/router'
+
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import PageTitle from '../../components/headless/Headding/page-title'
 import SectionTitle from '../../components/headless/Headding/section-title'
 import LinkText from '../../components/headless/link-text'
+import { createOGP } from '../../lib/ogp'
 
 const About: React.VFC = () => {
+  const router = useRouter()
+
   return (
-    <Layout title="About">
+    <Layout og={createOGP({ title: 'About', path: router.asPath })}>
       <Container>
         <div className="max-w-2xl mx-auto">
           <PageTitle>このブログについて</PageTitle>

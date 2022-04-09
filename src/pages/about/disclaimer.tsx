@@ -1,10 +1,15 @@
+import { useRouter } from 'next/router'
+
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import PageTitle from '../../components/headless/Headding/page-title'
+import { createOGP } from '../../lib/ogp'
 
 const Disclaimer: React.VFC = () => {
+  const router = useRouter()
+
   return (
-    <Layout title="Disclaimer">
+    <Layout og={createOGP({ title: 'Disclaimer', path: router.asPath })}>
       <Container>
         <div className="max-w-2xl mx-auto">
           <PageTitle>免責事項</PageTitle>

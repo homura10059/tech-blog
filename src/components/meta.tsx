@@ -1,14 +1,28 @@
 import Head from 'next/head'
 
-import { BLOG_TITLE } from '../lib/constants'
+import { TWITTER_ACCOUNT } from '../lib/constants'
 
-type Props = {
-  title?: string
+export type OgpProps = {
+  url: string
+  type: 'website' | 'article'
+  title: string // 20文字程度
+  description: string // 80~90文字程度
+  site_name: string
+  image: string
 }
 
-const Meta: React.VFC<Props> = ({ title }) => {
+type Props = {
+  og: OgpProps
+}
+
+const Meta: React.VFC<Props> = ({
+  og: { title, type, site_name, image, url, description }
+}) => {
+  const pageTitle = title !== site_name ? `${title} | ${site_name}` : site_name
+
   return (
     <Head>
+      {/* favicon */}
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -31,11 +45,22 @@ const Meta: React.VFC<Props> = ({ title }) => {
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta name="description" content={`${BLOG_TITLE}`} />
-      <meta property="og:image" content="/assets/blog/cover/default.jpg" />
+      {/* RSSフィード */}
+      <link rel="alternate" type="application/rss+xml" href="/rss/feed.xml" />
+      {/* CSS */}
       <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      <title>{title ? `${title} | ${BLOG_TITLE}` : BLOG_TITLE}</title>
+      {/* OGP */}
+      <title>{pageTitle}</title>
+      <meta name="description" content={description} />
+      <meta property="og:type" content={type} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={url} />
+      <meta property="og:site_name" content={site_name} />
+      <meta property="og:image" content={image} />
+      {/* Twitterカード */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content={TWITTER_ACCOUNT} />
     </Head>
   )
 }

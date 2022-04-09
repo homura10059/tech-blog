@@ -1,11 +1,16 @@
+import { useRouter } from 'next/router'
+
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import PageTitle from '../../components/headless/Headding/page-title'
 import SectionTitle from '../../components/headless/Headding/section-title'
+import { createOGP } from '../../lib/ogp'
 
 const PrivacyPolicy: React.VFC = () => {
+  const router = useRouter()
+
   return (
-    <Layout title="Privacy Policy">
+    <Layout og={createOGP({ title: 'Privacy Policy', path: router.asPath })}>
       <Container>
         <div className="max-w-2xl mx-auto">
           <PageTitle>プライバシーポリシー</PageTitle>
