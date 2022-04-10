@@ -26,7 +26,7 @@ export const createOGP = ({
     description: description ?? BLOG_DESCRIPTION,
     type: title ? 'article' : 'website',
     url: `${BASE_URL}${path}`,
-    image: image ?? 'https://i.imgur.com/BqDJIrt.webp',
+    image: image ?? 'https://i.imgur.com/BqDJIrt.png',
     site_name: BLOG_TITLE
   }
 }
