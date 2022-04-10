@@ -17,7 +17,7 @@ const CoverImage = ({ title, src, slug }: Props) => {
     <picture>
       <source
         type="image/webp"
-        sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, 640px"
+        className="max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
         srcSet={srcSet.join(',')}
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
