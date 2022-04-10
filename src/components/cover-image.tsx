@@ -1,5 +1,4 @@
 import cx from 'classnames'
-import Image from 'next/image'
 import Link from 'next/link'
 
 type Props = {
@@ -9,16 +8,28 @@ type Props = {
 }
 
 const CoverImage = ({ title, src, slug }: Props) => {
+  const srcSet = [
+    `${src}h.webp 1024w`,
+    `${src}l.webp 640w`,
+    `${src}m.webp 320w`
+  ]
   const image = (
-    <Image
-      src={src}
-      alt={`Cover Image for ${title}`}
-      className={cx('shadow-sm', {
-        'hover:shadow-lg transition-shadow duration-200': slug
-      })}
-      width={2000}
-      height={1000}
-    />
+    <picture>
+      <source
+        type="image/webp"
+        sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, 640px"
+        srcSet={srcSet.join(',')}
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`${src}l.jpeg`}
+        alt={`Cover Image for ${title}`}
+        loading="lazy"
+        className={cx('shadow-sm', {
+          'hover:shadow-lg transition-shadow duration-200': slug
+        })}
+      />
+    </picture>
   )
   return (
     <div className="sm:mx-0">
