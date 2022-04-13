@@ -20,6 +20,8 @@ tags: ['blog', 'TypeScript', 'Next.js']
 	- デザイン変更をやりやすくするためにstorybookを導入した
 - [Medium から export したデータを移行する](/posts/2022-04-07-1)
 	- あらかたできたので古いブログのデータを移行した
+-  [rehypeで生成したhtmlでiframeが表示されるようにする](/posts/2022-04-11-1)
+	- 移行できたと思っていたが、youtubeとかCodePenの埋め込みiframeが壊れていたので対応した
 
 ## SEO対策
 - [vercelにデプロイしているブログに独自ドメインを設定する](/posts/2022-03-26-1)
