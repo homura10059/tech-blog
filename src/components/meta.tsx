@@ -47,8 +47,6 @@ const Meta: React.VFC<Props> = ({
       <meta name="theme-color" content="#000" />
       {/* RSSフィード */}
       <link rel="alternate" type="application/rss+xml" href="/rss/feed.xml" />
-      {/* CSS */}
-      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       {/* OGP */}
       <title>{pageTitle}</title>
       <meta name="description" content={description} />
