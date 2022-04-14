@@ -27,6 +27,7 @@ const CoverImage = ({ title, src, slug, isHero }: Props) => {
         alt={`Cover Image for ${title}`}
         layout="fill"
         objectFit="contain"
+        priority={isHero} // hero image のときは preload する
       />
     </figure>
   )
