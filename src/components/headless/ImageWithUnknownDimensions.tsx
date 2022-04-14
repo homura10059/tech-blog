@@ -1,6 +1,8 @@
 import cx from 'classnames'
 import Image from 'next/image'
 
+import { customLoader } from '../../lib/image-loader'
+
 type Props = {
   src: string
   alt: string
@@ -17,6 +19,7 @@ const ImageWithUnknownDimensions = ({
   return (
     <div className={cx([sizeClassName, 'relative'])}>
       <Image
+        loader={customLoader}
         className={imageClassName}
         src={src}
         alt={alt}

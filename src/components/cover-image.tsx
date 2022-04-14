@@ -1,35 +1,34 @@
 import cx from 'classnames'
+import { ImageLoader } from 'next/dist/client/image'
+import Image from 'next/image'
 import Link from 'next/link'
+
+import { customLoader } from '../lib/image-loader'
 
 type Props = {
   title: string
   src: string
   slug?: string
+  isHero?: boolean
 }
 
-const CoverImage = ({ title, src, slug }: Props) => {
-  const srcSet = [
-    `${src}h.webp 1024w`,
-    `${src}l.webp 640w`,
-    `${src}m.webp 320w`
-  ]
+const CoverImage = ({ title, src, slug, isHero }: Props) => {
+  const height = isHero ? 'clamp(200px,50vw,1000px)' : 'clamp(200px,30vw,500px)'
   const image = (
-    <picture>
-      <source
-        type="image/webp"
-        className="max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl"
-        srcSet={srcSet.join(',')}
-      />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`${src}l.jpeg`}
+    <figure
+      style={{ position: 'relative', height: `${height}` }}
+      className={cx('relative shadow-sm w-full', {
+        'hover:shadow-lg transition-shadow duration-200': slug
+      })}
+    >
+      <Image
+        loader={customLoader}
+        src={src}
         alt={`Cover Image for ${title}`}
-        loading="lazy"
-        className={cx('shadow-sm', {
-          'hover:shadow-lg transition-shadow duration-200': slug
-        })}
+        layout="fill"
+        objectFit="contain"
       />
-    </picture>
+    </figure>
   )
   return (
     <div className="sm:mx-0">
