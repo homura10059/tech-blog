@@ -1,11 +1,12 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, RssIcon, XIcon } from '@heroicons/react/outline'
 import cx from 'classnames'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 
-import Logo from '../icon/logo'
+import { customLoader } from '../../../lib/image-loader'
 
 type Nav = {
   name: string
@@ -59,7 +60,14 @@ const Header: React.VFC = () => {
                 <div className="flex-shrink-0 flex items-center">
                   <Link href={'/'}>
                     <a>
-                      <Logo width={36} height={36} />
+                      <Image
+                        loader={customLoader}
+                        src={'/assets/blog/logo.svg'}
+                        alt={'homura'}
+                        width={36}
+                        height={36}
+                        priority
+                      />
                     </a>
                   </Link>
                 </div>

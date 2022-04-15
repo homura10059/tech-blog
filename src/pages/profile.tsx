@@ -9,7 +9,6 @@ import { faBlog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouter } from 'next/router'
 
-import Logo from '../components/domain/icon/logo'
 import Layout from '../components/domain/layout'
 import Container from '../components/headless/container'
 import PageTitle from '../components/headless/Headding/page-title'
@@ -66,7 +65,6 @@ const Profile: React.VFC = () => {
         <div className="max-w-2xl mx-auto">
           <PageTitle>
             <div className="flex items-center gap-x-1">
-              <Logo width={32} height={32} />
               homura (@homura10059)
             </div>
           </PageTitle>
