@@ -25,14 +25,14 @@ const About: React.VFC = () => {
               href={
                 'https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript'
               }
-              className={'mx-0'}
+              className={'mr-1'}
             >
               blog-starter-typescript
             </LinkText>{' '}
             を基に Next.js & TypeScript & tailwindcss を使って作られています
           </p>
           <SectionTitle>リンク</SectionTitle>
-          <ul className="list-disc">
+          <ul className="list-disc list-inside">
             <li>
               <LinkText href={'/about/privacy_policy'}>Privacy Policy</LinkText>
             </li>

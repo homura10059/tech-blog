@@ -11,7 +11,7 @@ const LinkText: React.FC<Props> = ({ href, className, children }) => {
     <Link href={href}>
       <a
         className={cx([
-          'mx-3 font-bold text-primary-light hover:underline',
+          'font-bold text-primary-light hover:underline',
           className ?? ''
         ])}
       >

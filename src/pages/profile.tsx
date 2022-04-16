@@ -70,14 +70,14 @@ const Profile: React.VFC = () => {
           </PageTitle>
           <SectionTitle>About</SectionTitle>
           <p>Web Developer & Engineering Manager</p>
-          <SectionTitle>Account</SectionTitle>
+          <SectionTitle>Accounts</SectionTitle>
           <ul>
             {accountList.map(({ name, icon, href }) => (
               <li key={name}>
-                <div className="flex items-center">
+                <div className="flex items-center mt-1">
                   <FontAwesomeIcon
                     icon={icon}
-                    className="w-5 h-5 text-surface inline-block"
+                    className="w-5 h-5 text-surface inline-block mr-2"
                   />
                   <LinkText href={href}>{name}</LinkText>
                 </div>
