@@ -11,7 +11,7 @@ const Disclaimer: React.VFC = () => {
   return (
     <Layout og={createOGP({ title: 'Disclaimer', path: router.asPath })}>
       <Container>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto mt-4">
           <PageTitle>免責事項</PageTitle>
           <p>
             当ブログからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。

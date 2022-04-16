@@ -5,3 +5,9 @@
 #__next {
     @apply bg-background-dark text-surface;
 }
+
+@layer components {
+    .link {
+        @apply font-bold text-primary-light hover:underline;
+    }
+}

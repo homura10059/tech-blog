@@ -12,7 +12,7 @@ const PrivacyPolicy: React.VFC = () => {
   return (
     <Layout og={createOGP({ title: 'Privacy Policy', path: router.asPath })}>
       <Container>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto mt-4">
           <PageTitle>プライバシーポリシー</PageTitle>
           <SectionTitle>アクセス解析ツールについて</SectionTitle>
           <p>

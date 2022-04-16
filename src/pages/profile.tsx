@@ -62,7 +62,7 @@ const Profile: React.VFC = () => {
   return (
     <Layout og={createOGP({ title: 'Profile', path: router.asPath })}>
       <Container>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto mt-4">
           <PageTitle>
             <div className="flex items-center gap-x-1">
               homura (@homura10059)

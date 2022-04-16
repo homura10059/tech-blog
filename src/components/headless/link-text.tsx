@@ -9,14 +9,7 @@ type Props = {
 const LinkText: React.FC<Props> = ({ href, className, children }) => {
   return (
     <Link href={href}>
-      <a
-        className={cx([
-          'font-bold text-primary-light hover:underline',
-          className ?? ''
-        ])}
-      >
-        {children}
-      </a>
+      <a className={cx(['link', className ?? ''])}>{children}</a>
     </Link>
   )
 }
