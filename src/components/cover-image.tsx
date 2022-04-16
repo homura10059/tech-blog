@@ -1,5 +1,4 @@
 import cx from 'classnames'
-import { ImageLoader } from 'next/dist/client/image'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -13,6 +12,7 @@ type Props = {
 }
 
 const CoverImage = ({ title, src, slug, isHero }: Props) => {
+  // HeroImageとして使うかそうでないかでサイズを分ける
   const height = isHero ? 'clamp(200px,50vw,1000px)' : 'clamp(200px,30vw,500px)'
   const image = (
     <figure
