@@ -6,6 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "strictFunctionTypes": false,
     "forceConsistentCasingInFileNames": true,
     "lib": [
       "dom",
