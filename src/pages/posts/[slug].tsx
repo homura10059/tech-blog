@@ -43,11 +43,9 @@ const Post = ({ post, morePosts, preview }: Props) => {
           <>
             <article className="mb-32">
               {diff > 1 && (
-                <div className="mt-2 mb-5">
-                  <Warning
-                    text={`この記事は最終更新日から${diff}年以上が経過しています。`}
-                  />
-                </div>
+                <Warning
+                  text={`この記事は最終更新日から${diff}年以上が経過しています。`}
+                />
               )}
               <PostHeader
                 title={post.title}
