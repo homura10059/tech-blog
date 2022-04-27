@@ -62,9 +62,9 @@ const Profile: React.VFC = () => {
   return (
     <Layout og={createOGP({ title: 'Profile', path: router.asPath })}>
       <Container>
-        <div className="max-w-2xl mx-auto mt-4">
+        <div className="mx-auto mt-4 max-w-2xl">
           <PageTitle>
-            <div className="flex items-center gap-x-1">
+            <div className="flex gap-x-1 items-center">
               homura (@homura10059)
             </div>
           </PageTitle>
@@ -77,7 +77,7 @@ const Profile: React.VFC = () => {
                 <div className="flex items-center mt-1">
                   <FontAwesomeIcon
                     icon={icon}
-                    className="w-5 h-5 text-surface inline-block mr-2"
+                    className="inline-block mr-2 w-5 h-5 text-surface"
                   />
                   <LinkText href={href}>{name}</LinkText>
                 </div>

@@ -38,26 +38,26 @@ const Header: React.VFC = () => {
   return (
     <Disclosure
       as="nav"
-      className="bg-background-dark sticky top-0 z-50 shadow-lg"
+      className="sticky top-0 z-50 bg-background-dark shadow-lg"
     >
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="flex relative justify-between items-center h-16">
+              <div className="flex absolute inset-y-0 left-0 items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex justify-center items-center p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XIcon className="block w-6 h-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    <MenuIcon className="block w-6 h-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
               {/* Left menu*/}
-              <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex items-center">
+              <div className="flex flex-1 justify-center items-center sm:justify-start sm:items-stretch">
+                <div className="flex shrink-0 items-center">
                   <Link href={'/'}>
                     <a>
                       <Image
@@ -92,12 +92,12 @@ const Header: React.VFC = () => {
                 </div>
               </div>
               {/* Right menu*/}
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Menu as="div" className="ml-3 relative">
+              <div className="flex absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:pr-0 sm:ml-6">
+                <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    <Menu.Button className="p-1 text-gray-400 hover:text-white bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">RSS Feeds</span>
-                      <RssIcon className="h-6 w-6" aria-hidden="true" />
+                      <RssIcon className="w-6 h-6" aria-hidden="true" />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -109,7 +109,7 @@ const Header: React.VFC = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 py-1 mt-2 w-48 bg-white rounded-md focus:outline-none ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right">
                       {rssFeeds.map(feed => (
                         <Menu.Item key={feed.name}>
                           {({ active }) => (

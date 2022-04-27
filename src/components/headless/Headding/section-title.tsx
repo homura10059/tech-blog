@@ -1,6 +1,6 @@
 const SectionTitle: React.FC = ({ children }) => {
   return (
-    <h2 className="mb-4 border-b border-background-light pb-1 font-normal leading-snug mt-12 text-2xl">
+    <h2 className="pb-1 mt-12 mb-4 text-2xl font-normal leading-snug border-b border-background-light">
       {children}
     </h2>
   )

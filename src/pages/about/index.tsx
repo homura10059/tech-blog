@@ -13,7 +13,7 @@ const About: React.VFC = () => {
   return (
     <Layout og={createOGP({ title: 'About', path: router.asPath })}>
       <Container>
-        <div className="max-w-2xl mx-auto mt-4">
+        <div className="mx-auto mt-4 max-w-2xl">
           <PageTitle>このブログについて</PageTitle>
           <SectionTitle>概要</SectionTitle>
           <p>
