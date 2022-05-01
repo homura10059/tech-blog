@@ -8,8 +8,13 @@ type Props = {
 }
 
 const CustomLink: FC<Props> = ({ children, href }) => {
-  if (children === undefined || children === null || children === '') {
-    // a-tagの中身が空ならembedに変換する
+  if (
+    children === undefined ||
+    children === null ||
+    children.toString() === '' ||
+    children.toString() === href
+  ) {
+    // a-tagの中身が空 or URL と同じ文字列 ならembedに変換する
     return <Embed href={href} />
   }
 

@@ -1,0 +1,37 @@
+// Vitest Snapshot v1
+
+exports[`getOgp 1`] = `
+{
+  "description": "homura's tech blog. programming memo & tech posts.",
+  "image": "https://i.imgur.com/BqDJIrtm.png",
+  "title": "homura's tech blog",
+  "url": "https://tech-blog.homura10059.dev/",
+}
+`;
+
+exports[`getOgp 2`] = `
+{
+  "description": "このブログ内のリンクを Next.js の <Link> や Twitter の Embed に変換したいので対応した",
+  "image": "https://i.imgur.com/W7bKLLUm.jpeg",
+  "title": "ブログ内のリンクを Next.js の <Link> や Embed に変換したい",
+  "url": "https://tech-blog.homura10059.dev/posts/2022-04-23-1",
+}
+`;
+
+exports[`getOgp 3`] = `
+{
+  "description": "Amazonで原 旅人のコンセプトから理解するRust。アマゾンならポイント還元本が多数。一度購入いただいた電子書籍は、KindleおよびFire端末、スマートフォンやタブレットなど、様々な端末でもお楽しみいただけます。",
+  "image": "https://images-na.ssl-images-amazon.com/images/P/B09RQGMYKZ.09.LZZZZZZZ.jpg",
+  "title": "コンセプトから理解するRust | 原 旅人 | コンピュータ・IT | Kindleストア | Amazon",
+  "url": "https://www.amazon.co.jp/dp/B09RQGMYKZ?tag=homura10059-22",
+}
+`;
+
+exports[`getOgp 4`] = `
+{
+  "description": "プロバイダー＆光インターネット回線の「月額料金」がずっとおトクな九州のプロバイダーサービスBBIQ(ビビック)のご案内。BBIQなら、光回線とプロバイダー料金、全部含んで3000円台！セキュリティソフトや開通時の訪問設定サービスも無料です！BBIQ公式サイト。",
+  "image": "https://www.bbiq.jp/common/img/og.jpg",
+  "title": "BBIQ(ビビック)公式サイト | 九州の光インターネット回線＆プロバイダー",
+  "url": "https://www.bbiq.jp/",
+}
+`;
