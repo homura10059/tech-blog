@@ -32,6 +32,9 @@ const writeCache = async (data: OgpMeta): Promise<void> => {
   const hash = createHash('md5').update(data.url).digest('hex')
   const cacheFile = path.join(CACHE_DIR, hash)
   try {
+    if (!fs.existsSync(CACHE_DIR)) {
+      fs.mkdirSync(CACHE_DIR)
+    }
     return fs.promises.writeFile(cacheFile, JSON.stringify(data))
   } catch (_e) {
     return Promise.resolve()
