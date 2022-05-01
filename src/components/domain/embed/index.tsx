@@ -13,6 +13,14 @@ const Embed: VFC<Props> = ({ href }) => {
   const [meta, setMeta] = useState<OgpMeta | undefined | 'loading'>('loading')
 
   useEffect(() => {
+    if (
+      ['https://twitter.com/', 'https://www.youtube.com/'].some(url =>
+        href.includes(url)
+      )
+    ) {
+      setMeta(undefined)
+      return
+    }
     const params = { url: encodeURI(href) }
     const query = new URLSearchParams(params)
     fetch(`/api/ogp?${query}`)

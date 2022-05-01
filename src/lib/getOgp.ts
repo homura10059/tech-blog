@@ -38,7 +38,7 @@ const writeCache = async (data: OgpMeta): Promise<void> => {
 const trimTitle = (title: string) => title.trim()
 
 const getImageUrl = (imageUrl: string, url: string) => {
-  if (imageUrl.at(0) !== '/') return imageUrl
+  if (imageUrl.charAt(0) !== '/') return imageUrl
   const parsed = new URL(url)
   return `${parsed.protocol}//${parsed.hostname}${imageUrl}`
 }
