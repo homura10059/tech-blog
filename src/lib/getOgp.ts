@@ -18,6 +18,9 @@ const readCache = async (key: string): Promise<OgpMeta | null> => {
   const hash = createHash('md5').update(key).digest('hex')
   const cacheFile = path.join(CACHE_DIR, hash)
   try {
+    if (!fs.existsSync(CACHE_DIR)) {
+      fs.mkdirSync(CACHE_DIR)
+    }
     const file = await fs.promises.readFile(cacheFile, 'utf-8')
     return JSON.parse(file) as OgpMeta
   } catch (_e) {
