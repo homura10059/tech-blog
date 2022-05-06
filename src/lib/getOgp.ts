@@ -1,44 +1,14 @@
 import axios from 'axios'
-import { createHash } from 'crypto'
-import fs from 'fs'
 import { JSDOM } from 'jsdom'
-import path from 'path'
 
 import { getAmazonImageUrl, getAmazonShortUrl } from './amazon'
+import { readCache, writeCache } from './cache'
 
 export type OgpMeta = {
   title: string
   description: string
   image: string
   url: string
-}
-
-const CACHE_DIR = '.cache/ogp'
-const readCache = async (key: string): Promise<OgpMeta | null> => {
-  const hash = createHash('md5').update(key).digest('hex')
-  const cacheFile = path.join(CACHE_DIR, hash)
-  try {
-    if (!fs.existsSync(CACHE_DIR)) {
-      fs.mkdirSync(CACHE_DIR)
-    }
-    const file = await fs.promises.readFile(cacheFile, 'utf-8')
-    return JSON.parse(file) as OgpMeta
-  } catch (_e) {
-    return null
-  }
-}
-
-const writeCache = async (data: OgpMeta): Promise<void> => {
-  const hash = createHash('md5').update(data.url).digest('hex')
-  const cacheFile = path.join(CACHE_DIR, hash)
-  try {
-    if (!fs.existsSync(CACHE_DIR)) {
-      fs.mkdirSync(CACHE_DIR)
-    }
-    return fs.promises.writeFile(cacheFile, JSON.stringify(data))
-  } catch (_e) {
-    return Promise.resolve()
-  }
 }
 
 const trimTitle = (title: string) => title.trim()
@@ -55,6 +25,8 @@ export const getOgp = async (url: string): Promise<OgpMeta> => {
 
   const cache = await readCache(encodedUri)
   if (cache) return cache
+
+  console.log('cache miss!')
 
   const headers = { 'User-Agent': 'bot' }
 
