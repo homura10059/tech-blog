@@ -16,7 +16,7 @@ const trimTitle = (title: string) => title.trim()
 const getImageUrl = (imageUrl: string, url: string) => {
   if (imageUrl.charAt(0) !== '/') return imageUrl
   const parsed = new URL(url)
-  return `${parsed.protocol}//${parsed.hostname}${imageUrl}`
+  return `https//${parsed.hostname}${imageUrl}`
 }
 
 export const getOgp = async (url: string): Promise<OgpMeta> => {
