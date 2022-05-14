@@ -32,7 +32,9 @@ jwtClient.authorize(async function (err, tokens) {
           type: 'URL_UPDATED'
         }
       }
-      return axios.request(options).then(res => console.log(res))
+      return axios
+        .request(options)
+        .then(res => console.log(JSON.stringify(res.data)))
     })
   )
 })
