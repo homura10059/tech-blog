@@ -51,6 +51,7 @@ const Post = ({ post, morePosts, preview }: Props) => {
                 title={post.title}
                 coverImage={post.coverImage}
                 date={post.date}
+                tags={post.tags}
               />
               <PostBody content={post.content} />
             </article>
@@ -77,7 +78,8 @@ export async function getStaticProps({ params }: Params) {
     'content',
     'excerpt',
     'ogImage',
-    'coverImage'
+    'coverImage',
+    'tags'
   ])
   const content = await markdownToHtml(post.content || '')
 
@@ -93,7 +95,6 @@ export async function getStaticProps({ params }: Params) {
 
 export async function getStaticPaths() {
   const slugs = getPostSlugs()
-  console.log(slugs)
 
   return {
     paths: slugs.map(slug => {

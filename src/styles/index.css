@@ -8,6 +8,6 @@
 
 @layer components {
     .link {
-        @apply font-bold text-primary-light hover:underline;
+        @apply font-bold text-primary-light cursor-pointer hover:underline ;
     }
 }
