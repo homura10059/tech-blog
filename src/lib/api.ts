@@ -4,16 +4,16 @@ import { join } from 'path'
 
 const postsDirectory = join(process.cwd(), '_posts')
 
-export function getPostSlugs(): string[] {
+export const getPostSlugs = (): string[] => {
   return fs
     .readdirSync(postsDirectory, { withFileTypes: true })
     .filter(x => x.isFile())
-    .map(x => x.name)
+    .map(x => x.name.replace(/\.md$/, ''))
+    .filter(slug => slug !== '.DS_Store')
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(postsDirectory, `${realSlug}.md`)
+export const getPostBySlug = (slug: string, fields: string[] = []) => {
+  const fullPath = join(postsDirectory, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
@@ -26,7 +26,7 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   // Ensure only the minimal needed data is exposed
   fields.forEach(field => {
     if (field === 'slug') {
-      items[field] = realSlug
+      items[field] = slug
     }
     if (field === 'content') {
       items[field] = content
@@ -40,10 +40,9 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
   return items
 }
 
-export function getAllPosts(fields: string[] = []) {
+export const getAllPosts = (fields: string[] = []) => {
   const slugs = getPostSlugs()
   return slugs
-    .filter(slug => slug !== '.DS_Store')
     .map(slug => getPostBySlug(slug, fields))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
 }

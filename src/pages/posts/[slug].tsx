@@ -9,7 +9,7 @@ import PostHeader from '../../components/domain/post/post-header'
 import PostTitle from '../../components/domain/post/post-title'
 import Container from '../../components/headless/container'
 import PostType from '../../domain/model/post'
-import { getAllPosts, getPostBySlug } from '../../lib/api'
+import { getPostBySlug, getPostSlugs } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { createOGP } from '../../lib/ogp'
 
@@ -92,13 +92,14 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+  const slugs = getPostSlugs()
+  console.log(slugs)
 
   return {
-    paths: posts.map(post => {
+    paths: slugs.map(slug => {
       return {
         params: {
-          slug: post.slug
+          slug
         }
       }
     }),
