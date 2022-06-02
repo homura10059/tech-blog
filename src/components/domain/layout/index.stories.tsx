@@ -13,3 +13,13 @@ const Template: ComponentStory<typeof Layout> = args => (
 )
 
 export const Default = Template.bind({})
+Default.args = {
+  og: {
+    url: 'url',
+    type: 'website',
+    title: 'title',
+    description: 'description',
+    site_name: 'string',
+    image: 'string'
+  }
+}
