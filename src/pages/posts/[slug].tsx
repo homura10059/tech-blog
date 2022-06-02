@@ -9,7 +9,7 @@ import PostHeader from '../../components/domain/post/post-header'
 import PostTitle from '../../components/domain/post/post-title'
 import Container from '../../components/headless/container'
 import PostType from '../../domain/models/post'
-import { getPostBySlug, getPostSlugs } from '../../lib/api'
+import { getPostBySlug, getPostSlugs } from '../../domain/services/post'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { createOGP } from '../../lib/ogp'
 

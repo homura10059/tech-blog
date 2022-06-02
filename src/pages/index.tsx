@@ -6,7 +6,7 @@ import Container from '../components/headless/container'
 import Intro from '../components/intro'
 import MoreStories from '../components/more-stories'
 import Post from '../domain/models/post'
-import { getAllPosts } from '../lib/api'
+import { getAllPosts } from '../domain/services/post'
 import generatedRssFeed from '../lib/feed'
 import { createOGP } from '../lib/ogp'
 
