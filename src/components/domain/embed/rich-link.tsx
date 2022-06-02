@@ -17,7 +17,7 @@ const RichLink: VFC<Props> = ({ url, title, description, image }) => {
     <div className="not-prose my-2">
       <Link href={url}>
         <a className="">
-          <div className="flex w-full border border-primary-light items-center divide-x divide-primary-light justify-between hover:opacity-50">
+          <div className="flex w-full border border-primary-light items-center divide-x divide-primary-light justify-between hover:bg-background-light">
             <div className="text-surface flex flex-col gap-1 px-2">
               <span className="font-bold line-clamp-1">{title}</span>
               <span className="text-xs text-background-light line-clamp-1">
