@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import Layout from '../../components/domain/layout'
@@ -32,6 +33,9 @@ const TagPage = ({ tag, allPosts }: Props) => {
             <h1 className="mb-6 before:content-['#'] before:mr-2 text-5xl font-bold tracking-tighter leading-tight md:pr-8 md:text-8xl ">
               {tag}
             </h1>
+            <Link href="/tags">
+              <a className="link self-end mb-6 text-lg">All Tags</a>
+            </Link>
           </section>
           <MoreStories posts={allPosts} postsOnly />
         </Container>

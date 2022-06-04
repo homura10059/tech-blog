@@ -10,11 +10,7 @@ const Tags = ({ tags }: Props) => {
   return (
     <div className="flex gap-x-2">
       {tags.map((tag, index) => (
-        <Link href={`/tags/${tag}`} key={index}>
-          <a>
-            <Tag text={tag} />
-          </a>
-        </Link>
+        <Tag text={tag} key={index} />
       ))}
     </div>
   )
