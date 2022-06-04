@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof Tags>
 
 const Template: ComponentStory<typeof Tags> = args => (
-  <div className="bg-background-dark h-screen p-4">
+  <div className="p-4 h-screen bg-background-dark">
     <Tags {...args} />
   </div>
 )

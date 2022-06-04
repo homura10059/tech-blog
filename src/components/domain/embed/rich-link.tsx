@@ -14,18 +14,19 @@ type Props = {
 const RichLink: VFC<Props> = ({ url, title, description, image }) => {
   const parsedUrl = new URL(url)
   return (
-    <div className="not-prose my-2">
+    // eslint-disable-next-line tailwindcss/no-custom-classname
+    <div className="my-2 not-prose">
       <Link href={url}>
         <a className="">
-          <div className="flex w-full border border-primary-light items-center divide-x divide-primary-light justify-between hover:bg-background-light">
-            <div className="text-surface flex flex-col gap-1 px-2">
+          <div className="flex justify-between items-center w-full hover:bg-background-light border border-primary-light divide-x divide-primary-light">
+            <div className="flex flex-col gap-1 px-2 text-surface">
               <span className="font-bold line-clamp-1">{title}</span>
               <span className="text-xs text-background-light line-clamp-1">
                 {description}
               </span>
               <span className="text-sm">{parsedUrl.hostname}</span>
             </div>
-            <div className="h-full p-2">
+            <div className="p-2 h-full">
               <figure className="relative w-[120px] h-[120px]">
                 <Image
                   loader={customLoader}
@@ -45,15 +46,16 @@ const RichLink: VFC<Props> = ({ url, title, description, image }) => {
 
 const SkeletonLoader: VFC = () => {
   return (
-    <div className="not-prose my-2">
-      <div className="flex w-full border border-primary-light items-center divide-x divide-primary-light justify-between">
-        <div className="flex-1 grid grid-cols-3 gap-2 animate-pulse px-2">
+    // eslint-disable-next-line tailwindcss/no-custom-classname
+    <div className="my-2 not-prose">
+      <div className="flex justify-between items-center w-full border border-primary-light divide-x divide-primary-light">
+        <div className="grid flex-1 grid-cols-3 gap-2 px-2 animate-pulse">
           <div className="col-span-2 h-6 bg-slate-700 rounded" />
           <div className="col-span-3 h-4 bg-slate-700 rounded" />
           <div className="col-span-1 h-4 bg-slate-700 rounded" />
         </div>
-        <div className="h-full p-2 animate-pulse">
-          <div className="h-[120px] w-[120px] bg-slate-700 rounded" />
+        <div className="p-2 h-full animate-pulse">
+          <div className="w-[120px] h-[120px] bg-slate-700 rounded" />
         </div>
       </div>
     </div>

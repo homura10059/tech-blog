@@ -1,6 +1,6 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["simple-import-sort", "prettier"],
+  "extends": ["next/core-web-vitals", "prettier", "plugin:tailwindcss/recommended"],
+  "plugins": ["simple-import-sort", "prettier" , "tailwindcss"],
   "rules": {
     "prettier/prettier": "error",
     "no-irregular-whitespace": "off",

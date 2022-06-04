@@ -109,7 +109,7 @@ const Header: React.VFC = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 py-1 mt-2 w-48 bg-white rounded-md focus:outline-none ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right">
+                    <Menu.Items className="absolute right-0 py-1 mt-2 w-48 bg-white rounded-md focus:outline-none ring-1 ring-black/50 shadow-lg origin-top-right">
                       {rssFeeds.map(feed => (
                         <Menu.Item key={feed.name}>
                           {({ active }) => (

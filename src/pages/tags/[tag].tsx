@@ -2,9 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import Layout from '../../components/domain/layout'
-import HeroPost from '../../components/domain/post/hero-post'
 import Container from '../../components/headless/container'
-import Intro from '../../components/intro'
 import MoreStories from '../../components/more-stories'
 import Post from '../../domain/models/post'
 import { getAllPosts } from '../../domain/services/post'
@@ -30,11 +28,11 @@ const TagPage = ({ tag, allPosts }: Props) => {
       >
         <Container>
           <section className="flex flex-col items-center pt-8 pb-16 md:flex-row md:justify-between md:pb-6">
-            <h1 className="mb-6 before:content-['#'] before:mr-2 text-5xl font-bold tracking-tighter leading-tight md:pr-8 md:text-8xl ">
+            <h1 className="before:mr-2 mb-6 text-5xl font-bold tracking-tighter leading-tight before:content-['#'] md:pr-8 md:text-8xl ">
               {tag}
             </h1>
             <Link href="/tags">
-              <a className="link self-end mb-6 text-lg">All Tags</a>
+              <a className="self-end mb-6 text-lg link">All Tags</a>
             </Link>
           </section>
           <MoreStories posts={allPosts} postsOnly />

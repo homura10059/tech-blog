@@ -66,6 +66,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-tailwindcss": "^3.5.0",
     "feed": "^4.2.2",
     "googleapis": "^100.0.0",
     "next-sitemap": "^2.5.17",
