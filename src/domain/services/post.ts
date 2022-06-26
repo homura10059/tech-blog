@@ -10,6 +10,7 @@ export const getPostSlugs = (): string[] => {
     .filter(x => x.isFile())
     .map(x => x.name.replace(/\.md$/, ''))
     .filter(slug => slug !== '.DS_Store')
+    .filter(slug => !slug.startsWith('draft'))
 }
 
 export const getPostBySlug = (slug: string, fields: string[] = []) => {
