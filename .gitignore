@@ -46,3 +46,4 @@ public/rss
 tools/service_account.json
 
 storybook-static
+dist
