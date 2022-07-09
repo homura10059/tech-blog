@@ -44,3 +44,5 @@ public/rss
 
 # tools
 tools/service_account.json
+
+storybook-static
