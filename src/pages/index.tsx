@@ -1,8 +1,8 @@
-import AllPosts from '../components/pages/all-posts'
+import Home from '../components/pages/home'
 import { getAllPosts } from '../domain/services/post'
 import generatedRssFeed from '../lib/feed'
 
-export default AllPosts
+export default Home
 
 export const getStaticProps = async () => {
   // フィード情報の生成

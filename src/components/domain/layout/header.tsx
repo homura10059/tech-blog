@@ -14,7 +14,7 @@ type Nav = {
   asCurrent: string[]
 }
 const navigation: Nav[] = [
-  { name: 'Blog', href: '/', asCurrent: ['/post'] },
+  { name: 'Blog', href: '/posts', asCurrent: [] },
   { name: 'Profile', href: '/profile', asCurrent: [] },
   { name: 'About', href: '/about', asCurrent: [] }
 ]
