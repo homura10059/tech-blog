@@ -49,7 +49,7 @@ type Props = {
 
 const PostCards = ({ posts }: Props) => {
   return (
-    <div className="columns-1 relative p-4 md:columns-2 lg:columns-4">
+    <div className="columns-1 relative p-4 md:columns-2 lg:columns-3 xl:columns-4">
       {posts.map(post => (
         <PostCard {...post} key={post.slug} />
       ))}

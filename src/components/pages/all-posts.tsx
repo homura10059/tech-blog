@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 
 import Post from '../../domain/models/post'
+import { BLOG_TITLE } from '../../lib/constants'
 import { createOGP } from '../../lib/ogp'
 import Layout from '../domain/layout'
 import PostCards from '../domain/post/post-card'
@@ -14,7 +15,12 @@ const AllPosts = ({ allPosts }: Props) => {
   const router = useRouter()
   return (
     <>
-      <Layout og={createOGP({ path: router.asPath })}>
+      <Layout
+        og={createOGP({
+          title: `Blog記事一覧 | ${BLOG_TITLE}`,
+          path: router.asPath
+        })}
+      >
         <Container>
           <section className="flex flex-col items-center pt-8 pb-16 md:flex-row md:justify-between md:pb-6">
             <h1 className="text-5xl font-bold tracking-tighter leading-tight md:pr-8 md:text-8xl">
