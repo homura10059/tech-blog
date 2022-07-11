@@ -17,7 +17,7 @@ const AllPosts = ({ allPosts }: Props) => {
     <>
       <Layout
         og={createOGP({
-          title: `Blog記事一覧 | ${BLOG_TITLE}`,
+          title: `Blog記事一覧`,
           path: router.asPath
         })}
       >

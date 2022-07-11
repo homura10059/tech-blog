@@ -1,16 +1,9 @@
 import { useRouter } from 'next/router'
 
 import Layout from '../../components/domain/layout'
-import HeroPost from '../../components/domain/post/hero-post'
-import Tag from '../../components/domain/tags/tag'
 import TagCards from '../../components/domain/tags/tagCards'
 import Container from '../../components/headless/container'
-import Intro from '../../components/intro'
-import MoreStories from '../../components/more-stories'
-import Post from '../../domain/models/post'
 import { getAllPosts } from '../../domain/services/post'
-import { unique } from '../../lib/arrays'
-import { BLOG_TITLE } from '../../lib/constants'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
@@ -24,7 +17,7 @@ const TagPage = ({ tags }: Props) => {
     <>
       <Layout
         og={createOGP({
-          title: `${title} | ${BLOG_TITLE}`,
+          title: `${title}`,
           path: router.asPath
         })}
       >

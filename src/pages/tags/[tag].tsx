@@ -7,7 +7,6 @@ import MoreStories from '../../components/more-stories'
 import Post from '../../domain/models/post'
 import { getAllPosts } from '../../domain/services/post'
 import { unique } from '../../lib/arrays'
-import { BLOG_TITLE } from '../../lib/constants'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
@@ -22,7 +21,7 @@ const TagPage = ({ tag, allPosts }: Props) => {
     <>
       <Layout
         og={createOGP({
-          title: `${title} | ${BLOG_TITLE}`,
+          title: `${title}`,
           path: router.asPath
         })}
       >
