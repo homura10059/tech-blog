@@ -1,10 +1,13 @@
 ---
 title: '[Rust] The Rust Programming Language 日本語版 をやってみた感想'
 excerpt: 'The Rust Programming Language 日本語版 をやってみたので感想をまとめる'
-coverImage: 'https://i.imgur.com/4xPTo1B'
+coverImage: 
+  url: 'https://i.imgur.com/4xPTo1B'
+  aspectRatio: '3/2'
 date: '2022-06-11T21:00:00+09:00'
 ogImage:
   url: 'https://i.imgur.com/4xPTo1B'
+  aspectRatio: '3/2'
 tags: ['Rust']
 ---
   

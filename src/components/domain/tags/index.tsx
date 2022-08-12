@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import Tag from './tag'
 
 type Props = {
@@ -8,7 +6,7 @@ type Props = {
 
 const Tags = ({ tags }: Props) => {
   return (
-    <div className="flex gap-x-2">
+    <div className="flex flex-wrap gap-x-2">
       {tags.map((tag, index) => (
         <Tag text={tag} key={index} />
       ))}

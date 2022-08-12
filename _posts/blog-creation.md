@@ -1,7 +1,8 @@
 ---
 title: '技術ブログ制作日記'
 excerpt: 'Next.js + Tailwindcss で作っているこのブログの制作日記'
-coverImage: 'https://i.imgur.com/sUGwLjX'
+coverImage: 
+  url: 'https://i.imgur.com/sUGwLjX'
 date: '2022-04-10T13:00:00+09:00'
 ogImage:
   url: 'https://i.imgur.com/sUGwLjX'

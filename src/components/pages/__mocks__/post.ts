@@ -2,7 +2,9 @@ export const mockedPost = {
   slug: 'slug',
   title: 'title',
   date: '2022-07-01',
-  coverImage: 'https://i.imgur.com/4xPTo1B.webp',
+  coverImage: {
+    url: 'https://i.imgur.com/4xPTo1B.webp'
+  },
   excerpt: 'string',
   ogImage: {
     url: 'https://i.imgur.com/4xPTo1B.webp'
@@ -35,5 +37,7 @@ const images = [
 ]
 export const mockedPosts = images.map(image => ({
   ...mockedPost,
-  coverImage: image
+  coverImage: {
+    url: image
+  }
 }))

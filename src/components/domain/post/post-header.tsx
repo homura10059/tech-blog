@@ -1,29 +1,19 @@
-import CoverImage from '../../cover-image'
-import DateFormatter from '../../date-formatter'
-import Tags from '../tags'
-import PostTitle from './post-title'
+import HeroImage from '../image/hero-image'
 
 type Props = {
   title: string
-  coverImage: string
+  coverImage: {
+    url: string
+  }
   date: string
   tags: string[]
 }
 
-const PostHeader = ({ title, coverImage, date, tags }: Props) => {
+const PostHeader = (props: Props) => {
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      <div className="mb-4 sm:mx-0 md:mb-8">
-        <CoverImage title={title} src={coverImage} isHero />
-      </div>
-      <div className="mx-auto max-w-2xl">
-        <div className="mb-2 text-lg">
-          <DateFormatter dateString={date} />
-        </div>
-        <Tags tags={tags} />
-      </div>
-    </>
+    <div className="mb-4 sm:mx-0 md:mb-8">
+      <HeroImage {...props} />
+    </div>
   )
 }
 

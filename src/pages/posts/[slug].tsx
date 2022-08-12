@@ -36,28 +36,26 @@ const Post = ({ post, morePosts, preview }: Props) => {
         image: post.ogImage.url
       })}
     >
-      <Container>
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article className="mb-32">
-              {diff > 1 && (
-                <Warning
-                  text={`この記事は最終更新日から${diff}年以上が経過しています。`}
-                />
-              )}
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                tags={post.tags}
+      {router.isFallback ? (
+        <PostTitle>Loading…</PostTitle>
+      ) : (
+        <article className="mb-32">
+          <PostHeader
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.date}
+            tags={post.tags}
+          />
+          <Container>
+            {diff > 1 && (
+              <Warning
+                text={`この記事は最終更新日から${diff}年以上が経過しています。`}
               />
-              <PostBody content={post.content} />
-            </article>
-          </>
-        )}
-      </Container>
+            )}
+            <PostBody content={post.content} />
+          </Container>
+        </article>
+      )}
     </Layout>
   )
 }

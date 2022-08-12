@@ -4,7 +4,9 @@ import DateFormatter from '../../date-formatter'
 
 type PostCardProps = {
   title: string
-  coverImage: string
+  coverImage: {
+    url: string
+  }
   date: string
   slug: string
   tags: string[]
