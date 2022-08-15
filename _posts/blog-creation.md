@@ -3,9 +3,11 @@ title: '技術ブログ制作日記'
 excerpt: 'Next.js + Tailwindcss で作っているこのブログの制作日記'
 coverImage: 
   url: 'https://i.imgur.com/sUGwLjX'
+  aspectRatio: '3/2'
 date: '2022-04-10T13:00:00+09:00'
 ogImage:
   url: 'https://i.imgur.com/sUGwLjX'
+  aspectRatio: '3/2'
 tags: ['blog', 'TypeScript', 'Next.js']
 ---
 
