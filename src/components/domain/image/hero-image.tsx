@@ -33,15 +33,12 @@ const HeroImage = ({ title, coverImage, date, tags }: Props) => {
           priority={true} // hero image なので preload する
         />
       </figure>
-      <div className="flex absolute inset-0 flex-col p-1 bg-black/40 md:p-6">
-        <div className="">
+      <div className="flex absolute inset-0 items-center p-1 bg-black/40 md:p-6">
+        <div className="flex flex-col grow">
           <PostTitle>{title}</PostTitle>
-          <div className="mt-2 md:mt-4 md:text-2xl">
+          <div className="mt-2 text-center md:mt-4 md:text-2xl">
             <DateFormatter dateString={date} />
           </div>
-        </div>
-        <div className="mt-auto">
-          <Tags tags={tags} />
         </div>
       </div>
     </div>

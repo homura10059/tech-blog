@@ -7,6 +7,7 @@ import Layout from '../../components/domain/layout'
 import PostBody from '../../components/domain/post/post-body'
 import PostHeader from '../../components/domain/post/post-header'
 import PostTitle from '../../components/domain/post/post-title'
+import Tags from '../../components/domain/tags'
 import Container from '../../components/headless/container'
 import PostType from '../../domain/models/post'
 import { getPostBySlug, getPostSlugs } from '../../domain/services/post'
@@ -51,6 +52,11 @@ const Post = ({ post, morePosts, preview }: Props) => {
               <Warning
                 text={`この記事は最終更新日から${diff}年以上が経過しています。`}
               />
+            )}
+            {post.tags.length > 0 && (
+              <div className="mx-auto mt-4 max-w-2xl">
+                <Tags tags={post.tags} />
+              </div>
             )}
             <PostBody content={post.content} />
           </Container>
