@@ -126,6 +126,58 @@ const cards: Record<string, CardProps[]> = {
         'https://m.media-amazon.com/images/I/51-XcCgLBKL._AC_SL1500_.jpg',
       linkUrl: 'https://www.amazon.co.jp/dp/B07ZKNKTFD?tag=homura10059-22'
     }
+  ],
+  'User Interface': [
+    {
+      title: 'REALFORCE91UBK-S',
+      description:
+        'テンキーレス 変荷重 静音タイプ。Macしか持ってないのにWindows用のキーボードを使っているのは、Windowsしか使えない職場で働いていた頃の名残',
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/P/B003XKNX76.09.LZZZZZZZ.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B003XKNX76?tag=homura10059-22'
+    },
+    {
+      title: 'Magic Trackpad',
+      description:
+        'MBPのキーボードを使った時と使用感が変わらないようにキーボードと縦に並べている',
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/P/B09BTT6FJ9.09.LZZZZZZZ.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B09BTT6FJ9?tag=homura10059-22'
+    }
+  ],
+  Desk: [
+    {
+      title: 'L字デスク',
+      description:
+        'LOWYA の幅140cmのものを使っている。機能性とかではなくただただL字デスクへの憧れで買ったので特徴は特にない。',
+      imageUrl:
+        'https://m.media-amazon.com/images/I/71rwGer-OqL._AC_SL1500_.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B01MR55ISW?tag=homura10059-22'
+    },
+    {
+      title: 'ケーブル配線トレー',
+      description:
+        'サンワサプライのもの。電源系のケーブルなどを床に垂らさないために使用。',
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/P/B01MZZL92E.09.LZZZZZZZ.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B01MZZL92E?tag=homura10059-22'
+    },
+    {
+      title: 'オカムラ バロンチェア',
+      description:
+        '背が高いためなかなか体に合う椅子に出会えなかったがこれに落ち着いた',
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/P/B000NMQWC0.09.LZZZZZZZ.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B000NMQWC0?tag=homura10059-22'
+    },
+    {
+      title: 'Bauhutte デスクごとチェアマット',
+      description:
+        'L字デスクと椅子が動く範囲全てをカバーしている。掃除しやすさを重視して、カーペットタイプではなくPVCのもの使用',
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/P/B01N9AYNP1.09.LZZZZZZZ.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B01N9AYNP1?tag=homura10059-22'
+    }
   ]
 }
 
