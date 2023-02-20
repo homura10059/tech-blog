@@ -178,6 +178,31 @@ const cards: Record<string, CardProps[]> = {
         'https://images-na.ssl-images-amazon.com/images/P/B01N9AYNP1.09.LZZZZZZZ.jpg',
       linkUrl: 'https://www.amazon.co.jp/dp/B01N9AYNP1?tag=homura10059-22'
     }
+  ],
+  Network: [
+    {
+      title: 'EdgeRouter X',
+      description:
+        '宅内の routing とインターネット接続を一挙に受け持つルーター。無線機のは無いので別の機器を無線APとしている',
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/P/B010MZFH5A.09.LZZZZZZZ.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B010MZFH5A?tag=homura10059-22'
+    },
+    {
+      title: 'AmpliFi Instant Router',
+      description:
+        'イーサネットバックボーンをもつ無線APとしてブリッジモードで使っている(2台)',
+      imageUrl:
+        'https://cdn.shopify.com/s/files/1/0214/4921/2004/products/AFi-INS_Front_Angle_c0044a3f-97b8-4ab9-8375-fff78294f21d_grande.png?v=1603191125',
+      linkUrl: 'https://www.amazon.co.jp/dp/B07PHHG47X?tag=homura10059-22'
+    },
+    {
+      title: 'NETGEAR GS305',
+      description: '有線LAN接続も大量にあるのでL2スイッチとして導入',
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/P/B07YPG5GWD.09.LZZZZZZZ.jpg',
+      linkUrl: 'https://www.amazon.co.jp/dp/B07YPG5GWD?tag=homura10059-22'
+    }
   ]
 }
 
