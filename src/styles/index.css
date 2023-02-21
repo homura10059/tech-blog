@@ -10,4 +10,8 @@
     .link {
         @apply font-bold text-primary-light cursor-pointer hover:underline ;
     }
+
+    .not-prose {
+        /* typography を無効化するためのクラス */
+    }
 }

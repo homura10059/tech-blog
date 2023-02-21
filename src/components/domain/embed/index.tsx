@@ -1,7 +1,7 @@
 import { useEffect, useState, VFC } from 'react'
 
 import { OgpMeta } from '../../../lib/getOgp'
-import RichLink from './rich-link'
+import Card from '../card/card'
 import Twitter from './twitter'
 import Youtube from './youtube'
 
@@ -42,11 +42,19 @@ const Embed: VFC<Props> = ({ href }) => {
   }
 
   if (meta === 'loading') {
-    return <RichLink isLoading={true} />
+    return (
+      <div className="my-2">
+        <Card isLoading={true} />
+      </div>
+    )
   }
 
   if (meta) {
-    return <RichLink meta={meta} />
+    return (
+      <div className="my-4">
+        <Card meta={meta} />{' '}
+      </div>
+    )
   }
 
   return (

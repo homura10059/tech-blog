@@ -21,9 +21,9 @@ Default.args = {
     title: 'EdgeRouter X',
     description:
       '宅内の routing とインターネット接続を一挙に受け持つルーター。無線機のは無いので別の機器を無線APとしている',
-    imageUrl:
+    image:
       'https://images-na.ssl-images-amazon.com/images/P/B010MZFH5A.09.LZZZZZZZ.jpg',
-    linkUrl: 'https://www.amazon.co.jp/dp/B010MZFH5A?tag=homura10059-22'
+    url: 'https://www.amazon.co.jp/dp/B010MZFH5A?tag=homura10059-22'
   }
 }
 

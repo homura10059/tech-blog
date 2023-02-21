@@ -64,23 +64,23 @@ const cards: Record<string, CardProps[]> = {
     {
       title: '27UL850-W',
       description: 'メインで使っている LG の 27インチ/4K ディスプレイ',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B07KM8RD34.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B07KM8RD34?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B07KM8RD34?tag=homura10059-22'
     },
     {
       title: 'FlexScan EV245',
       description: '90度回転させてサブモニターとして縦長に使っている',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B01MU28MND.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B01MU28MND?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B01MU28MND?tag=homura10059-22'
     },
     {
       title: 'Amazonベーシック デュアルモニターアーム',
       description: 'これを使って2枚のモニターを左右に並べている',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B00MIBN71I.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B00MIBN71I?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B00MIBN71I?tag=homura10059-22'
     }
   ],
   Camera: [
@@ -88,25 +88,25 @@ const cards: Record<string, CardProps[]> = {
       title: 'α6600',
       description:
         'Sony α6600 普段は子供を撮るのに使っているが、平日は使わないのでウェブカメラとして使っている',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B07X6HLHTV.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B07X6HLHTV?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B07X6HLHTV?tag=homura10059-22'
     },
     {
       title: 'SEL11F18',
       description:
         '上のカメラつにつけてる単焦点広角レンズ APS-C用 / E 11mm F1.8',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B0B2YZX69J.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B0B2YZX69J?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B0B2YZX69J?tag=homura10059-22'
     },
     {
       title: 'グリーンハウス モニターアーム',
       description:
         'ウェブカメラとして使うときにカメラをマウントしているモニターアーム',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B084YW5ZQS.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B084YW5ZQS?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B084YW5ZQS?tag=homura10059-22'
     }
   ],
   Audio: [
@@ -114,17 +114,16 @@ const cards: Record<string, CardProps[]> = {
       title: 'YAMAHA ZG01',
       description:
         'ゲーム/配信用オーディオミキサー。マイク&ヘッドホンをこいつに繋ぎ一元管理している。HDMI切り替え機能もあるので、PS5とSwitchを切り替えるのにも使っている。',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B09WQN5QP2.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B09WQN5QP2?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B09WQN5QP2?tag=homura10059-22'
     },
     {
       title: 'MPM-1000J',
       description:
         'ZG01 のマイク入力がXLRなので一番安価だったこいつを使っている',
-      imageUrl:
-        'https://m.media-amazon.com/images/I/51-XcCgLBKL._AC_SL1500_.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B07ZKNKTFD?tag=homura10059-22'
+      image: 'https://m.media-amazon.com/images/I/51-XcCgLBKL._AC_SL1500_.jpg',
+      url: 'https://www.amazon.co.jp/dp/B07ZKNKTFD?tag=homura10059-22'
     }
   ],
   'User Interface': [
@@ -132,17 +131,17 @@ const cards: Record<string, CardProps[]> = {
       title: 'REALFORCE91UBK-S',
       description:
         'テンキーレス 変荷重 静音タイプ。Macしか持ってないのにWindows用のキーボードを使っているのは、Windowsしか使えない職場で働いていた頃の名残',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B003XKNX76.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B003XKNX76?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B003XKNX76?tag=homura10059-22'
     },
     {
       title: 'Magic Trackpad',
       description:
         'MBPのキーボードを使った時と使用感が変わらないようにキーボードと縦に並べている',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B09BTT6FJ9.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B09BTT6FJ9?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B09BTT6FJ9?tag=homura10059-22'
     }
   ],
   Desk: [
@@ -150,33 +149,32 @@ const cards: Record<string, CardProps[]> = {
       title: 'L字デスク',
       description:
         'LOWYA の幅140cmのものを使っている。機能性とかではなくただただL字デスクへの憧れで買ったので特徴は特にない。',
-      imageUrl:
-        'https://m.media-amazon.com/images/I/71rwGer-OqL._AC_SL1500_.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B01MR55ISW?tag=homura10059-22'
+      image: 'https://m.media-amazon.com/images/I/71rwGer-OqL._AC_SL1500_.jpg',
+      url: 'https://www.amazon.co.jp/dp/B01MR55ISW?tag=homura10059-22'
     },
     {
       title: 'ケーブル配線トレー',
       description:
         'サンワサプライのもの。電源系のケーブルなどを床に垂らさないために使用。',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B01MZZL92E.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B01MZZL92E?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B01MZZL92E?tag=homura10059-22'
     },
     {
       title: 'オカムラ バロンチェア',
       description:
         '背が高いためなかなか体に合う椅子に出会えなかったがこれに落ち着いた',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B000NMQWC0.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B000NMQWC0?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B000NMQWC0?tag=homura10059-22'
     },
     {
       title: 'Bauhutte デスクごとチェアマット',
       description:
         'L字デスクと椅子が動く範囲全てをカバーしている。掃除しやすさを重視して、カーペットタイプではなくPVCのもの使用',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B01N9AYNP1.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B01N9AYNP1?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B01N9AYNP1?tag=homura10059-22'
     }
   ],
   Network: [
@@ -184,24 +182,24 @@ const cards: Record<string, CardProps[]> = {
       title: 'EdgeRouter X',
       description:
         '宅内の routing とインターネット接続を一挙に受け持つルーター。無線機のは無いので別の機器を無線APとしている',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B010MZFH5A.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B010MZFH5A?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B010MZFH5A?tag=homura10059-22'
     },
     {
       title: 'AmpliFi Instant Router',
       description:
         'イーサネットバックボーンをもつ無線APとしてブリッジモードで使っている(2台)',
-      imageUrl:
+      image:
         'https://cdn.shopify.com/s/files/1/0214/4921/2004/products/AFi-INS_Front_Angle_c0044a3f-97b8-4ab9-8375-fff78294f21d_grande.png?v=1603191125',
-      linkUrl: 'https://www.amazon.co.jp/dp/B07PHHG47X?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B07PHHG47X?tag=homura10059-22'
     },
     {
       title: 'NETGEAR GS305',
       description: '有線LAN接続も大量にあるのでL2スイッチとして導入',
-      imageUrl:
+      image:
         'https://images-na.ssl-images-amazon.com/images/P/B07YPG5GWD.09.LZZZZZZZ.jpg',
-      linkUrl: 'https://www.amazon.co.jp/dp/B07YPG5GWD?tag=homura10059-22'
+      url: 'https://www.amazon.co.jp/dp/B07YPG5GWD?tag=homura10059-22'
     }
   ]
 }
