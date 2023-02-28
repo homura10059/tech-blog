@@ -42,21 +42,21 @@ const Header: React.VFC = () => {
     >
       {({ open }) => (
         <>
-          <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="flex relative justify-between items-center h-16">
-              <div className="flex absolute inset-y-0 left-0 items-center sm:hidden">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 items-center justify-between">
+              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex justify-center items-center p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XIcon className="block w-6 h-6" aria-hidden="true" />
+                    <XIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon className="block w-6 h-6" aria-hidden="true" />
+                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>
               {/* Left menu*/}
-              <div className="flex flex-1 justify-center items-center sm:justify-start sm:items-stretch">
+              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex shrink-0 items-center">
                   <Link href={'/'}>
                     <a>
@@ -71,7 +71,7 @@ const Header: React.VFC = () => {
                     </a>
                   </Link>
                 </div>
-                <div className="hidden sm:block sm:ml-6">
+                <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map(item => (
                       <a
@@ -92,12 +92,12 @@ const Header: React.VFC = () => {
                 </div>
               </div>
               {/* Right menu*/}
-              <div className="flex absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:pr-0 sm:ml-6">
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="p-1 text-gray-400 hover:text-white bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">RSS Feeds</span>
-                      <RssIcon className="w-6 h-6" aria-hidden="true" />
+                      <RssIcon className="h-6 w-6" aria-hidden="true" />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -109,7 +109,7 @@ const Header: React.VFC = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 py-1 mt-2 w-48 bg-white rounded-md focus:outline-none ring-1 ring-black/50 shadow-lg origin-top-right">
+                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/50 focus:outline-none">
                       {rssFeeds.map(feed => (
                         <Menu.Item key={feed.name}>
                           {({ active }) => (
@@ -134,7 +134,7 @@ const Header: React.VFC = () => {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map(item => (
                 <Disclosure.Button
                   key={item.name}
