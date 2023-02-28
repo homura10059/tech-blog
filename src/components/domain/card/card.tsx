@@ -15,8 +15,8 @@ export const Card = ({ image, url, title, description }: CardProps) => {
   return (
     <Link href={url}>
       {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <div className="flex flex-row place-items-center bg-white rounded-lg shadow-lg shadow-surface hover:cursor-pointer @container not-prose">
-        <figure className="relative w-24 @sm:w-48 h-24 @sm:h-48">
+      <div className="not-prose flex flex-row place-items-center rounded-lg bg-white shadow-lg shadow-surface @container hover:cursor-pointer">
+        <figure className="relative h-24 w-24 @sm:h-48 @sm:w-48">
           <Image
             loader={customLoader}
             src={image}
@@ -26,7 +26,7 @@ export const Card = ({ image, url, title, description }: CardProps) => {
             className={'rounded-lg'}
           />
         </figure>
-        <div className="flex flex-col flex-1 justify-start ml-2">
+        <div className="ml-2 flex flex-1 flex-col justify-start">
           <p className="text-xl font-medium text-gray-900 line-clamp-1">
             {title}
           </p>
@@ -44,12 +44,12 @@ export const Card = ({ image, url, title, description }: CardProps) => {
 export const SkeletonLoader = () => {
   return (
     <div className="not-prose">
-      <div className="flex flex-row place-items-center bg-white rounded-lg shadow-lg shadow-surface hover:cursor-pointer @container">
-        <div className="relative w-24 @sm:w-48 h-24 @sm:h-48 bg-slate-300 rounded animate-pulse"></div>
-        <div className="grid flex-1 grid-cols-3 p-3 @sm:p-6 animate-pulse">
-          <div className="col-span-2 h-6 bg-slate-300 rounded"></div>
-          <div className="col-span-3 mt-2 h-4 bg-slate-300 rounded"></div>
-          <div className="col-span-3 mt-2 h-4 bg-slate-300 rounded"></div>
+      <div className="flex flex-row place-items-center rounded-lg bg-white shadow-lg shadow-surface @container hover:cursor-pointer">
+        <div className="relative h-24 w-24 animate-pulse rounded bg-slate-300 @sm:h-48 @sm:w-48"></div>
+        <div className="grid flex-1 animate-pulse grid-cols-3 p-3 @sm:p-6">
+          <div className="col-span-2 h-6 rounded bg-slate-300"></div>
+          <div className="col-span-3 mt-2 h-4 rounded bg-slate-300"></div>
+          <div className="col-span-3 mt-2 h-4 rounded bg-slate-300"></div>
         </div>
       </div>
     </div>

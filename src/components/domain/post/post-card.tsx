@@ -17,7 +17,7 @@ type PostCardProps = {
 
 const PostCard = ({ title, coverImage, date, slug, tags }: PostCardProps) => {
   return (
-    <div className="break-inside-avoid block relative mb-4">
+    <div className="relative mb-4 block break-inside-avoid">
       <Link as={`/posts/${slug}`} href="/posts/[slug]">
         <a>
           <figure
@@ -35,16 +35,16 @@ const PostCard = ({ title, coverImage, date, slug, tags }: PostCardProps) => {
               objectFit="contain"
             />
           </figure>
-          <div className="flex absolute inset-0 flex-col p-2 bg-black/40">
+          <div className="absolute inset-0 flex flex-col bg-black/40 p-2">
             <div className="">
               <h1 className="mb-1 text-xl font-bold">{title}</h1>
               <DateFormatter dateString={date} />
             </div>
-            <div className="flex flex-wrap gap-1 mt-auto">
+            <div className="mt-auto flex flex-wrap gap-1">
               {tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-2 text-black bg-white/60 rounded-md"
+                  className="rounded-md bg-white/60 px-2 text-black"
                 >
                   #{tag}
                 </span>

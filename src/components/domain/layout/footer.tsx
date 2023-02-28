@@ -5,10 +5,10 @@ import Container from '../../headless/container'
 
 const Footer: React.VFC = () => {
   return (
-    <footer className="text-surface bg-background-light">
+    <footer className="bg-background-light text-surface">
       <Container>
         <div className="flex flex-col items-center py-8 lg:flex-row">
-          <div className="flex justify-center items-center lg:pl-4 lg:w-1/2">
+          <div className="flex items-center justify-center lg:w-1/2 lg:pl-4">
             <Link href={'/about/privacy_policy'}>
               <a className="mx-3 font-bold hover:underline">Privacy Policy</a>
             </Link>

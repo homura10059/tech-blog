@@ -209,10 +209,10 @@ const Profile: React.VFC = () => {
   return (
     <Layout og={createOGP({ title: 'Profile', path: router.asPath })}>
       <Container>
-        <div className={'pt-20 bg-background-light'}></div>
-        <div className="pb-10 mx-auto max-w-2xl">
-          <div className="grid place-content-center place-items-center mt-[-50px]">
-            <div className={'p-1 bg-black rounded-full'}>
+        <div className={'bg-background-light pt-20'}></div>
+        <div className="mx-auto max-w-2xl pb-10">
+          <div className="mt-[-50px] grid place-content-center place-items-center">
+            <div className={'rounded-full bg-black p-1'}>
               <Image
                 loader={customLoader}
                 src={'/assets/blog/logo.svg'}
@@ -229,14 +229,14 @@ const Profile: React.VFC = () => {
             <p className="mt-2">Web Developer & Engineering Manager</p>
 
             <h2 className="sr-only">Accounts</h2>
-            <ul className="flex gap-x-4 mt-8">
+            <ul className="mt-8 flex gap-x-4">
               {accountList.map(({ name, icon, href }) => (
                 <li key={name}>
                   <Link href={href}>
                     <a>
                       <FontAwesomeIcon
                         icon={icon}
-                        className="inline-block w-7 h-7 text-surface hover:text-primary-dark hover:cursor-pointer"
+                        className="inline-block h-7 w-7 text-surface hover:cursor-pointer hover:text-primary-dark"
                       />
                     </a>
                   </Link>
@@ -244,13 +244,13 @@ const Profile: React.VFC = () => {
               ))}
             </ul>
           </div>
-          <div className="flex flex-col gap-y-10 mt-10">
+          <div className="mt-10 flex flex-col gap-y-10">
             {Object.entries(cards).map(([key, cards]) => (
               <div key={key}>
                 <div className="grid place-content-center">
                   <h2 className="text-3xl font-normal leading-snug">{key}</h2>
                 </div>
-                <ul className="flex flex-col gap-y-6 mt-2">
+                <ul className="mt-2 flex flex-col gap-y-6">
                   {cards.map((item, i) => (
                     <li key={i}>
                       <Card {...item} />

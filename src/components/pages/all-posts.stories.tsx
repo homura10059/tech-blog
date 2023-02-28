@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof AllPosts>
 
 const Template: ComponentStory<typeof AllPosts> = args => (
-  <div className="text-surface bg-background-dark">
+  <div className="bg-background-dark text-surface">
     <AllPosts {...args} />
   </div>
 )

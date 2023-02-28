@@ -27,11 +27,11 @@ const TagPage = ({ tag, allPosts }: Props) => {
       >
         <Container>
           <section className="flex flex-col items-center pt-8 pb-16 md:flex-row md:justify-between md:pb-6">
-            <h1 className="before:mr-2 mb-6 text-5xl font-bold tracking-tighter leading-tight before:content-['#'] md:pr-8 md:text-8xl ">
+            <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tighter before:mr-2 before:content-['#'] md:pr-8 md:text-8xl ">
               {tag}
             </h1>
             <Link href="/tags">
-              <a className="self-end mb-6 text-lg link">All Tags</a>
+              <a className="link mb-6 self-end text-lg">All Tags</a>
             </Link>
           </section>
           <MoreStories posts={allPosts} postsOnly />

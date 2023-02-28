@@ -10,7 +10,7 @@ export default {
 } as ComponentMeta<typeof HeroImage>
 
 const Template: ComponentStory<typeof HeroImage> = args => (
-  <div className="w-full h-screen text-surface bg-background-dark">
+  <div className="h-screen w-full bg-background-dark text-surface">
     <HeroImage {...args} />
   </div>
 )

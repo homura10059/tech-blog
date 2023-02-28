@@ -32,7 +32,7 @@ const About: React.VFC = () => {
             を基に Next.js & TypeScript & tailwindcss を使って作られています
           </p>
           <SectionTitle>リンク</SectionTitle>
-          <ul className="list-disc list-inside">
+          <ul className="list-inside list-disc">
             <li>
               <LinkText href={'/about/privacy_policy'}>Privacy Policy</LinkText>
             </li>
