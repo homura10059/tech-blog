@@ -3,16 +3,16 @@ import Footer from './footer'
 import Header from './header'
 
 type Props = {
-  preview?: boolean
   og: OgpProps
+  inView?: boolean
   children: React.ReactNode
 }
 
-const Layout = ({ preview, og, children }: Props) => {
+const Layout = ({ og, inView, children }: Props) => {
   return (
     <>
       <Meta og={og} />
-      <Header />
+      {!inView && <Header />}
       <div className="min-h-screen">
         <main>{children}</main>
       </div>

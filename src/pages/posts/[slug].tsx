@@ -1,6 +1,7 @@
 import { differenceInYears, parseISO } from 'date-fns'
 import ErrorPage from 'next/error'
 import { useRouter } from 'next/router'
+import { useInView } from 'react-intersection-observer'
 
 import Warning from '../../components/domain/banners/warning'
 import Layout from '../../components/domain/layout'
@@ -16,37 +17,40 @@ import { createOGP } from '../../lib/ogp'
 
 type Props = {
   post: PostType
-  morePosts: PostType[]
-  preview?: boolean
 }
 
-const Post = ({ post, morePosts, preview }: Props) => {
+const Post = ({ post }: Props) => {
   const router = useRouter()
+  const { ref, inView } = useInView({})
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
   const date = parseISO(post.date)
   const diff = differenceInYears(new Date(), date)
   return (
     <Layout
-      preview={preview}
       og={createOGP({
         title: post.title,
         path: router.asPath,
         description: post.excerpt,
         image: post.ogImage.url
       })}
+      inView={inView}
     >
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>
       ) : (
         <article className="mb-32">
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            tags={post.tags}
-          />
+          <div ref={ref}>
+            <PostHeader
+              title={post.title}
+              coverImage={post.coverImage}
+              date={post.date}
+              tags={post.tags}
+            />
+          </div>
           <Container>
             {diff > 1 && (
               <Warning

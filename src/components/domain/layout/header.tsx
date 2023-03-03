@@ -67,6 +67,7 @@ const Header: React.VFC = () => {
                         width={36}
                         height={36}
                         priority
+                        unoptimized
                       />
                     </a>
                   </Link>
