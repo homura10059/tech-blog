@@ -25,7 +25,10 @@ const rssFeeds = [
   { name: 'json', href: '/rss/feed.json' }
 ]
 
-const Header: React.VFC = () => {
+type Props = {
+  hidden?: boolean
+}
+const Header = ({ hidden }: Props) => {
   const router = useRouter()
   const isCurrent = (nav: Nav) => {
     const pathname = router.pathname
@@ -38,7 +41,9 @@ const Header: React.VFC = () => {
   return (
     <Disclosure
       as="nav"
-      className="sticky top-0 z-50 bg-background-dark shadow-lg"
+      className={cx('sticky top-0 z-50 bg-background-dark shadow-lg', {
+        hidden: hidden
+      })}
     >
       {({ open }) => (
         <>

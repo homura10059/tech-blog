@@ -37,7 +37,7 @@ const Post = ({ post }: Props) => {
         description: post.excerpt,
         image: post.ogImage.url
       })}
-      inView={inView}
+      hiddenHeader={inView}
     >
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>

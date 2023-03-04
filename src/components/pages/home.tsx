@@ -22,7 +22,7 @@ const Home = ({ allPosts }: Props) => {
   const router = useRouter()
   return (
     <>
-      <Layout og={createOGP({ path: router.asPath })} inView={inView}>
+      <Layout og={createOGP({ path: router.asPath })} hiddenHeader={inView}>
         <div className="h-screen snap-y snap-mandatory overflow-scroll">
           <div className="relative h-screen snap-start" ref={ref}>
             <figure className="relative h-screen">

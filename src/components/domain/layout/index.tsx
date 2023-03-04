@@ -4,15 +4,15 @@ import Header from './header'
 
 type Props = {
   og: OgpProps
-  inView?: boolean
+  hiddenHeader?: boolean
   children: React.ReactNode
 }
 
-const Layout = ({ og, inView, children }: Props) => {
+const Layout = ({ og, hiddenHeader, children }: Props) => {
   return (
     <>
       <Meta og={og} />
-      {!inView && <Header />}
+      <Header hidden={hiddenHeader} />
       <div className="min-h-screen">
         <main>{children}</main>
       </div>
