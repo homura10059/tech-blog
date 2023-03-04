@@ -21,7 +21,7 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   const router = useRouter()
-  const { ref, inView } = useInView({})
+  const { ref, inView } = useInView({ trackVisibility: true, delay: 100 })
 
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />

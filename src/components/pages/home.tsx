@@ -15,7 +15,7 @@ type Props = {
 }
 
 const Home = ({ allPosts }: Props) => {
-  const { ref, inView } = useInView({})
+  const { ref, inView } = useInView({ trackVisibility: true, delay: 100 })
 
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
