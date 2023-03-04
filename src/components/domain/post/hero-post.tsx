@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
-import CoverImage from '../../cover-image'
-import DateFormatter from '../../date-formatter'
+import HeroImage from '../image/hero-image'
 
 type Props = {
   title: string
@@ -9,31 +8,26 @@ type Props = {
     url: string
   }
   date: string
-  excerpt: string
+  description: string
   slug: string
 }
 
-const HeroPost = ({ title, coverImage, date, excerpt, slug }: Props) => {
+const HeroPost = ({ title, coverImage, date, description, slug }: Props) => {
   return (
-    <section>
-      <div className="mb-8 md:mb-16">
-        <CoverImage title={title} src={coverImage.url} slug={slug} isHero />
-      </div>
-      <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
-        <div>
-          <h3 className="mb-4 text-4xl leading-tight lg:text-5xl">
-            <Link as={`/posts/${slug}`} href="/posts/[slug]">
-              <a className="hover:underline">{title}</a>
-            </Link>
-          </h3>
-        </div>
-        <div>
-          <div className="mb-4 text-lg">
-            <DateFormatter dateString={date} />
-          </div>
-          <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>
-        </div>
-      </div>
+    <section className="p-2">
+      <h2 className="m-2 text-5xl font-bold leading-tight tracking-tighter md:text-7xl">
+        Latest Post
+      </h2>
+      <Link as={`/posts/${slug}`} href="/posts/[slug]">
+        <a>
+          <HeroImage
+            title={title}
+            coverImage={coverImage}
+            date={date}
+            description={description}
+          />
+        </a>
+      </Link>
     </section>
   )
 }

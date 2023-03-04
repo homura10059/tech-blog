@@ -11,9 +11,10 @@ type Props = {
     aspectRatio?: string
   }
   date: string
+  description?: string
 }
 
-const HeroImage = ({ title, coverImage, date }: Props) => {
+const HeroImage = ({ title, coverImage, date, description }: Props) => {
   return (
     <div className="relative">
       <figure className="relative h-screen">
@@ -29,9 +30,14 @@ const HeroImage = ({ title, coverImage, date }: Props) => {
       <div className="absolute inset-0 flex items-center bg-black/40 p-1 md:p-6">
         <div className="flex grow flex-col">
           <PostTitle>{title}</PostTitle>
-          <div className="mt-2 text-center md:mt-4 md:text-2xl">
+          <p className="mt-2 text-center md:mt-4 md:text-2xl">
             <DateFormatter dateString={date} />
-          </div>
+          </p>
+          {description && (
+            <p className="mt-2 text-center md:mt-4 md:text-2xl">
+              {description}
+            </p>
+          )}
         </div>
       </div>
     </div>
