@@ -11,7 +11,8 @@
     "build-storybook": "build-storybook",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:cov": "vitest run --coverage"
+    "test:cov": "vitest run --coverage",
+    "ts": "node -r esbuild-register"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -63,6 +64,8 @@
     "@types/react-dom": "^17.0.5",
     "autoprefixer": "10.4.0",
     "babel-loader": "^8.2.3",
+    "esbuild": "^0.17.18",
+    "esbuild-register": "^3.4.2",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "^8.5.0",
