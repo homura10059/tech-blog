@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router'
 
-import Post from '../../domain/posts'
+import { PostType } from '../../domain/posts'
 import { createOGP } from '../../lib/ogp'
 import Layout from '../domain/layout'
 import PostCards from '../domain/post/post-card'
 import Container from '../headless/container'
 
 type Props = {
-  allPosts: Post[]
+  allPosts: PostType[]
 }
 
 const AllPosts = ({ allPosts }: Props) => {

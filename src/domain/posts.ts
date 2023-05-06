@@ -66,4 +66,3 @@ export type PostType = {
   content: string
   tags: string[]
 }
-export default PostType

@@ -4,13 +4,13 @@ import { useRouter } from 'next/router'
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import MoreStories from '../../components/more-stories'
-import { getAllPosts, PostType as Post } from '../../domain/posts'
+import { getAllPosts, PostType } from '../../domain/posts'
 import { getAllTags } from '../../domain/tags'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
   tag: string
-  allPosts: Post[]
+  allPosts: PostType[]
 }
 
 const TagPage = ({ tag, allPosts }: Props) => {

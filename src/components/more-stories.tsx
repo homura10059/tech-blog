@@ -1,8 +1,8 @@
-import Post from '../domain/posts'
+import { PostType } from '../domain/posts'
 import PostPreview from './domain/post/post-preview'
 
 type Props = {
-  posts: Post[]
+  posts: PostType[]
   postsOnly?: true
 }
 
