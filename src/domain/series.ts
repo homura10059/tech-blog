@@ -1,7 +1,7 @@
 import { createHash } from 'crypto'
 
 import { unique } from '../lib/arrays'
-import { getAllPosts } from './services/post'
+import { getAllPosts } from './posts'
 
 type Hash = string
 type Title = string

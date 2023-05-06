@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useInView } from 'react-intersection-observer'
 
-import Post from '../../domain/models/post'
+import Post from '../../domain/posts'
 import { BLOG_DESCRIPTION, BLOG_TITLE } from '../../lib/constants'
 import { customLoader } from '../../lib/image-loader'
 import { createOGP } from '../../lib/ogp'

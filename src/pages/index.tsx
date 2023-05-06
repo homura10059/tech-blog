@@ -1,5 +1,5 @@
 import Home from '../components/pages/home'
-import { getAllPosts } from '../domain/services/post'
+import { getAllPosts } from '../domain/posts'
 import generatedRssFeed from '../lib/feed'
 
 export default Home

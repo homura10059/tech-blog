@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { google } from 'googleapis'
 
-import { getAllPostsMetadata } from '../src/domain/services/post'
+import { getAllPostsMetadata } from '../src/domain/posts'
 import key from './service_account.json'
 
 const jwtClient = new google.auth.JWT(

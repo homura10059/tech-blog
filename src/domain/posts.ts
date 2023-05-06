@@ -3,7 +3,6 @@ import matter from 'gray-matter'
 import { join } from 'path'
 
 const postsDirectory = join(process.cwd(), '_posts')
-
 export const getPostSlugs = (): string[] => {
   return fs
     .readdirSync(postsDirectory, { withFileTypes: true })
@@ -12,7 +11,6 @@ export const getPostSlugs = (): string[] => {
     .filter(slug => slug !== '.DS_Store')
     .filter(slug => !slug.startsWith('draft'))
 }
-
 export const getPostBySlug = (slug: string, fields: string[] = []) => {
   const fullPath = join(postsDirectory, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
@@ -40,14 +38,12 @@ export const getPostBySlug = (slug: string, fields: string[] = []) => {
 
   return items
 }
-
 export const getAllPosts = (fields: string[] = []) => {
   const slugs = getPostSlugs()
   return slugs
     .map(slug => getPostBySlug(slug, fields))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
 }
-
 export const getAllPostsMetadata = () => {
   return getAllPosts(['series', 'tags', 'slug']) as {
     slug?: string
@@ -55,3 +51,19 @@ export const getAllPostsMetadata = () => {
     series?: string
   }[]
 }
+
+export type PostType = {
+  slug: string
+  title: string
+  date: string
+  coverImage: {
+    url: string
+  }
+  excerpt: string
+  ogImage: {
+    url: string
+  }
+  content: string
+  tags: string[]
+}
+export default PostType

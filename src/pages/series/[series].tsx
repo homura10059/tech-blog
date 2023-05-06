@@ -1,13 +1,10 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import MoreStories from '../../components/more-stories'
-import Post from '../../domain/models/post'
+import { getAllPosts, PostType as Post } from '../../domain/posts'
 import { getAllSeries } from '../../domain/series'
-import { getAllPosts } from '../../domain/services/post'
-import { unique } from '../../lib/arrays'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {

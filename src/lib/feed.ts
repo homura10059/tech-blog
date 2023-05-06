@@ -2,7 +2,7 @@ import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 import fs from 'fs'
 
-import { getAllPosts } from '../domain/services/post'
+import { getAllPosts } from '../domain/posts'
 import { BLOG_DESCRIPTION, BLOG_TITLE } from './constants'
 import { getCopyright } from './copyright'
 import markdownToHtml from './markdownToHtml'

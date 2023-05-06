@@ -1,5 +1,5 @@
 import AllPosts from '../../components/pages/all-posts'
-import { getAllPosts } from '../../domain/services/post'
+import { getAllPosts } from '../../domain/posts'
 import generatedRssFeed from '../../lib/feed'
 
 export default AllPosts
