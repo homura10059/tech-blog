@@ -11,11 +11,13 @@ import PostTitle from '../../components/domain/post/post-title'
 import Tags from '../../components/domain/tags'
 import Container from '../../components/headless/container'
 import { getPostBySlug, getPostSlugs, PostType } from '../../domain/posts'
+import { getAllTags, TagMetaData } from '../../domain/tags'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
   post: PostType
+  tags: TagMetaData[]
 }
 
 const Post = ({ post }: Props) => {
@@ -89,13 +91,15 @@ export async function getStaticProps({ params }: Params) {
     'tags'
   ])
   const content = await markdownToHtml(post.content || '')
+  const tags = getAllTags()
 
   return {
     props: {
       post: {
         ...post,
         content
-      }
+      },
+      tags
     }
   }
 }
