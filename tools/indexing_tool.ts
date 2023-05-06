@@ -3,7 +3,7 @@ import { createHash } from 'crypto'
 import { google } from 'googleapis'
 
 import { getAllPostsMetadata } from '../src/domain/posts'
-const key = require('./service_account.json')
+import key from './service_account.json'
 
 const jwtClient = new google.auth.JWT(
   key.client_email,
