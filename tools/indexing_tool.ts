@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { createHash } from 'crypto'
 import { google } from 'googleapis'
 
 import { getAllPostsMetadata } from '../src/domain/posts'
@@ -11,13 +12,31 @@ const jwtClient = new google.auth.JWT(
   ['https://www.googleapis.com/auth/indexing'],
   undefined
 )
-const getUrls = (metaData: { slug?: string }[]): string[] =>
+const getPostsUrls = (metaData: { slug?: string }[]): string[] =>
   metaData
     .map(meta => meta.slug)
     .filter((slug): slug is string => slug !== undefined)
     .map(slug => `https://tech-blog.homura10059.dev/posts/${slug}`)
 
-const publishUrlNotification = async (access_token: string, url: string) => {
+const getTagsUrls = (metaData: { tags?: string[] }[]): string[] =>
+  metaData
+    .flatMap(meta => meta.tags)
+    .filter((tag): tag is string => tag !== undefined)
+    .map(tag => createHash('md5').update(tag, 'binary').digest('hex'))
+    .map(hash => `https://tech-blog.homura10059.dev/tags/${hash}`)
+
+const getSeriesUrls = (metaData: { series?: string }[]): string[] =>
+  metaData
+    .map(meta => meta.series)
+    .filter((series): series is string => series !== undefined)
+    .map(series => createHash('md5').update(series, 'binary').digest('hex'))
+    .map(hash => `https://tech-blog.homura10059.dev/series/${hash}`)
+
+const publishUrlNotification = async (
+  access_token: string,
+  url: string,
+  isDeleted?: true
+) => {
   const options = {
     url: 'https://indexing.googleapis.com/v3/urlNotifications:publish',
     method: 'POST' as const,
@@ -27,7 +46,7 @@ const publishUrlNotification = async (access_token: string, url: string) => {
     },
     data: {
       url,
-      type: 'URL_UPDATED'
+      type: isDeleted ? 'URL_DELETED' : 'URL_UPDATED'
     }
   }
   return axios.request(options)
@@ -35,8 +54,10 @@ const publishUrlNotification = async (access_token: string, url: string) => {
 
 const main = async () => {
   const allPostsMetadata = getAllPostsMetadata()
-  const urls = getUrls(allPostsMetadata)
-  console.log(urls)
+  const postsUrls = getPostsUrls(allPostsMetadata)
+  const tagsUrls = getTagsUrls(allPostsMetadata)
+  const seriesUrls = getSeriesUrls(allPostsMetadata)
+  const urls = [...postsUrls, ...tagsUrls, ...seriesUrls]
 
   // publish url notification
   const credentials = await jwtClient.authorize()
