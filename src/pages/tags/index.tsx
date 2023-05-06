@@ -3,11 +3,11 @@ import { useRouter } from 'next/router'
 import Layout from '../../components/domain/layout'
 import TagCards from '../../components/domain/tags/tagCards'
 import Container from '../../components/headless/container'
-import { getAllPosts } from '../../domain/services/post'
+import { getAllTags, TagMetaData } from '../../domain/tags'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
-  tags: Record<string, number>
+  tags: TagMetaData[]
 }
 
 const TagPage = ({ tags }: Props) => {
@@ -22,7 +22,7 @@ const TagPage = ({ tags }: Props) => {
         })}
       >
         <Container>
-          <section className="flex flex-col items-center pt-8 pb-16 md:flex-row md:justify-between md:pb-6">
+          <section className="flex flex-col items-center pb-16 pt-8 md:flex-row md:justify-between md:pb-6">
             <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tighter md:pr-8 md:text-8xl ">
               {title}
             </h1>
@@ -39,16 +39,7 @@ const TagPage = ({ tags }: Props) => {
 export default TagPage
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts(['tags'])
-  const initialTagInfo: Record<string, number> = {}
-  const tags = allPosts
-    .flatMap(post => post.tags)
-    .reduce((previousValue, currentValue) => {
-      const count = previousValue[currentValue] ?? 1
-      previousValue[currentValue] = count + 1
-      return previousValue
-    }, initialTagInfo)
-
+  const tags = getAllTags()
   return {
     props: {
       tags

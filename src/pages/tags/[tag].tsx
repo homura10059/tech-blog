@@ -5,8 +5,8 @@ import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import MoreStories from '../../components/more-stories'
 import Post from '../../domain/models/post'
-import { getAllPosts } from '../../domain/services/post'
-import { unique } from '../../lib/arrays'
+import { getAllPosts } from '../../domain/posts'
+import { getAllTags } from '../../domain/tags'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
@@ -26,7 +26,7 @@ const TagPage = ({ tag, allPosts }: Props) => {
         })}
       >
         <Container>
-          <section className="flex flex-col items-center pt-8 pb-16 md:flex-row md:justify-between md:pb-6">
+          <section className="flex flex-col items-center pb-16 pt-8 md:flex-row md:justify-between md:pb-6">
             <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tighter before:mr-2 before:content-['#'] md:pr-8 md:text-8xl ">
               {tag}
             </h1>
@@ -50,6 +50,9 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
+  const tagMetaData = getAllTags().find(tag => tag.hash === params.tag)
+  const tag = tagMetaData?.tag ?? ''
+
   const allPosts = getAllPosts([
     'title',
     'date',
@@ -59,25 +62,24 @@ export async function getStaticProps({ params }: Params) {
     'ogImage',
     'coverImage',
     'tags'
-  ]).filter(post => post.tags.includes(params.tag))
+  ]).filter(post => post.tags.includes(tag))
 
   return {
     props: {
-      tag: params.tag,
+      tag,
       allPosts
     }
   }
 }
 
 export async function getStaticPaths() {
-  const allPosts = getAllPosts(['tags'])
-  const tags = unique(allPosts.flatMap(post => post.tags))
+  const tags = getAllTags()
 
   return {
     paths: tags.map(tag => {
       return {
         params: {
-          tag
+          tag: tag.hash
         }
       }
     }),
