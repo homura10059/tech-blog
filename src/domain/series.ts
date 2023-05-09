@@ -3,25 +3,23 @@ import { createHash } from 'crypto'
 import { unique } from '../lib/arrays'
 import { getAllPosts } from './posts'
 
-type Hash = string
-type Title = string
+export type Series = {
+  hash: string
+  title: string
+}
 
-export const getSeries = (
-  allPosts: { series?: string }[]
-): Record<Hash, Title> =>
-  Object.fromEntries(
-    unique(
-      allPosts
-        .flatMap(post => post.series)
-        .filter((series): series is string => series !== undefined)
-    ).map<[string, string]>(series => {
-      const md5 = createHash('md5')
-      const hash = md5.update(series, 'binary').digest('hex')
-      return [hash, series]
-    })
-  )
+export const getSeries = (allPosts: { series?: string }[]): Series[] =>
+  unique(
+    allPosts
+      .flatMap(post => post.series)
+      .filter((series): series is string => series !== undefined)
+  ).map(title => {
+    const md5 = createHash('md5')
+    const hash = md5.update(title, 'binary').digest('hex')
+    return { hash, title }
+  })
 
-export const getAllSeries = (): Record<Hash, Title> => {
+export const getAllSeries = (): Series[] => {
   const allPosts = getAllPosts(['series'])
   return getSeries(allPosts)
 }

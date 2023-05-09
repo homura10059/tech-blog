@@ -6,13 +6,17 @@ import { getSeries } from './series'
 
 describe('getSeries', () => {
   test('md5 と title の組みが全て正しい', async () => {
+    const post = fc.record({
+      series: fc.option(fc.string(), { nil: undefined })
+    })
+
     fc.assert(
-      fc.property(fc.array(fc.string().map(a => ({ series: a }))), posts => {
+      fc.property(fc.array(post), posts => {
         const actual = getSeries(posts)
-        Object.entries(actual).forEach(([key, value]) => {
+        actual.forEach(({ hash, title }) => {
           const md5 = createHash('md5')
-          const hash = md5.update(value, 'binary').digest('hex')
-          expect(key).toEqual(hash)
+          const expected = md5.update(title, 'binary').digest('hex')
+          expect(hash).toEqual(expected)
         })
       })
     )

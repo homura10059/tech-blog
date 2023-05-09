@@ -3,13 +3,11 @@ import { useRouter } from 'next/router'
 import Layout from '../../components/domain/layout'
 import Container from '../../components/headless/container'
 import CustomLink from '../../components/headless/custom-link'
-import { getAllSeries } from '../../domain/series'
+import { getAllSeries, Series } from '../../domain/series'
 import { createOGP } from '../../lib/ogp'
 
-type Hash = string
-type Title = string
 type Props = {
-  series: Record<Hash, Title>
+  series: Series[]
 }
 
 const SeriesPage = ({ series }: Props) => {
@@ -30,13 +28,13 @@ const SeriesPage = ({ series }: Props) => {
             </h1>
           </section>
           <div className="mb-6">
-            {Object.entries(series).map(([key, val]) => {
+            {series.map(({ hash, title }) => {
               return (
                 <div
                   className="mb-6 text-primary-dark hover:underline"
-                  key={key}
+                  key={hash}
                 >
-                  <CustomLink href={`/series/${key}`}>{val}</CustomLink>
+                  <CustomLink href={`/series/${hash}`}>{title}</CustomLink>
                 </div>
               )
             })}

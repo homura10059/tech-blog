@@ -47,7 +47,8 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const series = getAllSeries()
-  const seriesTitle = series[params.series]
+  const target = series.find(x => x.hash === params.series)
+  const seriesTitle = target?.title ?? ''
 
   const allPosts = getAllPosts([
     'title',
@@ -73,10 +74,10 @@ export async function getStaticPaths() {
   const series = getAllSeries()
 
   return {
-    paths: Object.keys(series).map(series => {
+    paths: series.map(series => {
       return {
         params: {
-          series
+          series: series.hash
         }
       }
     }),
