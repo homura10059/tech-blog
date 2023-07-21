@@ -52,7 +52,33 @@ const publishUrlNotification = async (
   return axios.request(options)
 }
 
+const delete_main = async () => {
+  const credentials = await jwtClient.authorize()
+
+  const delete_targets = ['https://tech-blog.homura10059.dev/tags/Zabbix']
+  const delete_results = await Promise.allSettled(
+    delete_targets.map(url =>
+      publishUrlNotification(credentials.access_token ?? '', url, true)
+    )
+  )
+  // result output
+  const delete_fulfilled = delete_results
+    .filter(
+      (result): result is PromiseFulfilledResult<any> =>
+        result.status === 'fulfilled'
+    )
+    .map(result => result.value.data.urlNotificationMetadata)
+  console.log(delete_fulfilled)
+
+  const delete_rejected = delete_results.filter(
+    (result): result is PromiseRejectedResult => result.status === 'rejected'
+  )
+  console.log(delete_rejected)
+}
+
 const main = async () => {
+  const credentials = await jwtClient.authorize()
+
   const allPostsMetadata = getAllPostsMetadata()
   const postsUrls = getPostsUrls(allPostsMetadata)
   const tagsUrls = getTagsUrls(allPostsMetadata)
@@ -60,7 +86,6 @@ const main = async () => {
   const urls = [...postsUrls, ...tagsUrls, ...seriesUrls]
 
   // publish url notification
-  const credentials = await jwtClient.authorize()
   const results = await Promise.allSettled(
     urls.map(url => publishUrlNotification(credentials.access_token ?? '', url))
   )
