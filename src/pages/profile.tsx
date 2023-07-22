@@ -146,19 +146,17 @@ const cards: Record<string, CardProps[]> = {
   ],
   Desk: [
     {
-      title: 'L字デスク',
-      description:
-        'LOWYA の幅140cmのものを使っている。機能性とかではなくただただL字デスクへの憧れで買ったので特徴は特にない。',
-      image: 'https://m.media-amazon.com/images/I/71rwGer-OqL._AC_SL1500_.jpg',
-      url: 'https://www.amazon.co.jp/dp/B01MR55ISW?tag=homura10059-22'
+      title: 'FlexiSpot7',
+      description: '電動昇降デスク。健康のためにたまに立つようにしてる。',
+      image: 'https://m.media-amazon.com/images/I/51fkl31TUHL._AC_SX679_.jpg',
+      url: 'https://www.amazon.co.jp/dp/B08F7772MB?tag=homura10059-22'
     },
     {
-      title: 'ケーブル配線トレー',
-      description:
-        'サンワサプライのもの。電源系のケーブルなどを床に垂らさないために使用。',
+      title: 'BOARD - POLAR for FlexiSpot',
+      description: 'PREDUCTSの天板。モジュラーシステムが便利で気に入っている。',
       image:
-        'https://images-na.ssl-images-amazon.com/images/P/B01MZZL92E.09.LZZZZZZZ.jpg',
-      url: 'https://www.amazon.co.jp/dp/B01MZZL92E?tag=homura10059-22'
+        'http://preducts.jp/cdn/shop/products/board-polar-flexispot-01_2ffc3dee-7d5a-467b-bd75-60fb72d10909_1200x1200.png?v=1674586574',
+      url: 'https://preducts.jp/products/board-polar-flexispot'
     },
     {
       title: 'オカムラ バロンチェア',
