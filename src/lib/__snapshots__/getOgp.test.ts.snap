@@ -3,7 +3,7 @@
 exports[`getOgp for 'https://preducts.jp/products/mount-sw…' 1`] = `
 {
   "description": "PREDUCTS DESKにNintendo Switchを装着するための専用マウント ※レールに装着するためのBase Sliderは付属しません",
-  "image": "http://res.cloudinary.com/preducts-inc/image/upload/w_1200/w_1920,f_auto/shop/photo/items/mount-switch/mount-switch-ogp.jpg",
+  "image": "https://res.cloudinary.com/preducts-inc/image/upload/w_1200/w_1920,f_auto/shop/photo/items/mount-switch/mount-switch-ogp.jpg",
   "title": "Mount for Switch",
   "url": "https://preducts.jp/products/mount-switch",
 }

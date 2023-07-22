@@ -155,7 +155,7 @@ const cards: Record<string, CardProps[]> = {
       title: 'BOARD - POLAR for FlexiSpot',
       description: 'PREDUCTSの天板。モジュラーシステムが便利で気に入っている。',
       image:
-        'http://preducts.jp/cdn/shop/products/board-polar-flexispot-01_2ffc3dee-7d5a-467b-bd75-60fb72d10909_1200x1200.png?v=1674586574',
+        'https://preducts.jp/cdn/shop/products/board-polar-flexispot-01_2ffc3dee-7d5a-467b-bd75-60fb72d10909_1200x1200.png?v=1674586574',
       url: 'https://preducts.jp/products/board-polar-flexispot'
     },
     {

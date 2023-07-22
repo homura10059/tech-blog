@@ -19,6 +19,12 @@ const getImageUrl = (imageUrl: string, url: string) => {
   return `https//${parsed.hostname}${imageUrl}`
 }
 
+const getOgpImageUrl = (mergedData: any, encodedUri: string) => {
+  const imageUrl =
+    mergedData['og:image:secure_url'] ?? mergedData['og:image'] ?? ''
+  return getImageUrl(imageUrl, encodedUri)
+}
+
 export const getOgp = async (url: string): Promise<OgpMeta> => {
   const isAmazon = url.includes('https://www.amazon.co.jp/')
   const encodedUri = encodeURI(isAmazon ? getAmazonShortUrl(url) ?? url : url)
@@ -59,7 +65,7 @@ export const getOgp = async (url: string): Promise<OgpMeta> => {
     description: mergedData['og:description'] ?? mergedData['description'],
     image: isAmazon
       ? getAmazonImageUrl(encodedUri) ?? ''
-      : getImageUrl(mergedData['og:image'], encodedUri),
+      : getOgpImageUrl(mergedData, encodedUri),
     url: encodedUri
   }
 
