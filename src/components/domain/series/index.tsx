@@ -8,9 +8,7 @@ type Props = {
 const Series = ({ title, hash }: Props) => {
   return (
     <Link href={`/series/${hash}`}>
-      <a>
-        シリーズ：<span className="link">{title}</span>
-      </a>
+      シリーズ：<span className="link">{title}</span>
     </Link>
   )
 }

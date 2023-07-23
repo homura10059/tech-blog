@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { VFC } from 'react'
 
 import { customLoader } from '../../../lib/image-loader'
 

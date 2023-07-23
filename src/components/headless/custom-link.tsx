@@ -20,9 +20,7 @@ const CustomLink: FC<Props> = ({ children, href }) => {
 
   // a-tagに中身がある場合は必要に応じてLinkに変換する
   return href.startsWith('/') || href === '' ? (
-    <Link href={href}>
-      <a>{children}</a>
-    </Link>
+    <Link href={href}>{children}</Link>
   ) : (
     <a href={href} target="_blank" rel="noopener noreferrer">
       {children}

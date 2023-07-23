@@ -8,8 +8,8 @@ type Props = {
 
 const LinkText: React.FC<Props> = ({ href, className, children }) => {
   return (
-    <Link href={href}>
-      <a className={cx(['link', className ?? ''])}>{children}</a>
+    <Link href={href} className={cx(['link', className ?? ''])}>
+      {children}
     </Link>
   )
 }

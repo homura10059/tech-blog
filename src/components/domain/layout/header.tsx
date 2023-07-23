@@ -64,17 +64,15 @@ const Header = ({ hidden }: Props) => {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex shrink-0 items-center">
                   <Link href={'/'}>
-                    <a>
-                      <Image
-                        loader={customLoader}
-                        src={'/assets/blog/logo.svg'}
-                        alt={'homura'}
-                        width={36}
-                        height={36}
-                        priority
-                        unoptimized
-                      />
-                    </a>
+                    <Image
+                      loader={customLoader}
+                      src={'/assets/blog/logo.svg'}
+                      alt={'homura'}
+                      width={36}
+                      height={36}
+                      priority
+                      unoptimized
+                    />
                   </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -119,15 +117,14 @@ const Header = ({ hidden }: Props) => {
                       {rssFeeds.map(feed => (
                         <Menu.Item key={feed.name}>
                           {({ active }) => (
-                            <Link href={feed.href}>
-                              <a
-                                className={cx(
-                                  active ? 'bg-gray-100' : '',
-                                  'block px-4 py-2 text-sm text-gray-700'
-                                )}
-                              >
-                                {feed.name}
-                              </a>
+                            <Link
+                              href={feed.href}
+                              className={cx(
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700'
+                              )}
+                            >
+                              {feed.name}
                             </Link>
                           )}
                         </Menu.Item>
@@ -140,7 +137,7 @@ const Header = ({ hidden }: Props) => {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
+            <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map(item => (
                 <Disclosure.Button
                   key={item.name}

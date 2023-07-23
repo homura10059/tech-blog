@@ -19,14 +19,12 @@ const HeroPost = ({ title, coverImage, date, description, slug }: Props) => {
         Latest Post
       </h2>
       <Link as={`/posts/${slug}`} href="/posts/[slug]">
-        <a>
-          <HeroImage
-            title={title}
-            coverImage={coverImage}
-            date={date}
-            description={description}
-          />
-        </a>
+        <HeroImage
+          title={title}
+          coverImage={coverImage}
+          date={date}
+          description={description}
+        />
       </Link>
     </section>
   )

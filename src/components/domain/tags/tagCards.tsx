@@ -8,14 +8,12 @@ type TagCardProps = {
 const TagCard = ({ meta }: TagCardProps) => {
   return (
     <Link href={`/tags/${meta.hash}`}>
-      <a>
-        <div className="flex flex-col items-center rounded-lg border border-primary-light p-4 text-primary-light hover:bg-background-light">
-          <span className="text-xl before:mr-0.5 before:content-['#']">
-            {meta.count}
-          </span>
-          <span>count: {meta.tag}</span>
-        </div>
-      </a>
+      <div className="flex flex-col items-center rounded-lg border border-primary-light p-4 text-primary-light hover:bg-background-light">
+        <span className="text-xl before:mr-0.5 before:content-['#']">
+          {meta.count}
+        </span>
+        <span>count: {meta.tag}</span>
+      </div>
     </Link>
   )
 }
