@@ -20,10 +20,10 @@ export type PostData = Omit<PostType, 'series' | 'tags'> & {
     title: string
     hash: string
   }[]
-  series?: {
+  series: {
     title: string
     hash: string
-  }
+  } | null
 }
 
 const isTags = (unk: unknown): unk is string[] =>
@@ -39,7 +39,7 @@ export const getPostDataBySlug = (slug: string): PostData => {
           title: data.series,
           hash: createSeriesHash(data.series)
         }
-      : undefined
+      : null
 
   const tags = isTags(data.tags)
     ? data.tags.map(title => {
