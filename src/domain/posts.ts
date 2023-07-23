@@ -2,6 +2,9 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import { join } from 'path'
 
+import { createSeriesHash } from './series'
+import { createTagHash } from './tags'
+
 const postsDirectory = join(process.cwd(), '_posts')
 export const getPostSlugs = (): string[] => {
   return fs
@@ -11,6 +14,55 @@ export const getPostSlugs = (): string[] => {
     .filter(slug => slug !== '.DS_Store')
     .filter(slug => !slug.startsWith('draft'))
 }
+
+export type PostData = Omit<PostType, 'series' | 'tags'> & {
+  tags: {
+    title: string
+    hash: string
+  }[]
+  series?: {
+    title: string
+    hash: string
+  }
+}
+
+const isTags = (unk: unknown): unk is string[] =>
+  Array.isArray(unk) && unk.every(x => typeof x === 'string')
+export const getPostDataBySlug = (slug: string): PostData => {
+  const fullPath = join(postsDirectory, `${slug}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
+
+  const series =
+    data.series && typeof data.series === 'string'
+      ? {
+          title: data.series,
+          hash: createSeriesHash(data.series)
+        }
+      : undefined
+
+  const tags = isTags(data.tags)
+    ? data.tags.map(title => {
+        return {
+          title,
+          hash: createTagHash(title)
+        }
+      })
+    : []
+
+  return {
+    slug,
+    title: data.title,
+    date: data.date,
+    coverImage: data.coverImage,
+    excerpt: data.excerpt,
+    ogImage: data.ogImage,
+    content,
+    tags,
+    series
+  }
+}
+
 export const getPostBySlug = (slug: string, fields: string[] = []) => {
   const fullPath = join(postsDirectory, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
@@ -65,4 +117,5 @@ export type PostType = {
   }
   content: string
   tags: string[]
+  series?: string
 }

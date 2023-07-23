@@ -3,6 +3,11 @@ import { createHash } from 'crypto'
 import { unique } from '../lib/arrays'
 import { getAllPosts } from './posts'
 
+export const createSeriesHash = (title: string): string => {
+  const md5 = createHash('md5')
+  return md5.update(title, 'binary').digest('hex')
+}
+
 export type Series = {
   hash: string
   title: string
@@ -14,8 +19,7 @@ export const getSeries = (allPosts: { series?: string }[]): Series[] =>
       .flatMap(post => post.series)
       .filter((series): series is string => series !== undefined)
   ).map(title => {
-    const md5 = createHash('md5')
-    const hash = md5.update(title, 'binary').digest('hex')
+    const hash = createSeriesHash(title)
     return { hash, title }
   })
 

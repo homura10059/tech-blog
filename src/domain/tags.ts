@@ -7,6 +7,11 @@ export type TagMetaData = {
   tag: string
   count: number
 }
+export const createTagHash = (title: string): string => {
+  const md5 = createHash('md5')
+  return md5.update(title, 'binary').digest('hex')
+}
+
 export const getTags = (allPosts: { tags?: string[] }[]): TagMetaData[] => {
   const nonUniqueTags = allPosts
     .flatMap(post => post.tags)
@@ -21,8 +26,7 @@ export const getTags = (allPosts: { tags?: string[] }[]): TagMetaData[] => {
 
   const uniqueTags = Object.keys(tagCountMap)
   return uniqueTags.map(tag => {
-    const md5 = createHash('md5')
-    const hash = md5.update(tag, 'binary').digest('hex')
+    const hash = createTagHash(tag)
     const count = tagCountMap[tag]
     return {
       hash,

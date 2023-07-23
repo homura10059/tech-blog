@@ -6,7 +6,6 @@ type Props = {
     url: string
   }
   date: string
-  tags: string[]
 }
 
 const PostHeader = (props: Props) => {

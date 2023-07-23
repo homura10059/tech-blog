@@ -8,16 +8,15 @@ import Layout from '../../components/domain/layout'
 import PostBody from '../../components/domain/post/post-body'
 import PostHeader from '../../components/domain/post/post-header'
 import PostTitle from '../../components/domain/post/post-title'
+import Series from '../../components/domain/series'
 import Tags from '../../components/domain/tags'
 import Container from '../../components/headless/container'
-import { getPostBySlug, getPostSlugs, PostType } from '../../domain/posts'
-import { getAllTags, TagMetaData } from '../../domain/tags'
+import { getPostDataBySlug, getPostSlugs, PostData } from '../../domain/posts'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
-  post: PostType
-  tags: TagMetaData[]
+  post: PostData
 }
 
 const Post = ({ post }: Props) => {
@@ -49,7 +48,6 @@ const Post = ({ post }: Props) => {
               title={post.title}
               coverImage={post.coverImage}
               date={post.date}
-              tags={post.tags}
             />
           </div>
           <Container>
@@ -60,7 +58,12 @@ const Post = ({ post }: Props) => {
             )}
             {post.tags.length > 0 && (
               <div className="mx-auto mt-4 max-w-2xl">
-                <Tags tags={post.tags} />
+                <Tags tags={post.tags.map(tag => tag.title)} />
+                {post.series && (
+                  <div className="mt-2">
+                    <Series {...post.series} />
+                  </div>
+                )}
               </div>
             )}
             <PostBody content={post.content} />
@@ -80,26 +83,15 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    'title',
-    'date',
-    'slug',
-    'content',
-    'excerpt',
-    'ogImage',
-    'coverImage',
-    'tags'
-  ])
+  const post = getPostDataBySlug(params.slug)
   const content = await markdownToHtml(post.content || '')
-  const tags = getAllTags()
 
   return {
     props: {
       post: {
         ...post,
         content
-      },
-      tags
+      }
     }
   }
 }
