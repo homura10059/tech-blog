@@ -1,4 +1,4 @@
-import { ImageLoader } from 'next/dist/client/image'
+import { ImageLoader } from 'next/image'
 
 export const customLoader: ImageLoader = ({ src, width, quality }) => {
   if (!src.includes('https://i.imgur.com')) return src
