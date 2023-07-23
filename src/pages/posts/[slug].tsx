@@ -58,7 +58,7 @@ const Post = ({ post }: Props) => {
             )}
             {post.tags.length > 0 && (
               <div className="mx-auto mt-4 max-w-2xl">
-                <Tags tags={post.tags.map(tag => tag.title)} />
+                <Tags tags={post.tags} />
                 {post.series && (
                   <div className="mt-2">
                     <Series {...post.series} />

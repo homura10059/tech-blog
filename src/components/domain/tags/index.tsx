@@ -1,14 +1,17 @@
 import Tag from './tag'
 
 type Props = {
-  tags: string[]
+  tags: {
+    title: string
+    hash: string
+  }[]
 }
 
 const Tags = ({ tags }: Props) => {
   return (
     <div className="flex flex-wrap gap-x-2">
       {tags.map((tag, index) => (
-        <Tag text={tag} key={index} />
+        <Tag {...tag} key={index} />
       ))}
     </div>
   )
