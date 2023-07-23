@@ -16,5 +16,6 @@ const Template: ComponentStory<typeof Tag> = args => (
 
 export const Default = Template.bind({})
 Default.args = {
-  text: 'tag'
+  title: 'tag',
+  hash: 'hash'
 }

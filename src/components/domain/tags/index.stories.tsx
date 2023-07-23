@@ -16,5 +16,10 @@ const Template: ComponentStory<typeof Tags> = args => (
 
 export const Default = Template.bind({})
 Default.args = {
-  tags: ['tag1', 'tag2', 'tag3', 'tag4']
+  tags: [
+    { title: 'tag1', hash: 'hash1' },
+    { title: 'tag2', hash: 'hash2' },
+    { title: 'tag3', hash: 'hash3' },
+    { title: 'tag4', hash: 'hash4' }
+  ]
 }
