@@ -47,19 +47,19 @@ const Home = ({ allPosts }: Props) => {
             </div>
           </div>
           <div className="h-screen snap-start @container">
-            {heroPost && (
-              <HeroPost
-                title={heroPost.title}
-                coverImage={heroPost.coverImage}
-                date={heroPost.date}
-                slug={heroPost.slug}
-                description={heroPost.excerpt}
-              />
-            )}
+            {/*{heroPost && (*/}
+            {/*  <HeroPost*/}
+            {/*    title={heroPost.title}*/}
+            {/*    coverImage={heroPost.coverImage}*/}
+            {/*    date={heroPost.date}*/}
+            {/*    slug={heroPost.slug}*/}
+            {/*    description={heroPost.excerpt}*/}
+            {/*  />*/}
+            {/*)}*/}
           </div>
         </div>
         <div className="container mx-auto p-5">
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {/*{morePosts.length > 0 && <MoreStories posts={morePosts} />}*/}
         </div>
       </Layout>
     </>

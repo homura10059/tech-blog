@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 
-import Layout from '../../components/domain/layout'
-import Container from '../../components/headless/container'
-import PageTitle from '../../components/headless/Headding/page-title'
+import Layout from '../.././_components/domain/layout'
+import Container from '../.././_components/headless/container'
+import PageTitle from '../.././_components/headless/Headding/page-title'
 import { createOGP } from '../../lib/ogp'
 
 const Disclaimer: React.VFC = () => {

@@ -1,16 +1,16 @@
 import { useRouter } from 'next/router'
 
-import Layout from '../../components/domain/layout'
-import Container from '../../components/headless/container'
-import MoreStories from '../../components/more-stories'
-import { getAllPosts, PostType } from '../../domain/posts'
+import Layout from '../.././_components/domain/layout'
+import Container from '../.././_components/headless/container'
+import MoreStories from '../.././_components/more-stories'
+import { getAllPosts, PostData } from '../../domain/posts'
 import { getAllSeries } from '../../domain/series'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
   hash: string
   seriesTitle: string
-  allPosts: PostType[]
+  allPosts: PostData[]
 }
 
 const SeriesPage = ({ seriesTitle, allPosts }: Props) => {

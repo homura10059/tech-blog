@@ -1,18 +1,18 @@
 import { useRouter } from 'next/router'
 
-import Layout from '../../components/domain/layout'
-import TagCards from '../../components/domain/tags/tagCards'
-import Container from '../../components/headless/container'
-import { getAllTags, TagMetaData } from '../../domain/tags'
+import Layout from '../.././_components/domain/layout'
+import Container from '../.././_components/headless/container'
+import CustomLink from '../.././_components/headless/custom-link'
+import { getAllSeries, Series } from '../../domain/series'
 import { createOGP } from '../../lib/ogp'
 
 type Props = {
-  tags: TagMetaData[]
+  series: Series[]
 }
 
-const TagPage = ({ tags }: Props) => {
+const SeriesPage = ({ series }: Props) => {
   const router = useRouter()
-  const title = `Tags`
+  const title = `Series`
   return (
     <>
       <Layout
@@ -28,7 +28,16 @@ const TagPage = ({ tags }: Props) => {
             </h1>
           </section>
           <div className="mb-6">
-            <TagCards tags={tags} />
+            {series.map(({ hash, title }) => {
+              return (
+                <div
+                  className="mb-6 text-primary-dark hover:underline"
+                  key={hash}
+                >
+                  <CustomLink href={`/series/${hash}`}>{title}</CustomLink>
+                </div>
+              )
+            })}
           </div>
         </Container>
       </Layout>
@@ -36,13 +45,14 @@ const TagPage = ({ tags }: Props) => {
   )
 }
 
-export default TagPage
+export default SeriesPage
 
 export async function getStaticProps() {
-  const tags = getAllTags()
+  const series = getAllSeries()
+
   return {
     props: {
-      tags
+      series
     }
   }
 }

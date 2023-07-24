@@ -90,6 +90,14 @@ export const getPostBySlug = (slug: string, fields: string[] = []) => {
 
   return items
 }
+
+export const getAllPostData = (): PostData[] => {
+  const slugs = getPostSlugs()
+  return slugs
+    .map(slug => getPostDataBySlug(slug))
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+}
+
 export const getAllPosts = (fields: string[] = []) => {
   const slugs = getPostSlugs()
   return slugs

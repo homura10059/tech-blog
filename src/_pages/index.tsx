@@ -1,4 +1,4 @@
-import Home from '../components/pages/home'
+import Home from '../_components/pages/home'
 import { getAllPosts } from '../domain/posts'
 import generatedRssFeed from '../lib/feed'
 

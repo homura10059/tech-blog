@@ -1,4 +1,4 @@
-import AllPosts from '../../components/pages/all-posts'
+import AllPosts from '../.././_components/pages/all-posts'
 import { getAllPosts } from '../../domain/posts'
 import generatedRssFeed from '../../lib/feed'
 

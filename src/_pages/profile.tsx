@@ -11,9 +11,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { Card, CardProps } from '../components/domain/card/card'
-import Layout from '../components/domain/layout'
-import Container from '../components/headless/container'
+import { Card, CardProps } from '.././_components/domain/card/card'
+import Layout from '.././_components/domain/layout'
+import Container from '.././_components/headless/container'
 import { customLoader } from '../lib/image-loader'
 import { createOGP } from '../lib/ogp'
 
