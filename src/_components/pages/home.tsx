@@ -2,12 +2,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useInView } from 'react-intersection-observer'
 
+import HeroPost from '../../components/client/post/hero-post'
 import { PostType } from '../../domain/posts'
 import { BLOG_DESCRIPTION, BLOG_TITLE } from '../../lib/constants'
 import { customLoader } from '../../lib/image-loader'
 import { createOGP } from '../../lib/ogp'
 import Layout from '../domain/layout'
-import HeroPost from '../domain/post/hero-post'
 import MoreStories from '../more-stories'
 
 type Props = {

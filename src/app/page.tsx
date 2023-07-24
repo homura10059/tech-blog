@@ -1,5 +1,5 @@
-import HeroPost from '../_components/domain/post/hero-post'
 import MainVisual from '../components/client/image/main-visual'
+import HeroPost from '../components/server/post/hero-post'
 import { getAllPostData } from '../domain/posts'
 import generatedRssFeed from '../lib/feed'
 
@@ -13,17 +13,15 @@ export default async function Page() {
   return (
     <>
       <MainVisual />
-      <div className="h-screen">
-        {/*{heroPost && (*/}
-        {/*  <HeroPost*/}
-        {/*    title={heroPost.title}*/}
-        {/*    coverImage={heroPost.coverImage}*/}
-        {/*    date={heroPost.date}*/}
-        {/*    slug={heroPost.slug}*/}
-        {/*    description={heroPost.excerpt}*/}
-        {/*  />*/}
-        {/*)}*/}
-      </div>
+      {heroPost && (
+        <HeroPost
+          title={heroPost.title}
+          coverImage={heroPost.coverImage}
+          date={heroPost.date}
+          slug={heroPost.slug}
+          description={heroPost.excerpt}
+        />
+      )}
       <div className="container mx-auto p-5">
         {/*{morePosts.length > 0 && <MoreStories posts={morePosts} />}*/}
       </div>

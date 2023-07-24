@@ -1,4 +1,4 @@
-import HeroImage from '../image/hero-image'
+import HeroImage from '../../../components/client/image/hero-image'
 
 type Props = {
   title: string
