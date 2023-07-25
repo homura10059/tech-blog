@@ -2,6 +2,7 @@ import '../styles/index.css'
 
 import { Metadata } from 'next'
 
+import Analytics from '../components/client/scripts/google-analytics'
 import { BLOG_DESCRIPTION, BLOG_TITLE } from '../lib/constants'
 
 export const metadata: Metadata = {
@@ -20,6 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Analytics />
+      </head>
       <body className="bg-background-dark text-surface">{children}</body>
     </html>
   )
