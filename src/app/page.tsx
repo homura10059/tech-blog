@@ -1,5 +1,6 @@
 import MainVisual from '../components/client/image/main-visual'
 import HeroPost from '../components/server/post/hero-post'
+import MoreStories from '../components/server/post/more-stories'
 import { getAllPostData } from '../domain/posts'
 import generatedRssFeed from '../lib/feed'
 
@@ -23,7 +24,7 @@ export default async function Page() {
         />
       )}
       <div className="container mx-auto p-5">
-        {/*{morePosts.length > 0 && <MoreStories posts={morePosts} />}*/}
+        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </div>
     </>
   )

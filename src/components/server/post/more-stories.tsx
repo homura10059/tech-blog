@@ -1,5 +1,5 @@
-import { PostData, PostType } from '../domain/posts'
-import PostPreview from './domain/post/post-preview'
+import { PostData } from '../../../domain/posts'
+import PostPreview from './post-preview'
 
 type Props = {
   posts: PostData[]

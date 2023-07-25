@@ -1,7 +1,7 @@
+import { format, parseISO } from 'date-fns'
 import Link from 'next/link'
 
-import CoverImage from '../../cover-image'
-import DateFormatter from '../../date-formatter'
+import CoverImage from '../../client/image/cover-image'
 
 type Props = {
   title: string
@@ -29,7 +29,7 @@ const PostPreview = ({ title, coverImage, date, excerpt, slug }: Props) => {
         </Link>
       </h3>
       <div className="mb-4 text-lg">
-        <DateFormatter dateString={date} />
+        <time dateTime={date}>{format(parseISO(date), 'yyyy-MM-dd')}</time>
       </div>
       <p className="text-lg leading-relaxed">{excerpt}</p>
     </div>

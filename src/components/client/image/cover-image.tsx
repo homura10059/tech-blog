@@ -1,8 +1,10 @@
+'use client'
+
 import cx from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { customLoader } from '../lib/image-loader'
+import { customLoader } from '../../../lib/image-loader'
 
 type Props = {
   title: string
@@ -35,7 +37,7 @@ const CoverImage = ({ title, src, slug, isHero }: Props) => {
     <div className="sm:mx-0">
       {slug ? (
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a aria-label={title}>{image}</a>
+          {image}
         </Link>
       ) : (
         image

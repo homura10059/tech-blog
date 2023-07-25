@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 
 import Layout from '../.././_components/domain/layout'
 import Container from '../.././_components/headless/container'
-import MoreStories from '../.././_components/more-stories'
+import MoreStories from '../../components/server/post/more-stories'
 import { getAllPosts, PostData } from '../../domain/posts'
 import { getAllSeries } from '../../domain/series'
 import { createOGP } from '../../lib/ogp'
