@@ -23,8 +23,7 @@ const HeroImage = ({ title, coverImage, date, description }: Props) => {
           loader={customLoader}
           src={coverImage.url}
           alt={`Cover Image for ${title}`}
-          layout="fill"
-          objectFit="cover"
+          fill={true}
           priority={true} // hero image なので preload する
         />
       </figure>

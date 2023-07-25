@@ -12,8 +12,7 @@ const MainVisual = () => (
         loader={customLoader}
         src={'https://i.imgur.com/5l84MIZh.webp'}
         alt={`Hero Image for ${BLOG_TITLE}`}
-        layout="fill"
-        objectFit="cover"
+        fill={true}
         priority={true} // hero image なので preload する
       />
     </figure>
