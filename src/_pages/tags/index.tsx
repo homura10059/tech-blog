@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 
 import Layout from '../.././_components/domain/layout'
 import TagCards from '../.././_components/domain/tags/tagCards'
-import Container from '../.././_components/headless/container'
+import Container from '../../components/server/headless/container'
 import { getAllTags, TagMetaData } from '../../domain/tags'
 import { createOGP } from '../../lib/ogp'
 

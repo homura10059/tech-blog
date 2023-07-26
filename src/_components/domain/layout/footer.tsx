@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
+import Container from '../../../components/server/headless/container'
 import { getCopyright } from '../../../lib/copyright'
-import Container from '../../headless/container'
 
 const Footer: React.VFC = () => {
   return (

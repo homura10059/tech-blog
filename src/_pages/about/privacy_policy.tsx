@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
 
 import Layout from '../.././_components/domain/layout'
-import Container from '../.././_components/headless/container'
 import PageTitle from '../.././_components/headless/Headding/page-title'
 import SectionTitle from '../.././_components/headless/Headding/section-title'
+import Container from '../../components/server/headless/container'
 import { createOGP } from '../../lib/ogp'
 
 const PrivacyPolicy: React.VFC = () => {

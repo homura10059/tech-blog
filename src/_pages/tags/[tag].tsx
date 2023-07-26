@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import Layout from '../.././_components/domain/layout'
-import Container from '../.././_components/headless/container'
+import Container from '../../components/server/headless/container'
 import MoreStories from '../../components/server/post/more-stories'
 import { getAllPosts, PostData } from '../../domain/posts'
 import { getAllTags } from '../../domain/tags'

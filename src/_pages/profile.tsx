@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 
 import { Card, CardProps } from '.././_components/domain/card/card'
 import Layout from '.././_components/domain/layout'
-import Container from '.././_components/headless/container'
+import Container from '../components/server/headless/container'
 import { customLoader } from '../lib/image-loader'
 import { createOGP } from '../lib/ogp'
 

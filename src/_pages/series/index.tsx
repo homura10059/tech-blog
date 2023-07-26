@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 
 import Layout from '../.././_components/domain/layout'
-import Container from '../.././_components/headless/container'
 import CustomLink from '../.././_components/headless/custom-link'
+import Container from '../../components/server/headless/container'
 import { getAllSeries, Series } from '../../domain/series'
 import { createOGP } from '../../lib/ogp'
 
