@@ -12,7 +12,6 @@ import Link from 'next/link'
 
 import { Card, CardProps } from '../../components/client/card/card'
 import HomuraIcon from '../../components/client/image/homura-icon'
-import Container from '../../components/server/headless/container'
 
 library.add(
   faGithub as IconDefinition,
@@ -199,12 +198,9 @@ const cards: Record<string, CardProps[]> = {
   ]
 }
 
-export const metadata: Metadata = {
-  title: 'Profile'
-}
 export default async function Page() {
   return (
-    <Container>
+    <>
       <div className={'bg-background-light pt-20'}></div>
       <div className="mx-auto max-w-2xl pb-10">
         <div className="mt-[-50px] grid place-content-center place-items-center">
@@ -248,6 +244,6 @@ export default async function Page() {
           ))}
         </div>
       </div>
-    </Container>
+    </>
   )
 }
