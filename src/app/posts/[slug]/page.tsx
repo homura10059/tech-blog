@@ -1,7 +1,7 @@
 import { differenceInYears, parseISO } from 'date-fns'
 import { Metadata } from 'next'
 
-import Warning from '../../../_components/domain/banners/warning'
+import Warning from '../../../components/server/banners/warning'
 import Container from '../../../components/server/headless/container'
 import PostBody from '../../../components/server/post/post-body'
 import PostHeader from '../../../components/server/post/post-header'

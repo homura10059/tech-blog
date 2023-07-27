@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { mockedPosts } from '../../../_components/pages/__mocks__/post'
+import { mockedPosts } from './__mocks__/post'
 import PostCards from './post-card'
 
 export default {

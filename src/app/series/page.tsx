@@ -1,4 +1,4 @@
-import CustomLink from '../../_components/headless/custom-link'
+import CustomLink from '../../components/server/links/custom-link'
 import { getAllSeries } from '../../domain/series'
 
 export default async function Page() {
