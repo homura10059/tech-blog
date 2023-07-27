@@ -4,16 +4,21 @@ import Image from 'next/image'
 
 import { customLoader } from '../../../lib/image-loader'
 
-const HomuraIcon = () => (
+type Props = {
+  width?: number
+  height?: number
+}
+
+const Logo = ({ width = 100, height = 100 }: Props) => (
   <Image
     loader={customLoader}
     src={'/assets/blog/logo.svg'}
     alt={'homura'}
-    width={100}
-    height={100}
+    width={width}
+    height={height}
     priority
     unoptimized
   />
 )
 
-export default HomuraIcon
+export default Logo

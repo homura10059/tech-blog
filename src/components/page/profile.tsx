@@ -11,7 +11,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import { Card, CardProps } from '../../components/client/card/card'
-import HomuraIcon from '../../components/client/image/homura-icon'
+import Logo from '../client/image/logo'
 
 library.add(
   faGithub as IconDefinition,
@@ -207,7 +207,7 @@ const Profile = ({}: Props) => {
       <div className="mx-auto max-w-2xl pb-10">
         <div className="mt-[-50px] grid place-content-center place-items-center">
           <div className={'rounded-full bg-black p-1'}>
-            <HomuraIcon />
+            <Logo />
           </div>
 
           <h1 className="mt-2 text-3xl font-normal">homura / @homura10059</h1>
