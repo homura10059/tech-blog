@@ -1,4 +1,5 @@
 import { differenceInYears, parseISO } from 'date-fns'
+import { Metadata } from 'next'
 
 import Warning from '../../../_components/domain/banners/warning'
 import Series from '../../../_components/domain/series'
@@ -43,6 +44,27 @@ export default async function Page({ params }: { params: StaticParam }) {
       </Container>
     </article>
   )
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: StaticParam
+}): Promise<Metadata> {
+  const post = await getPostDataBySlug(params.slug)
+  const image = post.ogImage?.url
+    ? `${post.ogImage?.url}m.jpeg`
+    : 'https://i.imgur.com/BqDJIrtm.png'
+
+  return {
+    title: post.title,
+    openGraph: {
+      type: 'website',
+      title: post.title,
+      description: post.excerpt,
+      images: [{ url: image }]
+    }
+  }
 }
 
 export async function generateStaticParams(): Promise<StaticParam[]> {

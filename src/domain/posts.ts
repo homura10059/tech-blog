@@ -122,7 +122,7 @@ export type PostType = {
     aspectRatio?: string
   }
   excerpt: string
-  ogImage: {
+  ogImage?: {
     url: string
   }
   content: string
