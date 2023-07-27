@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 
+import PostCards from '../../components/client/posts/post-card'
 import Container from '../../components/server/headless/container'
 import { PostType } from '../../domain/posts'
 import { createOGP } from '../../lib/ogp'
 import Layout from '../domain/layout'
-import PostCards from '../domain/post/post-card'
 
 type Props = {
   allPosts: PostType[]

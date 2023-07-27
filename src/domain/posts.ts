@@ -118,6 +118,7 @@ export type PostType = {
   date: string
   coverImage: {
     url: string
+    aspectRatio?: string
   }
   excerpt: string
   ogImage: {
