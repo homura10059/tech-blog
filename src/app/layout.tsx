@@ -4,10 +4,10 @@ import 'highlight.js/styles/monokai.css'
 import { Metadata } from 'next'
 
 import Analytics from '../components/client/scripts/google-analytics'
-import Footer from '../components/server/layout/footer'
 import { BLOG_DESCRIPTION, BLOG_TITLE, TWITTER_ACCOUNT } from '../lib/constants'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tech-blog.homura10059.dev/'),
   title: {
     template: `%s | ${BLOG_TITLE}`,
     default: BLOG_TITLE
