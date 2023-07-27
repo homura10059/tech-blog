@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 
+import Header from '../../components/client/navigation/header'
 import Container from '../../components/server/headless/container'
 import Footer from '../../components/server/layout/footer'
 
@@ -13,6 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <>
+      <Header />
       <div className="h-screen">
         <Container>{children}</Container>
       </div>

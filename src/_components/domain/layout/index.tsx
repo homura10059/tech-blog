@@ -1,5 +1,5 @@
+import Header from '../../../components/client/navigation/header'
 import Footer from '../../../components/server/layout/footer'
-import Header from '../../../components/server/layout/header'
 import Meta, { OgpProps } from '../../meta'
 
 type Props = {
