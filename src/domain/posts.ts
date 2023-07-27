@@ -52,13 +52,19 @@ export const getPostDataBySlug = async (slug: string): Promise<PostData> => {
       })
     : []
 
+  const ogImage = {
+    url: data.ogImage?.url
+      ? `${data.ogImage?.url}m.jpeg`
+      : 'https://i.imgur.com/BqDJIrtm.png'
+  }
+
   return {
     slug,
     title: data.title,
     date: data.date,
     coverImage: data.coverImage,
     excerpt: data.excerpt,
-    ogImage: data.ogImage,
+    ogImage,
     content: contentHtml,
     tags,
     series
@@ -122,7 +128,7 @@ export type PostType = {
     aspectRatio?: string
   }
   excerpt: string
-  ogImage?: {
+  ogImage: {
     url: string
   }
   content: string

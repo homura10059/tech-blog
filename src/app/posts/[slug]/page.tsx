@@ -52,9 +52,6 @@ export async function generateMetadata({
   params: StaticParam
 }): Promise<Metadata> {
   const post = await getPostDataBySlug(params.slug)
-  const image = post.ogImage?.url
-    ? `${post.ogImage?.url}m.jpeg`
-    : 'https://i.imgur.com/BqDJIrtm.png'
 
   return {
     title: post.title,
@@ -62,7 +59,7 @@ export async function generateMetadata({
       type: 'website',
       title: post.title,
       description: post.excerpt,
-      images: [{ url: image }]
+      images: post.ogImage
     }
   }
 }
