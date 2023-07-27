@@ -2,11 +2,11 @@ import { differenceInYears, parseISO } from 'date-fns'
 import { Metadata } from 'next'
 
 import Warning from '../../../_components/domain/banners/warning'
-import Series from '../../../_components/domain/series'
-import Tags from '../../../_components/domain/tags'
 import Container from '../../../components/server/headless/container'
 import PostBody from '../../../components/server/post/post-body'
 import PostHeader from '../../../components/server/post/post-header'
+import Series from '../../../components/server/series'
+import Tags from '../../../components/server/tags'
 import { getPostDataBySlug, getPostSlugs } from '../../../domain/posts'
 
 type StaticParam = { slug: string }
