@@ -13,6 +13,7 @@ const MainVisual = () => (
         src={'https://i.imgur.com/5l84MIZh.webp'}
         alt={`Hero Image for ${BLOG_TITLE}`}
         fill={true}
+        style={{ objectFit: 'cover' }}
         priority={true} // hero image なので preload する
       />
     </figure>

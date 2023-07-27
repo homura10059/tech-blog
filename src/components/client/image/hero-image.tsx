@@ -24,6 +24,7 @@ const HeroImage = ({ title, coverImage, date, description }: Props) => {
           src={coverImage.url}
           alt={`Cover Image for ${title}`}
           fill={true}
+          style={{ objectFit: 'cover' }}
           priority={true} // hero image なので preload する
         />
       </figure>
