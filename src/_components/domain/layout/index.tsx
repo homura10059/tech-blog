@@ -1,6 +1,6 @@
 import Footer from '../../../components/server/layout/footer'
+import Header from '../../../components/server/layout/header'
 import Meta, { OgpProps } from '../../meta'
-import Header from './header'
 
 type Props = {
   og: OgpProps
