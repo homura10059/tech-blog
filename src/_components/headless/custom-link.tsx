@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
-import Embed from '../domain/embed'
+import Embed from '../../components/client/embed'
 
 type Props = {
   href: string

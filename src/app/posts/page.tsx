@@ -5,7 +5,7 @@ import generatedRssFeed from '../../lib/feed'
 export default async function Page() {
   await generatedRssFeed()
 
-  const allPosts = getAllPostData()
+  const allPosts = await getAllPostData()
 
   return <Posts allPosts={allPosts} />
 }

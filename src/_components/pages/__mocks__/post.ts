@@ -1,4 +1,6 @@
-export const mockedPost = {
+import { PostData } from '../../../domain/posts'
+
+export const mockedPost: PostData = {
   slug: 'slug',
   title: 'title',
   date: '2022-07-01',
@@ -10,7 +12,14 @@ export const mockedPost = {
     url: 'https://i.imgur.com/4xPTo1B.webp'
   },
   content: '',
-  tags: ['tag1', 'tag2']
+  tags: [
+    { title: 'tag1', hash: 'hash1' },
+    { title: 'tag2', hash: 'hash2' }
+  ],
+  series: {
+    title: 'series1',
+    hash: 'series_hash1'
+  }
 }
 
 const images = [

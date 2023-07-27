@@ -1,3 +1,4 @@
+'use client'
 import { VFC } from 'react'
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 

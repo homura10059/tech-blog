@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState, VFC } from 'react'
 
 import Card from '../../../components/client/card/card'

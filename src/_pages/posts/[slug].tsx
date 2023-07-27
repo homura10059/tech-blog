@@ -5,12 +5,12 @@ import { useInView } from 'react-intersection-observer'
 
 import Warning from '../.././_components/domain/banners/warning'
 import Layout from '../.././_components/domain/layout'
-import PostBody from '../.././_components/domain/post/post-body'
-import PostHeader from '../.././_components/domain/post/post-header'
-import PostTitle from '../.././_components/domain/post/post-title'
 import Series from '../.././_components/domain/series'
 import Tags from '../.././_components/domain/tags'
 import Container from '../../components/server/headless/container'
+import PostBody from '../../components/server/post/post-body'
+import PostHeader from '../../components/server/post/post-header'
+import PostTitle from '../../components/server/post/post-title'
 import { getPostDataBySlug, getPostSlugs, PostData } from '../../domain/posts'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { createOGP } from '../../lib/ogp'
@@ -83,7 +83,7 @@ type Params = {
 }
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostDataBySlug(params.slug)
+  const post = await getPostDataBySlug(params.slug)
   const content = await markdownToHtml(post.content || '')
 
   return {
