@@ -29,6 +29,7 @@ export type PostData = Omit<PostType, 'series' | 'tags'> & {
 
 const isTags = (unk: unknown): unk is string[] =>
   Array.isArray(unk) && unk.every(x => typeof x === 'string')
+
 export const getPostDataBySlug = async (slug: string): Promise<PostData> => {
   const fullPath = join(postsDirectory, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
