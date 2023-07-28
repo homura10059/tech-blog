@@ -1,28 +1,25 @@
 import { Metadata } from 'next'
 
-import MoreStories from '../../../components/server/post/more-stories'
+import SeriesBySlug from '../../../components/page/series/slug'
 import { getAllPostData } from '../../../domain/posts'
 import { getAllSeries } from '../../../domain/series'
 
 type StaticParam = { slug: string }
 
-export default async function Page({ params }: { params: StaticParam }) {
+const getPostsAndTitle = async (seriesSlug: string) => {
   const series = getAllSeries()
-  const target = series.find(x => x.hash === params.slug)
+  const target = series.find(x => x.hash === seriesSlug)
   const title = `シリーズ：${target?.title ?? ''}`
   const allPosts = await getAllPostData()
-  const targetPosts = allPosts.filter(x => x.series?.hash === params.slug)
+  const targetPosts = allPosts.filter(x => x.series?.hash === seriesSlug)
 
-  return (
-    <>
-      <section className="flex flex-col items-center pb-16 pt-8 md:flex-row md:justify-between md:pb-6">
-        <h1 className="mb-6 text-5xl font-bold leading-tight tracking-tighter before:mr-2 md:pr-8 md:text-8xl ">
-          {title}
-        </h1>
-      </section>
-      <MoreStories posts={targetPosts} postsOnly />
-    </>
-  )
+  return { title, posts: targetPosts }
+}
+
+export default async function Page({ params }: { params: StaticParam }) {
+  const { title, posts } = await getPostsAndTitle(params.slug)
+
+  return <SeriesBySlug title={title} posts={posts} />
 }
 
 export async function generateMetadata({
@@ -30,12 +27,8 @@ export async function generateMetadata({
 }: {
   params: StaticParam
 }): Promise<Metadata> {
-  const series = getAllSeries()
-  const target = series.find(x => x.hash === params.slug)
-  const title = `シリーズ：${target?.title ?? ''}`
-  const allPosts = await getAllPostData()
-  const targetPosts = allPosts.filter(x => x.series?.hash === params.slug)
-  const images = targetPosts.flatMap(x => x.ogImage ?? [])
+  const { title, posts } = await getPostsAndTitle(params.slug)
+  const images = posts.flatMap(x => x.ogImage ?? [])
   return {
     title: title,
     openGraph: {
