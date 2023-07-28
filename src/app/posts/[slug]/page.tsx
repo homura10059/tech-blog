@@ -1,49 +1,16 @@
 import { differenceInYears, parseISO } from 'date-fns'
 import { Metadata } from 'next'
 
-import Warning from '../../../components/server/banners/warning'
-import Container from '../../../components/server/headless/container'
-import PostBody from '../../../components/server/post/post-body'
-import PostHeader from '../../../components/server/post/post-header'
-import Series from '../../../components/server/series'
-import Tags from '../../../components/server/tags'
+import PostBySlug from '../../../components/page/posts/slug'
 import { getPostDataBySlug, getPostSlugs } from '../../../domain/posts'
 
 type StaticParam = { slug: string }
 
 export default async function Page({ params }: { params: StaticParam }) {
   const post = await getPostDataBySlug(params.slug)
-  const date = parseISO(post.date)
-  const diff = differenceInYears(new Date(), date)
-  return (
-    <article className="mb-32">
-      <div>
-        <PostHeader
-          title={post.title}
-          coverImage={post.coverImage}
-          date={post.date}
-        />
-      </div>
-      <Container>
-        {diff > 1 && (
-          <Warning
-            text={`この記事は最終更新日から${diff}年以上が経過しています。`}
-          />
-        )}
-        {post.tags.length > 0 && (
-          <div className="mx-auto mt-4 max-w-2xl">
-            <Tags tags={post.tags} />
-            {post.series && (
-              <div className="mt-2">
-                <Series {...post.series} />
-              </div>
-            )}
-          </div>
-        )}
-        <PostBody content={post.content} />
-      </Container>
-    </article>
-  )
+  const diff = differenceInYears(new Date(), parseISO(post.date))
+
+  return <PostBySlug post={post} diff={diff} />
 }
 
 export async function generateMetadata({
