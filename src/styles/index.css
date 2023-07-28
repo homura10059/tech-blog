@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#__next {
-    @apply bg-background-dark text-surface;
-}
-
 @layer components {
     .link {
         @apply font-bold text-primary-light cursor-pointer hover:underline ;

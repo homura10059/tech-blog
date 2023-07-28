@@ -1,0 +1,19 @@
+name: build pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: install deps
+        run: yarn
+      - name: run build
+        run: yarn build

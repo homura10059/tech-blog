@@ -2,6 +2,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import { join } from 'path'
 
+import markdownToHtml from '../lib/markdownToHtml'
 import { createSeriesHash } from './series'
 import { createTagHash } from './tags'
 
@@ -28,10 +29,11 @@ export type PostData = Omit<PostType, 'series' | 'tags'> & {
 
 const isTags = (unk: unknown): unk is string[] =>
   Array.isArray(unk) && unk.every(x => typeof x === 'string')
-export const getPostDataBySlug = (slug: string): PostData => {
+export const getPostDataBySlug = async (slug: string): Promise<PostData> => {
   const fullPath = join(postsDirectory, `${slug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
+  const contentHtml = await markdownToHtml(content || '')
 
   const series =
     data.series && typeof data.series === 'string'
@@ -50,14 +52,20 @@ export const getPostDataBySlug = (slug: string): PostData => {
       })
     : []
 
+  const ogImage = {
+    url: data.ogImage?.url
+      ? `${data.ogImage?.url}m.jpeg`
+      : 'https://i.imgur.com/BqDJIrtm.png'
+  }
+
   return {
     slug,
     title: data.title,
     date: data.date,
     coverImage: data.coverImage,
     excerpt: data.excerpt,
-    ogImage: data.ogImage,
-    content,
+    ogImage,
+    content: contentHtml,
     tags,
     series
   }
@@ -90,6 +98,13 @@ export const getPostBySlug = (slug: string, fields: string[] = []) => {
 
   return items
 }
+
+export const getAllPostData = async (): Promise<PostData[]> => {
+  const slugs = getPostSlugs()
+  const posts = await Promise.all(slugs.map(slug => getPostDataBySlug(slug)))
+  return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+}
+
 export const getAllPosts = (fields: string[] = []) => {
   const slugs = getPostSlugs()
   return slugs
@@ -110,6 +125,7 @@ export type PostType = {
   date: string
   coverImage: {
     url: string
+    aspectRatio?: string
   }
   excerpt: string
   ogImage: {
