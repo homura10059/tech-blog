@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 
 import Header from '../../components/client/navigation/header'
-import Container from '../../components/server/headless/container'
 import Footer from '../../components/server/layout/footer'
 
 export const metadata: Metadata = {
@@ -15,7 +14,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <Container>{children}</Container>
+      {children}
       <Footer />
     </>
   )
