@@ -80,7 +80,7 @@ const main = async () => {
   const credentials = await jwtClient.authorize()
 
   const allPostsMetadata = getAllPostsMetadata()
-  const postsUrls = getPostsUrls(allPostsMetadata)
+  const postsUrls = getPostsUrls(allPostsMetadata).slice(-3)
   const tagsUrls = getTagsUrls(allPostsMetadata)
   const seriesUrls = getSeriesUrls(allPostsMetadata)
   const urls = [...postsUrls, ...tagsUrls, ...seriesUrls]
