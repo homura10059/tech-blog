@@ -1,4 +1,3 @@
-import { differenceInYears, parseISO } from 'date-fns'
 import { Metadata } from 'next'
 
 import PostBySlug from '../../../components/page/posts/slug'
@@ -8,9 +7,8 @@ type StaticParam = { slug: string }
 
 export default async function Page({ params }: { params: StaticParam }) {
   const post = await getPostDataBySlug(params.slug)
-  const diff = differenceInYears(new Date(), parseISO(post.date))
 
-  return <PostBySlug post={post} diff={diff} />
+  return <PostBySlug post={post} />
 }
 
 export async function generateMetadata({

@@ -1,5 +1,5 @@
 .markdown {
-  @apply prose prose-invert tracking-wide;
+  @apply prose prose-invert tracking-wide max-w-full;
 
   /* Headings */
   @apply prose-headings:mb-4 prose-headings:border-b prose-headings:border-background-light prose-headings:pb-1 prose-headings:font-normal prose-headings:leading-snug prose-headings:text-background-light;
@@ -11,7 +11,7 @@
   @apply prose-a:text-primary-light prose-a:no-underline hover:prose-a:underline prose-a:visited:text-primary-dark;
 
   /* コード */
-  @apply prose-code:before:content-none prose-code:after:content-none;
+  @apply prose-code:before:content-none prose-code:after:content-none prose-code:overflow-scroll;
   @apply prose-pre:rounded-tl-none prose-pre:bg-[#0d1117] prose-pre:p-2 prose-pre:shadow-lg;
 
   /* ul, li */
