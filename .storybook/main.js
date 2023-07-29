@@ -1,18 +1,21 @@
+import * as path from 'path';
+
 module.exports = {
-  "typescript" : { reactDocgen: false },
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "storybook-addon-next"
-  ],
-  "framework": "@storybook/react",
-  "core": {
-    "builder": "webpack5"
+  "typescript": {
+    reactDocgen: false
+  },
+  "stories": ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  "framework": {
+    name: "@storybook/nextjs",
+    options: {
+      image: {
+        loading: 'i.imgur.com',
+      },
+      nextConfigPath: path.resolve(__dirname, '../next.config.js'),
+    }
   },
   "staticDirs": ["../public"],
-}
+  docs: {
+    autodocs: true
+  }
+};
