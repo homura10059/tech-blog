@@ -7,10 +7,9 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { faBlog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Metadata } from 'next'
 import Link from 'next/link'
 
-import { Card, CardProps } from '../../components/client/card/card'
+import { Card, CardProps } from '../block/card/card'
 import Logo from '../client/image/logo'
 
 library.add(

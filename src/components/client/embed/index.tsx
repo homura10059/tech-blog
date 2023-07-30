@@ -1,8 +1,8 @@
 'use client'
 import { useEffect, useState, VFC } from 'react'
 
-import Card from '../../../components/client/card/card'
 import { OgpMeta } from '../../../lib/getOgp'
+import Card from '../../block/card/card'
 import Twitter from './twitter'
 import Youtube from './youtube'
 
