@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
 import Card from './card'
@@ -7,9 +7,9 @@ export default {
   title: 'components/domain/card',
   component: Card,
   argTypes: {}
-} as ComponentMeta<typeof Card>
+} as Meta<typeof Card>
 
-const Template: ComponentStory<typeof Card> = args => (
+const Template: StoryFn<typeof Card> = args => (
   <div className="h-screen bg-background-dark p-4">
     <Card {...args} />
   </div>
