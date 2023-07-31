@@ -14,8 +14,11 @@ export type CardProps = {
 
 export const Card = ({ image, url, title, description }: CardProps) => {
   return (
-    <Link href={url}>
-      <div className="not-prose flex flex-row place-items-center rounded-lg bg-white shadow-lg shadow-surface @container hover:cursor-pointer">
+    <div className="not-prose">
+      <Link
+        href={url}
+        className="flex flex-row place-items-center rounded-lg bg-white shadow-lg shadow-surface @container hover:cursor-pointer"
+      >
         <figure className="relative h-24 w-24 @sm:h-48 @sm:w-48">
           <Image
             loader={customLoader}
@@ -36,8 +39,8 @@ export const Card = ({ image, url, title, description }: CardProps) => {
             </p>
           )}
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
 
