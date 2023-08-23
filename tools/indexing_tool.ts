@@ -3,6 +3,7 @@ import { createHash } from 'crypto'
 import { google } from 'googleapis'
 
 import { getAllPostsMetadata } from '../src/domain/posts'
+// @ts-ignore
 import key from './service_account.json'
 
 const jwtClient = new google.auth.JWT(
@@ -55,7 +56,10 @@ const publishUrlNotification = async (
 const delete_main = async () => {
   const credentials = await jwtClient.authorize()
 
-  const delete_targets = ['https://tech-blog.homura10059.dev/tags/Zabbix']
+  const delete_targets = [
+    'https://tech-blog.homura10059.dev/tags/blog',
+    'https://tech-blog.homura10059.dev/tags/ACM'
+  ]
   const delete_results = await Promise.allSettled(
     delete_targets.map(url =>
       publishUrlNotification(credentials.access_token ?? '', url, true)
@@ -105,6 +109,6 @@ const main = async () => {
   console.log(rejected)
 }
 
-main()
+delete_main()
 
 export {}
