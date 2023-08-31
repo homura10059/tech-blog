@@ -3,6 +3,7 @@ import { useEffect, useState, VFC } from 'react'
 
 import { OgpMeta } from '../../../lib/getOgp'
 import Card from '../../block/card/card'
+import Github from './github'
 import Twitter from './twitter'
 import Youtube from './youtube'
 
@@ -51,6 +52,10 @@ const Embed: VFC<Props> = ({ href }) => {
   }
 
   if (meta) {
+    if (href.includes('https://github.com/')) {
+      return <Github {...meta} />
+    }
+
     return (
       <div className="my-4">
         <Card meta={meta} />{' '}
