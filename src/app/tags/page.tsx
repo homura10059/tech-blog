@@ -3,7 +3,7 @@ import { getAllTags } from '../../domain/tags'
 
 export default async function Page() {
   const title = `All Tags`
-  const tags = getAllTags()
+  const tags = await getAllTags()
 
   return <Tags title={title} tags={tags} />
 }

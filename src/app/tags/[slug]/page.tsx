@@ -7,8 +7,8 @@ import { getAllTags } from '../../../domain/tags'
 type StaticParam = { slug: string }
 
 const getPostsAndTitle = async (tagSlug: string) => {
-  const tagMetaData = getAllTags().find(tag => tag.hash === tagSlug)
-  const tag = tagMetaData?.tag ?? ''
+  const tagMetaData = (await getAllTags()).find(tag => tag.hash === tagSlug)
+  const tag = tagMetaData?.title ?? ''
   const title = `#${tag}の記事一覧`
   const allPosts = await getAllPostData()
   const targetPosts = allPosts.filter(x => x.tags.some(y => y.hash === tagSlug))
@@ -40,6 +40,6 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams(): Promise<StaticParam[]> {
-  const tags = getAllTags()
+  const tags = await getAllTags()
   return tags.map(series => ({ slug: series.hash }))
 }

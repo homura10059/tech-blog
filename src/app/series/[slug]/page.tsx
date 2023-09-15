@@ -7,7 +7,7 @@ import { getAllSeries } from '../../../domain/series'
 type StaticParam = { slug: string }
 
 const getPostsAndTitle = async (seriesSlug: string) => {
-  const series = getAllSeries()
+  const series = await getAllSeries()
   const target = series.find(x => x.hash === seriesSlug)
   const title = `シリーズ：${target?.title ?? ''}`
   const allPosts = await getAllPostData()
@@ -40,6 +40,6 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams(): Promise<StaticParam[]> {
-  const series = getAllSeries()
+  const series = await getAllSeries()
   return series.map(series => ({ slug: series.hash }))
 }

@@ -5,7 +5,7 @@ import { getAllSeries } from '../src/domain/series'
 import { getAllTags } from '../src/domain/tags'
 
 const exportTags = async () => {
-  const tags = getAllTags()
+  const tags = await getAllTags()
 
   tags.forEach(({ tag, hash }) => {
     const row = `${hash},${tag}\n`
@@ -14,7 +14,7 @@ const exportTags = async () => {
 }
 
 const exportSeries = async () => {
-  const series = getAllSeries()
+  const series = await getAllSeries()
 
   series.forEach(({ title, hash }) => {
     const row = `${hash},"${title}"\n`

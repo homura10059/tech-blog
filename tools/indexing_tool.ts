@@ -1,8 +1,7 @@
 import axios from 'axios'
-import { createHash } from 'crypto'
 import { google } from 'googleapis'
 
-import { getAllPostsMetadata } from '../src/domain/posts'
+import { getAllPostData, PostData } from '../src/domain/posts'
 // @ts-ignore
 import key from './service_account.json'
 
@@ -13,25 +12,23 @@ const jwtClient = new google.auth.JWT(
   ['https://www.googleapis.com/auth/indexing'],
   undefined
 )
-const getPostsUrls = (metaData: { slug?: string }[]): string[] =>
+const getPostsUrls = (metaData: PostData[]): string[] =>
   metaData
     .map(meta => meta.slug)
     .filter((slug): slug is string => slug !== undefined)
     .map(slug => `https://tech-blog.homura10059.dev/posts/${slug}`)
 
-const getTagsUrls = (metaData: { tags?: string[] }[]): string[] =>
+const getTagsUrls = (metaData: PostData[]): string[] =>
   metaData
     .flatMap(meta => meta.tags)
-    .filter((tag): tag is string => tag !== undefined)
-    .map(tag => createHash('md5').update(tag, 'binary').digest('hex'))
-    .map(hash => `https://tech-blog.homura10059.dev/tags/${hash}`)
+    .map(({ hash }) => `https://tech-blog.homura10059.dev/tags/${hash}`)
 
-const getSeriesUrls = (metaData: { series?: string }[]): string[] =>
+type Series = { title: string; hash: string }
+const getSeriesUrls = (metaData: PostData[]): string[] =>
   metaData
     .map(meta => meta.series)
-    .filter((series): series is string => series !== undefined)
-    .map(series => createHash('md5').update(series, 'binary').digest('hex'))
-    .map(hash => `https://tech-blog.homura10059.dev/series/${hash}`)
+    .filter((series): series is Series => series !== null)
+    .map(({ hash }) => `https://tech-blog.homura10059.dev/series/${hash}`)
 
 const publishUrlNotification = async (
   access_token: string,
@@ -83,7 +80,7 @@ const delete_main = async () => {
 const main = async () => {
   const credentials = await jwtClient.authorize()
 
-  const allPostsMetadata = getAllPostsMetadata()
+  const allPostsMetadata = getAllPostData()
   const postsUrls = getPostsUrls(allPostsMetadata).slice(-3)
   const tagsUrls = getTagsUrls(allPostsMetadata)
   const seriesUrls = getSeriesUrls(allPostsMetadata)
