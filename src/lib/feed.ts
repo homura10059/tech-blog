@@ -2,21 +2,20 @@ import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 import fs from 'fs'
 
-import { getAllPosts } from '../domain/posts'
+import { getAllPostData, PostData } from '../domain/posts'
 import { BLOG_DESCRIPTION, BLOG_TITLE } from './constants'
 import { getCopyright } from './copyright'
 import markdownToHtml from './markdownToHtml'
 
-const createFeed = async (baseUrl: string, post: Record<string, string>) => {
+const createFeed = async (baseUrl: string, post: PostData) => {
   const url = `${baseUrl}/posts/${post.slug}`
-  const content = await markdownToHtml(post.content || '')
   const date = parseISO(post.date)
   return {
     title: post.title,
-    description: post.description,
+    description: post.excerpt,
     id: post.slug,
     link: url,
-    content: content,
+    content: post.content,
     date
   }
 }
@@ -42,14 +41,7 @@ const generatedRssFeed = async (): Promise<void> => {
     }
   })
 
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'content',
-    'coverImage',
-    'excerpt'
-  ])
+  const allPosts = await getAllPostData()
   const feeds = await Promise.all(
     allPosts.map(post => createFeed(baseUrl, post))
   )

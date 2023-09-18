@@ -1,126 +1,18 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import { join } from 'path'
-
 import markdownToHtml from '../lib/markdownToHtml'
-import { createSeriesHash } from './series'
-import { createTagHash } from './tags'
+import {
+  getAllMicroCmsContents,
+  MicroCmsTypedListContent,
+  Post,
+  Series,
+  Tag
+} from '../lib/micro-cms-client'
 
-const postsDirectory = join(process.cwd(), '_posts')
-export const getPostSlugs = (): string[] => {
-  return fs
-    .readdirSync(postsDirectory, { withFileTypes: true })
-    .filter(x => x.isFile())
-    .map(x => x.name.replace(/\.md$/, ''))
-    .filter(slug => slug !== '.DS_Store')
-    .filter(slug => !slug.startsWith('draft'))
+export const getPostSlugs = async (): Promise<string[]> => {
+  const allPosts = await getAllPostData()
+  return allPosts.map(post => post.slug)
 }
 
-export type PostData = Omit<PostType, 'series' | 'tags'> & {
-  tags: {
-    title: string
-    hash: string
-  }[]
-  series: {
-    title: string
-    hash: string
-  } | null
-}
-
-const isTags = (unk: unknown): unk is string[] =>
-  Array.isArray(unk) && unk.every(x => typeof x === 'string')
-
-export const getPostDataBySlug = async (slug: string): Promise<PostData> => {
-  const fullPath = join(postsDirectory, `${slug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-  const contentHtml = await markdownToHtml(content || '')
-
-  const series =
-    data.series && typeof data.series === 'string'
-      ? {
-          title: data.series,
-          hash: createSeriesHash(data.series)
-        }
-      : null
-
-  const tags = isTags(data.tags)
-    ? data.tags.map(title => {
-        return {
-          title,
-          hash: createTagHash(title)
-        }
-      })
-    : []
-
-  const ogImage = {
-    url: data.ogImage?.url
-      ? `${data.ogImage?.url}m.jpeg`
-      : 'https://i.imgur.com/BqDJIrtm.png'
-  }
-
-  return {
-    slug,
-    title: data.title,
-    date: data.date,
-    coverImage: data.coverImage,
-    excerpt: data.excerpt,
-    ogImage,
-    content: contentHtml,
-    tags,
-    series
-  }
-}
-
-export const getPostBySlug = (slug: string, fields: string[] = []) => {
-  const fullPath = join(postsDirectory, `${slug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-
-  type Items = {
-    [key: string]: string
-  }
-
-  const items: Items = {}
-
-  // Ensure only the minimal needed data is exposed
-  fields.forEach(field => {
-    if (field === 'slug') {
-      items[field] = slug
-    }
-    if (field === 'content') {
-      items[field] = content
-    }
-
-    if (typeof data[field] !== 'undefined') {
-      items[field] = data[field]
-    }
-  })
-
-  return items
-}
-
-export const getAllPostData = async (): Promise<PostData[]> => {
-  const slugs = getPostSlugs()
-  const posts = await Promise.all(slugs.map(slug => getPostDataBySlug(slug)))
-  return posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
-}
-
-export const getAllPosts = (fields: string[] = []) => {
-  const slugs = getPostSlugs()
-  return slugs
-    .map(slug => getPostBySlug(slug, fields))
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
-}
-export const getAllPostsMetadata = () => {
-  return getAllPosts(['series', 'tags', 'slug']) as {
-    slug?: string
-    tags?: string[]
-    series?: string
-  }[]
-}
-
-export type PostType = {
+export type PostData = {
   slug: string
   title: string
   date: string
@@ -133,6 +25,58 @@ export type PostType = {
     url: string
   }
   content: string
-  tags: string[]
-  series?: string
+  tags: {
+    title: string
+    hash: string
+  }[]
+  series: {
+    title: string
+    hash: string
+  } | null
+}
+
+export const getPostDataBySlug = async (slug: string): Promise<PostData> => {
+  const allPosts = await getAllPostData()
+  return allPosts.filter(post => post.slug === slug)[0]
+}
+
+const intoTags = (tags: MicroCmsTypedListContent<Tag>[]): PostData['tags'] =>
+  tags.map(tag => ({
+    title: tag.title,
+    hash: tag.id
+  }))
+
+const intoSeries = (
+  series: MicroCmsTypedListContent<Series> | null
+): PostData['series'] => {
+  if (series === null) return null
+  return {
+    title: series.title,
+    hash: series.id
+  }
+}
+
+export const intoPostData = async (
+  post: MicroCmsTypedListContent<Post>
+): Promise<PostData> => ({
+  slug: post.slug,
+  title: post.title,
+  date: post.publishedAt ?? '',
+  coverImage: {
+    url: post.eyecatch,
+    aspectRatio: post.aspectRatio[0]
+  },
+  excerpt: post.excerpt,
+  ogImage: {
+    url: `${post.eyecatch}m.jpeg`
+  },
+  content: await markdownToHtml(post.content || ''),
+  tags: intoTags(post.tags),
+  series: intoSeries(post.series)
+})
+
+export const getAllPostData = async (): Promise<PostData[]> => {
+  const contents = await getAllMicroCmsContents<Post>('posts')
+  const allContents = await Promise.all(contents.map(intoPostData))
+  return allContents
 }

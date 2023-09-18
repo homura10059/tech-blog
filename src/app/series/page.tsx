@@ -3,7 +3,8 @@ import { getAllSeries } from '../../domain/series'
 
 export default async function Page() {
   const title = `All Series`
-  const series = getAllSeries()
+  const series = await getAllSeries()
+  console.log(series)
 
   return <Series title={title} series={series} />
 }
