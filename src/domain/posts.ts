@@ -1,7 +1,7 @@
 import markdownToHtml from '../lib/markdownToHtml'
 import {
-  cachedAllMicroCmsContents,
-  MicroCmsContent,
+  getAllMicroCmsContents,
+  MicroCmsTypedListContent,
   Post,
   Series,
   Tag
@@ -40,14 +40,14 @@ export const getPostDataBySlug = async (slug: string): Promise<PostData> => {
   return allPosts.filter(post => post.slug === slug)[0]
 }
 
-const intoTags = (tags: MicroCmsContent<Tag>[]): PostData['tags'] =>
+const intoTags = (tags: MicroCmsTypedListContent<Tag>[]): PostData['tags'] =>
   tags.map(tag => ({
     title: tag.title,
     hash: tag.id
   }))
 
 const intoSeries = (
-  series: MicroCmsContent<Series> | null
+  series: MicroCmsTypedListContent<Series> | null
 ): PostData['series'] => {
   if (series === null) return null
   return {
@@ -57,11 +57,11 @@ const intoSeries = (
 }
 
 export const intoPostData = async (
-  post: MicroCmsContent<Post>
+  post: MicroCmsTypedListContent<Post>
 ): Promise<PostData> => ({
   slug: post.slug,
   title: post.title,
-  date: post.publishedAt,
+  date: post.publishedAt ?? '',
   coverImage: {
     url: post.eyecatch,
     aspectRatio: post.aspectRatio[0]
@@ -76,6 +76,7 @@ export const intoPostData = async (
 })
 
 export const getAllPostData = async (): Promise<PostData[]> => {
-  const contents = await cachedAllMicroCmsContents<Post>('posts')
-  return await Promise.all(contents.map(intoPostData))
+  const contents = await getAllMicroCmsContents<Post>('posts')
+  const allContents = await Promise.all(contents.map(intoPostData))
+  return allContents
 }
