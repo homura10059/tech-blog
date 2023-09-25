@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "clean": "rm -rf .next/cache/fetch-cache",
     "dev": "env TAILWIND_MODE=watch NODE_ENV=development next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
