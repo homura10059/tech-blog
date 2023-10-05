@@ -5,7 +5,7 @@ type Props = {
 }
 const Warning: React.VFC<Props> = ({ text }) => {
   return (
-    <div className="mx-auto min-w-full max-w-7xl bg-yellow-300 p-1 sm:py-2 sm:px-3 lg:px-4">
+    <div className="mx-auto min-w-full max-w-7xl bg-yellow-300 p-1 sm:px-3 sm:py-2 lg:px-4">
       <div className="flex flex-wrap items-center justify-between">
         <div className="flex w-0 flex-1 items-center justify-center">
           <ExclamationIcon
