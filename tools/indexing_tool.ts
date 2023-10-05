@@ -106,6 +106,6 @@ const main = async () => {
   console.log(rejected)
 }
 
-delete_main()
+main()
 
 export {}

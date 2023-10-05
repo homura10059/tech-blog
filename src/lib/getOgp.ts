@@ -32,8 +32,6 @@ export const getOgp = async (url: string): Promise<OgpMeta> => {
   const cache = await readCache(encodedUri)
   if (cache) return cache
 
-  console.log('cache miss!')
-
   const headers = { 'User-Agent': 'bot' }
 
   const res = await axios.get(encodedUri, { headers: headers })
