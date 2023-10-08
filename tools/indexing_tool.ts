@@ -2,6 +2,8 @@ import axios from 'axios'
 import { google } from 'googleapis'
 
 import { getAllPostData, PostData } from '../src/domain/posts'
+import { getAllSeries } from '../src/domain/series'
+import { getAllTags, TagMetaData } from '../src/domain/tags'
 // @ts-ignore
 import key from './service_account.json'
 
@@ -18,17 +20,12 @@ const getPostsUrls = (metaData: PostData[]): string[] =>
     .filter((slug): slug is string => slug !== undefined)
     .map(slug => `https://tech-blog.homura10059.dev/posts/${slug}`)
 
-const getTagsUrls = (metaData: PostData[]): string[] =>
-  metaData
-    .flatMap(meta => meta.tags)
-    .map(({ hash }) => `https://tech-blog.homura10059.dev/tags/${hash}`)
+const getTagsUrls = (metaData: TagMetaData[]): string[] =>
+  metaData.map(({ hash }) => `https://tech-blog.homura10059.dev/tags/${hash}`)
 
 type Series = { title: string; hash: string }
-const getSeriesUrls = (metaData: PostData[]): string[] =>
-  metaData
-    .map(meta => meta.series)
-    .filter((series): series is Series => series !== null)
-    .map(({ hash }) => `https://tech-blog.homura10059.dev/series/${hash}`)
+const getSeriesUrls = (metaData: Series[]): string[] =>
+  metaData.map(({ hash }) => `https://tech-blog.homura10059.dev/series/${hash}`)
 
 const publishUrlNotification = async (
   access_token: string,
@@ -57,53 +54,33 @@ const delete_main = async () => {
     'https://tech-blog.homura10059.dev/tags/blog',
     'https://tech-blog.homura10059.dev/tags/ACM'
   ]
-  const delete_results = await Promise.allSettled(
+  const delete_results = await Promise.all(
     delete_targets.map(url =>
       publishUrlNotification(credentials.access_token ?? '', url, true)
     )
   )
-  // result output
-  const delete_fulfilled = delete_results
-    .filter(
-      (result): result is PromiseFulfilledResult<any> =>
-        result.status === 'fulfilled'
-    )
-    .map(result => result.value.data.urlNotificationMetadata)
-  console.log(delete_fulfilled)
-
-  const delete_rejected = delete_results.filter(
-    (result): result is PromiseRejectedResult => result.status === 'rejected'
+  delete_results.forEach(result =>
+    console.log(result.data.urlNotificationMetadata)
   )
-  console.log(delete_rejected)
 }
 
 const main = async () => {
   const credentials = await jwtClient.authorize()
 
-  const allPostsMetadata = getAllPostData()
-  const postsUrls = getPostsUrls(allPostsMetadata).slice(-3)
-  const tagsUrls = getTagsUrls(allPostsMetadata)
-  const seriesUrls = getSeriesUrls(allPostsMetadata)
+  const allPostData = await getAllPostData()
+  const postsUrls = getPostsUrls(allPostData)
+  const allTags = await getAllTags()
+  const tagsUrls = getTagsUrls(allTags)
+  const allSeries = await getAllSeries()
+  const seriesUrls = getSeriesUrls(allSeries)
   const urls = [...postsUrls, ...tagsUrls, ...seriesUrls]
 
   // publish url notification
-  const results = await Promise.allSettled(
+  const results = await Promise.all(
     urls.map(url => publishUrlNotification(credentials.access_token ?? '', url))
   )
 
-  // result output
-  const fulfilled = results
-    .filter(
-      (result): result is PromiseFulfilledResult<any> =>
-        result.status === 'fulfilled'
-    )
-    .map(result => result.value.data.urlNotificationMetadata)
-  console.log(fulfilled)
-
-  const rejected = results.filter(
-    (result): result is PromiseRejectedResult => result.status === 'rejected'
-  )
-  console.log(rejected)
+  results.forEach(result => console.log(result.data.urlNotificationMetadata))
 }
 
 main()
