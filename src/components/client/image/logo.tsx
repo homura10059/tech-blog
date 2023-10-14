@@ -12,12 +12,13 @@ type Props = {
 const Logo = ({ width = 100, height = 100 }: Props) => (
   <Image
     loader={customLoader}
-    src={'/assets/blog/logo.svg'}
+    src={'https://i.imgur.com/H2X0iCp.png'}
     alt={'homura'}
     width={width}
     height={height}
     priority
     unoptimized
+    className={'rounded-full'}
   />
 )
 
