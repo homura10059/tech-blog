@@ -20,10 +20,10 @@ const MainVisual = () => (
     <div className="absolute inset-0 grid place-content-center">
       <div className="w-[90dvw] text-center text-surface @container">
         <p className="flex flex-col font-bold leading-none tracking-tighter">
-          <div className="text-[10cqw]">{"HOMURA'S"}</div>
-          <div className="text-[8cqw]">{'TECH BLOG'}</div>
+          <span className="text-[12cqw] md:text-[6cqw]">{"HOMURA'S"}</span>
+          <span className="text-[11cqw] md:text-[5cqw]">{'TECH BLOG'}</span>
         </p>
-        <p className="text-[3cqw] font-bold leading-none tracking-tighter">
+        <p className="text-[5cqw] font-bold leading-none tracking-tighter md:text-[2cqw]">
           {BLOG_DESCRIPTION}
         </p>
       </div>
