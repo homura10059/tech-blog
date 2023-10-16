@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     },
     description: BLOG_DESCRIPTION,
     siteName: BLOG_TITLE,
-    images: ['https://i.imgur.com/H2X0iCp.png']
+    images: ['https://i.imgur.com/oZCMyWE.png']
   },
   twitter: {
     card: 'summary',
