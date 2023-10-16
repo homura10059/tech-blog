@@ -10,7 +10,7 @@ const MainVisual = () => (
     <figure className="relative h-screen">
       <Image
         loader={customLoader}
-        src={'https://i.imgur.com/A81alGu.png'}
+        src={'https://i.imgur.com/A81alGu.webp'}
         alt={`Hero Image for ${BLOG_TITLE}`}
         fill={true}
         style={{ objectFit: 'cover' }}
