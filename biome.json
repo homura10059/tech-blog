@@ -11,5 +11,14 @@
 	},
 	"formatter": {
 		"ignore": ["dist", "node_modules", "build"]
+	},
+	"javascript": {
+		"formatter": {
+			"indentStyle": "space",
+			"semicolons": "asNeeded",
+			"quoteStyle": "single",
+			"trailingComma": "none",
+			"arrowParentheses": "asNeeded"
+		}
 	}
 }
