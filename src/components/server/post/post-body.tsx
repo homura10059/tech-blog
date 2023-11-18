@@ -9,7 +9,7 @@ type Props = {
 
 const PostBody = ({ content }: Props) => {
   return (
-    <div className={cx([markdownStyles['markdown']])}>
+    <div className={cx([markdownStyles.markdown])}>
       {processor.processSync(content).result}
     </div>
   )

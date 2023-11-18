@@ -1,10 +1,10 @@
 import markdownToHtml from '../lib/markdownToHtml'
 import {
-  getAllMicroCmsContents,
   MicroCmsTypedListContent,
   Post,
   Series,
-  Tag
+  Tag,
+  getAllMicroCmsContents
 } from '../lib/micro-cms-client'
 
 export const getPostSlugs = async (): Promise<string[]> => {

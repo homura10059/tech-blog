@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, VFC } from 'react'
+import { VFC, useEffect, useState } from 'react'
 
 import { OgpMeta } from '../../../lib/getOgp'
 import Card from '../../block/card/card'

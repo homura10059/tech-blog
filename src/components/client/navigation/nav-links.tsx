@@ -3,7 +3,7 @@ import cx from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { Nav, NAVIGATIONS } from '../../../lib/constants'
+import { NAVIGATIONS, Nav } from '../../../lib/constants'
 
 const NavLinks = () => {
   const pathname = usePathname()

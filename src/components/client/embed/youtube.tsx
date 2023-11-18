@@ -11,6 +11,7 @@ const Youtube: VFC<Props> = ({ href }) => {
   if (videoId === null) return null
   return (
     <iframe
+      title={'embed yotube'}
       id="ytplayer"
       width="640"
       height="360"

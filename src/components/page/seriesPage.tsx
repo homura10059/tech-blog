@@ -5,7 +5,7 @@ type Props = {
   title: string
   series: Series[]
 }
-const Series = ({ title, series }: Props) => {
+const SeriesPage = ({ title, series }: Props) => {
   return (
     <>
       <section className="flex flex-col items-center pb-16 pt-8 md:flex-row md:justify-between md:pb-6">
@@ -26,4 +26,4 @@ const Series = ({ title, series }: Props) => {
   )
 }
 
-export default Series
+export default SeriesPage

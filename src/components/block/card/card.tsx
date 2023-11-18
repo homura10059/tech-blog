@@ -48,11 +48,11 @@ export const SkeletonLoader = () => {
   return (
     <div className="not-prose">
       <div className="flex flex-row place-items-center rounded-lg bg-white shadow-lg shadow-surface @container hover:cursor-pointer">
-        <div className="relative h-24 w-24 animate-pulse rounded bg-slate-300 @sm:h-48 @sm:w-48"></div>
+        <div className="relative h-24 w-24 animate-pulse rounded bg-slate-300 @sm:h-48 @sm:w-48" />
         <div className="grid flex-1 animate-pulse grid-cols-3 p-3 @sm:p-6">
-          <div className="col-span-2 h-6 rounded bg-slate-300"></div>
-          <div className="col-span-3 mt-2 h-4 rounded bg-slate-300"></div>
-          <div className="col-span-3 mt-2 h-4 rounded bg-slate-300"></div>
+          <div className="col-span-2 h-6 rounded bg-slate-300" />
+          <div className="col-span-3 mt-2 h-4 rounded bg-slate-300" />
+          <div className="col-span-3 mt-2 h-4 rounded bg-slate-300" />
         </div>
       </div>
     </div>
