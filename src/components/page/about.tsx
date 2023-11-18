@@ -2,9 +2,7 @@ import PageTitle from '../server/headless/Headding/page-title'
 import SectionTitle from '../server/headless/Headding/section-title'
 import LinkText from '../server/headless/link-text'
 
-type Props = {}
-
-const About = ({}: Props) => {
+const About = () => {
   return (
     <div className="mx-auto mt-4 max-w-2xl">
       <PageTitle>このブログについて</PageTitle>

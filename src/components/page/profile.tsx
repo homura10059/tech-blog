@@ -197,12 +197,10 @@ const cards: Record<string, CardProps[]> = {
   ]
 }
 
-type Props = {}
-
-const Profile = ({}: Props) => {
+const Profile = () => {
   return (
     <>
-      <div className={'bg-background-light pt-20'}></div>
+      <div className={'bg-background-light pt-20'} />
       <div className="mx-auto max-w-2xl pb-10">
         <div className="mt-[-50px] grid place-content-center place-items-center">
           <div className={'rounded-full bg-black p-1'}>
@@ -235,8 +233,8 @@ const Profile = ({}: Props) => {
                 <h2 className="text-3xl font-normal leading-snug">{key}</h2>
               </div>
               <ul className="mt-2 flex flex-col gap-y-6">
-                {cards.map((item, i) => (
-                  <li key={i}>
+                {cards.map(item => (
+                  <li key={item.url}>
                     <Card {...item} />
                   </li>
                 ))}

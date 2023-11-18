@@ -1,4 +1,4 @@
-import { createClient, MicroCMSListContent } from 'microcms-js-sdk'
+import { MicroCMSListContent, createClient } from 'microcms-js-sdk'
 
 export const client = createClient({
   serviceDomain: 'homura-tech-blog',

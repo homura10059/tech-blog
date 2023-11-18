@@ -3,7 +3,7 @@ import { Disclosure } from '@headlessui/react'
 import cx from 'classnames'
 import { usePathname } from 'next/navigation'
 
-import { Nav, NAVIGATIONS } from '../../../lib/constants'
+import { NAVIGATIONS, Nav } from '../../../lib/constants'
 
 const HamburgerMenu = () => {
   const pathname = usePathname()

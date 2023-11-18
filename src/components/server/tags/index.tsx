@@ -10,8 +10,8 @@ type Props = {
 const Tags = ({ tags }: Props) => {
   return (
     <div className="flex flex-wrap gap-x-2">
-      {tags.map((tag, index) => (
-        <Tag {...tag} key={index} />
+      {tags.map(tag => (
+        <Tag {...tag} key={tag.hash} />
       ))}
     </div>
   )

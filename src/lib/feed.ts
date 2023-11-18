@@ -1,8 +1,8 @@
+import fs from 'fs'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
-import fs from 'fs'
 
-import { getAllPostData, PostData } from '../domain/posts'
+import { PostData, getAllPostData } from '../domain/posts'
 import { BLOG_DESCRIPTION, BLOG_TITLE } from './constants'
 import { getCopyright } from './copyright'
 import markdownToHtml from './markdownToHtml'
@@ -45,6 +45,8 @@ const generatedRssFeed = async (): Promise<void> => {
   const feeds = await Promise.all(
     allPosts.map(post => createFeed(baseUrl, post))
   )
+
+  // biome-ignore lint/complexity/noForEach: <explanation>
   feeds.forEach(item => {
     feed.addItem(item)
   })

@@ -1,5 +1,5 @@
-import '../styles/index.css'
 import 'highlight.js/styles/monokai.css'
+import '../styles/index.css'
 
 import { Metadata } from 'next'
 
