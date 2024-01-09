@@ -59,6 +59,7 @@ const delete_main = async () => {
       publishUrlNotification(credentials.access_token ?? '', url, true)
     )
   )
+  // biome-ignore lint/complexity/noForEach: <explanation>
   delete_results.forEach(result =>
     console.log(result.data.urlNotificationMetadata)
   )
@@ -80,9 +81,8 @@ const main = async () => {
     urls.map(url => publishUrlNotification(credentials.access_token ?? '', url))
   )
 
+  // biome-ignore lint/complexity/noForEach: <explanation>
   results.forEach(result => console.log(result.data.urlNotificationMetadata))
 }
 
 main()
-
-export {}
