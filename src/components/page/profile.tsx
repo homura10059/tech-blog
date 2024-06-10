@@ -57,25 +57,17 @@ const accountList: Account[] = [
 const cards: Record<string, CardProps[]> = {
   Display: [
     {
-      title: '27UL850-W',
-      description: 'メインで使っている LG の 27インチ/4K ディスプレイ',
+      title: 'Dell U4025QW',
+      description: '40インチ/5K2K ウルトラワイドな曲面ディスプレイ',
       image:
-        'https://images-na.ssl-images-amazon.com/images/P/B07KM8RD34.09.LZZZZZZZ.jpg',
-      url: 'https://www.amazon.co.jp/dp/B07KM8RD34?tag=homura10059-22'
+        'https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/peripherals/monitors/u-series/u4025qw/media-gallery/monitor-ultrasharp-u4025qw-gray-gallery-1.psd?fmt=png-alpha&pscan=auto&scl=1&hei=476&wid=735&qlt=100,1&resMode=sharp2&size=735,476&chrss=full',
+      url: 'https://www.dell.com/ja-jp/shop/dell%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB-%E3%83%8F%E3%82%A4%E3%82%A8%E3%83%B3%E3%83%89-%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA40%E6%9B%B2%E9%9D%A2thunderbolt-%E3%83%8F%E3%83%96-%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC-u4025qw/apd/210-bmcw/%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC-%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B5%E3%83%AA%E3%83%BC'
     },
     {
-      title: 'FlexScan EV245',
-      description: '90度回転させてサブモニターとして縦長に使っている',
-      image:
-        'https://images-na.ssl-images-amazon.com/images/P/B01MU28MND.09.LZZZZZZZ.jpg',
-      url: 'https://www.amazon.co.jp/dp/B01MU28MND?tag=homura10059-22'
-    },
-    {
-      title: 'Amazonベーシック デュアルモニターアーム',
-      description: 'これを使って2枚のモニターを左右に並べている',
-      image:
-        'https://images-na.ssl-images-amazon.com/images/P/B00MIBN71I.09.LZZZZZZZ.jpg',
-      url: 'https://www.amazon.co.jp/dp/B00MIBN71I?tag=homura10059-22'
+      title: 'エルゴトロン HX デスクモニターアーム',
+      description: 'デスクの天板が白いのでモニターアームも白にしている',
+      image: 'https://m.media-amazon.com/images/I/51zhd8n9SOL._AC_SX679_.jpg',
+      url: 'https://www.amazon.co.jp/dp/B01N5FTCJE?tag=homura10059-22'
     }
   ],
   Camera: [
@@ -137,6 +129,13 @@ const cards: Record<string, CardProps[]> = {
       image:
         'https://images-na.ssl-images-amazon.com/images/P/B09BTT6FJ9.09.LZZZZZZZ.jpg',
       url: 'https://www.amazon.co.jp/dp/B09BTT6FJ9?tag=homura10059-22'
+    },
+    {
+      title: 'Aulumu M01 ワイヤレス充電器',
+      description:
+        '4 in 1 の充電器。ガジェットガジェットした見た目が気に入っている。',
+      image: 'https://m.media-amazon.com/images/I/61alhj85lVL._AC_SX679_.jpg',
+      url: 'https://www.amazon.co.jp/dp/B0CBPPNJFT?tag=homura10059-22'
     }
   ],
   Desk: [
