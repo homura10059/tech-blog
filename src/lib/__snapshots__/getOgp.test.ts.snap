@@ -2,9 +2,9 @@
 
 exports[`getOgp for 'https://preducts.jp/products/mount-sw…' 1`] = `
 {
-  "description": "PREDUCTS DESKにNintendo Switchを装着するための専用マウント ※レールに装着するためのBase Sliderは付属しません",
+  "description": "PREDUCTS DESKにNintendo Switchを装着するための専用マウント ※レールに装着するためのBase Sliderは付属しません デスク装着に必要なBase Slider数 × 0-2",
   "image": "https://res.cloudinary.com/preducts-inc/image/upload/w_1200/w_1920,f_auto/shop/photo/items/mount-switch/mount-switch-ogp.jpg",
-  "title": "Mount for Switch",
+  "title": "Mount for Switch | PREDUCTS",
   "url": "https://preducts.jp/products/mount-switch",
 }
 `;
@@ -12,7 +12,7 @@ exports[`getOgp for 'https://preducts.jp/products/mount-sw…' 1`] = `
 exports[`getOgp for 'https://tech-blog.homura10059.dev/' 1`] = `
 {
   "description": "programming memo & tech posts.",
-  "image": "https://i.imgur.com/BqDJIrtm.png",
+  "image": "https://i.imgur.com/oZCMyWE.png",
   "title": "homura's tech blog",
   "url": "https://tech-blog.homura10059.dev/",
 }
@@ -22,7 +22,7 @@ exports[`getOgp for 'https://tech-blog.homura10059.dev/pos…' 1`] = `
 {
   "description": "このブログ内のリンクを Next.js の <Link> や Twitter の Embed に変換したいので対応した",
   "image": "https://i.imgur.com/W7bKLLUm.jpeg",
-  "title": "ブログ内のリンクを Next.js の <Link> や Embed に変換したい",
+  "title": "ブログ内のリンクを Next.js の <Link> や Embed に変換したい | homura's tech blog",
   "url": "https://tech-blog.homura10059.dev/posts/2022-04-23-1",
 }
 `;
@@ -38,9 +38,9 @@ exports[`getOgp for 'https://www.amazon.co.jp/dp/B09RQGMYK…' 1`] = `
 
 exports[`getOgp for 'https://www.bbiq.jp/' 1`] = `
 {
-  "description": "プロバイダー＆光インターネット回線の「月額料金」がずっとおトクな九州のプロバイダーサービスBBIQ(ビビック)のご案内。BBIQなら、光回線とプロバイダー料金、全部含んで3000円台！セキュリティソフトや開通時の訪問設定サービスも無料です！BBIQ公式サイト。",
+  "description": "九州の光インターネット回線＆プロバイダーBBIQ(ビビック)公式サイト。光回線とプロバイダー料金込みの月額料金がずっとおトク！料金やサポート、回線品質において多くのお客さまにご満足いただいています。",
   "image": "https//www.bbiq.jp/common/img/og.jpg",
-  "title": "BBIQ(ビビック)公式サイト | 九州の光インターネット回線＆プロバイダー",
+  "title": "BBIQ(ビビック)公式｜九州の光インターネット回線＆プロバイダー",
   "url": "https://www.bbiq.jp/",
 }
 `;
