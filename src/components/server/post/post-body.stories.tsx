@@ -1,8 +1,8 @@
 import { Meta, StoryFn } from '@storybook/react'
 import React from 'react'
 
-import PostBody from './post-body'
 import markdownToHtml, { processor } from '../../../lib/markdownToHtml'
+import PostBody from './post-body'
 
 export default {
   title: 'components/server/post/post-body',
