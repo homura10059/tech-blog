@@ -16,7 +16,7 @@ const trimTitle = (title: string) => title.trim()
 const getImageUrl = (imageUrl: string, url: string) => {
   if (imageUrl.charAt(0) !== '/') return imageUrl
   const parsed = new URL(url)
-  return `https//${parsed.hostname}${imageUrl}`
+  return `https://${parsed.hostname}${imageUrl}`
 }
 
 type HasImageURL = {
