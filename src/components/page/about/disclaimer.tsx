@@ -1,4 +1,4 @@
-import PageTitle from '../../server/headless/Headding/page-title'
+import PageTitle from '../../server/headless/Heading/page-title'
 
 const Disclaimer = () => {
   return (
