@@ -1,5 +1,5 @@
-import PageTitle from '../server/headless/Headding/page-title'
-import SectionTitle from '../server/headless/Headding/section-title'
+import PageTitle from '../server/headless/Heading/page-title'
+import SectionTitle from '../server/headless/Heading/section-title'
 import LinkText from '../server/headless/link-text'
 
 const About = () => {
