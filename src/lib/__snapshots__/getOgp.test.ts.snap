@@ -29,9 +29,9 @@ exports[`getOgp for 'https://tech-blog.homura10059.dev/pos…' 1`] = `
 
 exports[`getOgp for 'https://www.amazon.co.jp/dp/B09RQGMYK…' 1`] = `
 {
-  "description": "Amazon.co.jp: コンセプトから理解するRust eBook : 原 旅人: Kindleストア",
+  "description": "",
   "image": "https://images-na.ssl-images-amazon.com/images/P/B09RQGMYKZ.09.LZZZZZZZ.jpg",
-  "title": "Amazon.co.jp: コンセプトから理解するRust eBook : 原 旅人: Kindleストア",
+  "title": "",
   "url": "https://www.amazon.co.jp/dp/B09RQGMYKZ?tag=homura10059-22",
 }
 `;
@@ -39,7 +39,7 @@ exports[`getOgp for 'https://www.amazon.co.jp/dp/B09RQGMYK…' 1`] = `
 exports[`getOgp for 'https://www.bbiq.jp/' 1`] = `
 {
   "description": "九州の光インターネット回線＆プロバイダーBBIQ(ビビック)公式サイト。光回線とプロバイダー料金込みの月額料金がずっとおトク！料金やサポート、回線品質において多くのお客さまにご満足いただいています。",
-  "image": "https//www.bbiq.jp/common/img/og.jpg",
+  "image": "https://www.bbiq.jp/common/img/og.jpg",
   "title": "BBIQ(ビビック)公式｜九州の光インターネット回線＆プロバイダー",
   "url": "https://www.bbiq.jp/",
 }
