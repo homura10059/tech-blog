@@ -1,17 +1,19 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import Twitter from './twitter'
 
-export default {
+const meta: Meta<typeof Twitter> = {
   title: 'components/domain/embed/twitter',
   component: Twitter,
   argTypes: {}
-} as ComponentMeta<typeof Twitter>
+}
 
-const Template: ComponentStory<typeof Twitter> = args => <Twitter {...args} />
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Default = Template.bind({})
-Default.args = {
-  href: 'https://twitter.com/homura10059/status/1511701621901717510'
+export const Default: Story = {
+  args: {
+    href: 'https://twitter.com/homura10059/status/1511701621901717510'
+  }
 }

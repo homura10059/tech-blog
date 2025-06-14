@@ -1,13 +1,14 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import Footer from './footer'
 
-export default {
+const meta: Meta<typeof Footer> = {
   title: 'components/domain/layout/footer',
   component: Footer
-} as ComponentMeta<typeof Footer>
+}
 
-const Template: ComponentStory<typeof Footer> = args => <Footer {...args} />
+export default meta
+type Story = StoryObj<typeof Footer>
 
-export const Default = Template.bind({})
+export const Default: Story = {}

@@ -1,21 +1,24 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { mockedPost } from '../posts/__mocks__/post'
 import HeroImage from './hero-image'
 
-export default {
+const meta: Meta<typeof HeroImage> = {
   title: 'components/domain/image/hero-image',
   component: HeroImage
-} as ComponentMeta<typeof HeroImage>
+}
 
-const Template: ComponentStory<typeof HeroImage> = args => (
-  <div className="h-screen w-full bg-background-dark text-surface">
-    <HeroImage {...args} />
-  </div>
-)
+export default meta
+type Story = StoryObj<typeof HeroImage>
 
-export const Default = Template.bind({})
-Default.args = {
-  ...mockedPost
+export const Default: Story = {
+  args: {
+    ...mockedPost
+  },
+  render: args => (
+    <div className="h-screen w-full bg-background-dark text-surface">
+      <HeroImage {...args} />
+    </div>
+  )
 }

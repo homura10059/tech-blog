@@ -1,17 +1,19 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import Warning from './warning'
 
-export default {
+const meta: Meta<typeof Warning> = {
   title: 'components/domain/banners/warning',
   component: Warning,
   argTypes: {}
-} as ComponentMeta<typeof Warning>
+}
 
-const Template: ComponentStory<typeof Warning> = args => <Warning {...args} />
+export default meta
+type Story = StoryObj<typeof Warning>
 
-export const Default = Template.bind({})
-Default.args = {
-  text: 'この記事は最終更新日から3年以上が経過しています。'
+export const Default: Story = {
+  args: {
+    text: 'この記事は最終更新日から3年以上が経過しています。'
+  }
 }
