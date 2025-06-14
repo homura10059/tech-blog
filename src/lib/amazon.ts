@@ -7,7 +7,7 @@ const imageSizes = [
   'LZZZZZZZ' // 大    500 × 500
 ] as const
 
-export type ImageSize = typeof imageSizes
+export type ImageSize = typeof imageSizes[number]
 
 const asinRegex = /[^0-9A-Z]([0-9A-Z]{10})([^0-9A-Z]|$)/
 
