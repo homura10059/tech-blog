@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { JSDOM } from 'jsdom'
 
 import { getAmazonImageUrl, getAmazonShortUrl } from './amazon'
@@ -38,8 +37,8 @@ export const getOgp = async (url: string): Promise<OgpMeta> => {
 
   const headers = { 'User-Agent': 'bot' }
 
-  const res = await axios.get(encodedUri, { headers: headers })
-  const html = res.data
+  const res = await fetch(encodedUri, { headers: headers })
+  const html = await res.text()
   const dom = new JSDOM(html)
   const meta = isAmazon
     ? dom.window.document.body.querySelectorAll('meta')
@@ -63,8 +62,8 @@ export const getOgp = async (url: string): Promise<OgpMeta> => {
   const mergedData = { ...metaData, ...propertyData }
 
   const ogpMeta: OgpMeta = {
-    title: trimTitle(mergedData['og:title'] ?? mergedData.title),
-    description: mergedData['og:description'] ?? mergedData.description,
+    title: trimTitle(mergedData['og:title'] ?? mergedData.title ?? ''),
+    description: mergedData['og:description'] ?? mergedData.description ?? '',
     image: isAmazon
       ? getAmazonImageUrl(encodedUri) ?? ''
       : getOgpImageUrl(mergedData, encodedUri),

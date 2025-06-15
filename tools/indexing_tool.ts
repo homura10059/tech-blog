@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { google } from 'googleapis'
 
 import { getAllPostData, PostData } from '../src/domain/posts'
@@ -32,19 +31,18 @@ const publishUrlNotification = async (
   url: string,
   isDeleted?: true
 ) => {
-  const options = {
-    url: 'https://indexing.googleapis.com/v3/urlNotifications:publish',
-    method: 'POST' as const,
+  const response = await fetch('https://indexing.googleapis.com/v3/urlNotifications:publish', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${access_token}`
     },
-    data: {
+    body: JSON.stringify({
       url,
       type: isDeleted ? 'URL_DELETED' : 'URL_UPDATED'
-    }
-  }
-  return axios.request(options)
+    })
+  })
+  return response.json()
 }
 
 const delete_main = async () => {
@@ -61,7 +59,7 @@ const delete_main = async () => {
   )
   // biome-ignore lint/complexity/noForEach: <explanation>
   delete_results.forEach(result =>
-    console.log(result.data.urlNotificationMetadata)
+    console.log(result.urlNotificationMetadata)
   )
 }
 
@@ -82,7 +80,7 @@ const main = async () => {
   )
 
   // biome-ignore lint/complexity/noForEach: <explanation>
-  results.forEach(result => console.log(result.data.urlNotificationMetadata))
+  results.forEach(result => console.log(result.urlNotificationMetadata))
 }
 
 main()
