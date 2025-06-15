@@ -1,21 +1,24 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import Tag from './tag'
 
-export default {
+const meta: Meta<typeof Tag> = {
   title: 'components/domain/tags/tag',
   component: Tag
-} as ComponentMeta<typeof Tag>
+}
 
-const Template: ComponentStory<typeof Tag> = args => (
-  <div className="h-screen bg-background-dark p-4">
-    <Tag {...args} />
-  </div>
-)
+export default meta
+type Story = StoryObj<typeof Tag>
 
-export const Default = Template.bind({})
-Default.args = {
-  title: 'tag',
-  hash: 'hash'
+export const Default: Story = {
+  args: {
+    title: 'tag',
+    hash: 'hash'
+  },
+  render: args => (
+    <div className="h-screen bg-background-dark p-4">
+      <Tag {...args} />
+    </div>
+  )
 }

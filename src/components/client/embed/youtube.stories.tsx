@@ -1,17 +1,19 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import Youtube from './youtube'
 
-export default {
+const meta: Meta<typeof Youtube> = {
   title: 'components/domain/embed/youtube',
   component: Youtube,
   argTypes: {}
-} as ComponentMeta<typeof Youtube>
+}
 
-const Template: ComponentStory<typeof Youtube> = args => <Youtube {...args} />
+export default meta
+type Story = StoryObj<typeof Youtube>
 
-export const Default = Template.bind({})
-Default.args = {
-  href: 'https://www.youtube.com/watch?v=7USNL5Mqnrk'
+export const Default: Story = {
+  args: {
+    href: 'https://www.youtube.com/watch?v=7USNL5Mqnrk'
+  }
 }
