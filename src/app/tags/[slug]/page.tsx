@@ -16,8 +16,11 @@ const getPostsAndTitle = async (tagSlug: string) => {
   return { title, posts: targetPosts }
 }
 
-export default async function Page({ params }: { params: StaticParam }) {
-  const { title, posts } = await getPostsAndTitle(params.slug)
+export default async function Page({
+  params
+}: { params: Promise<StaticParam> }) {
+  const { slug } = await params
+  const { title, posts } = await getPostsAndTitle(slug)
 
   return <TagsBySlug title={title} posts={posts} />
 }
@@ -25,9 +28,10 @@ export default async function Page({ params }: { params: StaticParam }) {
 export async function generateMetadata({
   params
 }: {
-  params: StaticParam
+  params: Promise<StaticParam>
 }): Promise<Metadata> {
-  const { title, posts } = await getPostsAndTitle(params.slug)
+  const { slug } = await params
+  const { title, posts } = await getPostsAndTitle(slug)
   const images = posts.flatMap(x => x.ogImage ?? [])
   return {
     title: title,

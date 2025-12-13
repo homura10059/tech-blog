@@ -5,8 +5,11 @@ import { getPostDataBySlug, getPostSlugs } from '../../../domain/posts'
 
 type StaticParam = { slug: string }
 
-export default async function Page({ params }: { params: StaticParam }) {
-  const post = await getPostDataBySlug(params.slug)
+export default async function Page({
+  params
+}: { params: Promise<StaticParam> }) {
+  const { slug } = await params
+  const post = await getPostDataBySlug(slug)
 
   return <PostBySlug post={post} />
 }
@@ -14,9 +17,10 @@ export default async function Page({ params }: { params: StaticParam }) {
 export async function generateMetadata({
   params
 }: {
-  params: StaticParam
+  params: Promise<StaticParam>
 }): Promise<Metadata> {
-  const post = await getPostDataBySlug(params.slug)
+  const { slug } = await params
+  const post = await getPostDataBySlug(slug)
 
   return {
     title: post.title,
