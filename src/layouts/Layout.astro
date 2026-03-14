@@ -1,0 +1,49 @@
+---
+import 'highlight.js/styles/monokai.css'
+import '../styles/index.css'
+
+import Analytics from '../components/client/scripts/google-analytics'
+import { BLOG_TITLE, BLOG_DESCRIPTION } from '../lib/constants'
+
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+  ogType?: string
+}
+
+const {
+  title,
+  description = BLOG_DESCRIPTION,
+  ogImage = 'https://i.imgur.com/oZCMyWE.png',
+  ogType = 'website'
+} = Astro.props
+
+const pageTitle = title ? `${title} | ${BLOG_TITLE}` : BLOG_TITLE
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={BLOG_TITLE} href="/rss/feed.xml" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={BLOG_TITLE} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@homura10059" />
+    <Analytics client:load />
+  </head>
+  <body class="bg-background-dark text-surface">
+    <slot />
+  </body>
+</html>

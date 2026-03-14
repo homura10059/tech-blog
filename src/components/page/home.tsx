@@ -1,4 +1,4 @@
-import { PostData } from '../../domain/posts'
+import type { PostData } from '../../domain/posts'
 import MainVisual from '../client/image/main-visual'
 import HeroPost from '../server/post/hero-post'
 import MoreStories from '../server/post/more-stories'

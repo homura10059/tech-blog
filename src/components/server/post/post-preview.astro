@@ -1,0 +1,30 @@
+---
+import { format, parseISO } from 'date-fns'
+import CoverImage from '../../client/image/cover-image'
+
+interface Props {
+  title: string
+  coverImage: {
+    url: string
+    aspectRatio?: string
+  }
+  date: string
+  excerpt: string
+  slug: string
+}
+const { title, coverImage, date, excerpt, slug } = Astro.props
+---
+<div>
+  <div class="mb-5">
+    <CoverImage slug={slug} title={title} src={coverImage.url} client:load />
+  </div>
+  <h3 class="mb-3 text-3xl leading-snug">
+    <a href={`/posts/${slug}`} class="hover:underline">
+      {title}
+    </a>
+  </h3>
+  <div class="mb-4 text-lg">
+    <time datetime={date}>{format(parseISO(date), 'yyyy-MM-dd')}</time>
+  </div>
+  <p class="text-lg leading-relaxed">{excerpt}</p>
+</div>

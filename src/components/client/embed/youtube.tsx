@@ -1,5 +1,5 @@
 'use client'
-import { VFC } from 'react'
+import { type VFC } from 'react'
 
 type Props = {
   href: string

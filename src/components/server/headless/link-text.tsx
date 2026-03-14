@@ -1,16 +1,17 @@
 import cx from 'classnames'
-import Link from 'next/link'
+import { type FC, type ReactNode } from 'react'
 
 type Props = {
   href: string
   className?: string
+  children?: ReactNode
 }
 
-const LinkText: React.FC<Props> = ({ href, className, children }) => {
+const LinkText: FC<Props> = ({ href, className, children }) => {
   return (
-    <Link href={href} className={cx(['link', className ?? ''])}>
+    <a href={href} className={cx(['link', className ?? ''])}>
       {children}
-    </Link>
+    </a>
   )
 }
 

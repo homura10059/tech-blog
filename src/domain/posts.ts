@@ -1,9 +1,9 @@
 import markdownToHtml from '../lib/markdownToHtml'
 import {
-  MicroCmsTypedListContent,
-  Post,
-  Series,
-  Tag,
+  type MicroCmsTypedListContent,
+  type Post,
+  type Series,
+  type Tag,
   getAllMicroCmsContents
 } from '../lib/micro-cms-client'
 

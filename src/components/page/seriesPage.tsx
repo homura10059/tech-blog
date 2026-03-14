@@ -1,5 +1,4 @@
-import { Series } from '../../domain/series'
-import CustomLink from '../server/links/custom-link'
+import type { Series } from '../../domain/series'
 
 type Props = {
   title: string
@@ -17,7 +16,7 @@ const SeriesPage = ({ title, series }: Props) => {
         {series.map(({ hash, title }) => {
           return (
             <div className="mb-6 text-primary-dark hover:underline" key={hash}>
-              <CustomLink href={`/series/${hash}`}>{title}</CustomLink>
+              <a href={`/series/${hash}`}>{title}</a>
             </div>
           )
         })}

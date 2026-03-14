@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('@types/tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
-  content: ['./src/components/**/*.tsx', './src/app/**/*.tsx'],
+  content: ['./src/components/**/*.tsx', './src/pages/**/*.astro', './src/layouts/**/*.astro'],
   theme: {
     extend: {
       colors: {

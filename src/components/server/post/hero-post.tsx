@@ -1,7 +1,3 @@
-'use client'
-
-import Link from 'next/link'
-
 import HeroImage from '../../client/image/hero-image'
 
 type Props = {
@@ -20,14 +16,14 @@ const HeroPost = ({ title, coverImage, date, description, slug }: Props) => {
       <h2 className="m-2 text-5xl font-bold leading-tight tracking-tighter md:text-7xl">
         Latest Post
       </h2>
-      <Link as={`/posts/${slug}`} href="/posts/[slug]">
+      <a href={`/posts/${slug}`}>
         <HeroImage
           title={title}
           coverImage={coverImage}
           date={date}
           description={description}
         />
-      </Link>
+      </a>
     </section>
   )
 }

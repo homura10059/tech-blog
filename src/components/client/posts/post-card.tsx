@@ -1,27 +1,25 @@
 'use client'
 import { format, parseISO } from 'date-fns'
-import Image from 'next/image'
-import Link from 'next/link'
 
-import { PostData } from '../../../domain/posts'
-import { customLoader } from '../../../lib/image-loader'
+import type { PostData } from '../../../domain/posts'
+import { getImgurUrl } from '../../../lib/image-loader'
 
 const PostCard = ({ title, coverImage, date, slug, tags }: PostData) => {
+  const imgSrc = getImgurUrl(coverImage.url, 640)
   return (
     <div className="relative mb-4 block break-inside-avoid">
-      <Link as={`/posts/${slug}`} href="/posts/[slug]">
+      <a href={`/posts/${slug}`}>
         <figure
           style={{
             position: 'relative',
             aspectRatio: coverImage.aspectRatio ?? '4/3'
           }}
-          className="w-full rounded-md"
+          className="w-full rounded-md overflow-hidden"
         >
-          <Image
-            loader={customLoader}
-            src={coverImage.url}
-            alt={`Cover Image for ${title}`}
-            fill={true}
+          <img
+            src={imgSrc}
+            alt={title}
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
           />
         </figure>
         <div className="absolute inset-0 flex flex-col bg-black/40 p-2">
@@ -40,7 +38,7 @@ const PostCard = ({ title, coverImage, date, slug, tags }: PostData) => {
             ))}
           </div>
         </div>
-      </Link>
+      </a>
     </div>
   )
 }

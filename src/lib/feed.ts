@@ -1,13 +1,11 @@
-import fs from 'fs'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 
-import { PostData, getAllPostData } from '../domain/posts'
-import { BLOG_DESCRIPTION, BLOG_TITLE } from './constants'
+import { type PostData, getAllPostData } from '../domain/posts'
+import { BASE_URL, BLOG_DESCRIPTION, BLOG_TITLE } from './constants'
 import { getCopyright } from './copyright'
-import markdownToHtml from './markdownToHtml'
 
-const createFeed = async (baseUrl: string, post: PostData) => {
+const createFeedItem = async (baseUrl: string, post: PostData) => {
   const url = `${baseUrl}/posts/${post.slug}`
   const date = parseISO(post.date)
   return {
@@ -20,18 +18,17 @@ const createFeed = async (baseUrl: string, post: PostData) => {
   }
 }
 
-const generatedRssFeed = async (): Promise<void> => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
+export const buildRssFeed = async (): Promise<Feed> => {
+  const baseUrl = import.meta.env.SITE ?? BASE_URL
   const date = new Date()
 
-  // デフォルトになる feed の情報
   const feed = new Feed({
     title: BLOG_TITLE,
     description: BLOG_DESCRIPTION,
     id: baseUrl,
     link: baseUrl,
     language: 'ja',
-    image: `${baseUrl}/favicon/favicon-16x16.png`, // image には OGP 画像でなくファビコンを指定
+    image: `${baseUrl}/favicon/favicon-16x16.png`,
     copyright: getCopyright(),
     updated: date,
     feedLinks: {
@@ -42,19 +39,25 @@ const generatedRssFeed = async (): Promise<void> => {
   })
 
   const allPosts = await getAllPostData()
-  const feeds = await Promise.all(
-    allPosts.map(post => createFeed(baseUrl, post))
+  const feedItems = await Promise.all(
+    allPosts.map(post => createFeedItem(baseUrl, post))
   )
 
   // biome-ignore lint/complexity/noForEach: <explanation>
-  feeds.forEach(item => {
+  feedItems.forEach(item => {
     feed.addItem(item)
   })
 
-  fs.mkdirSync('./public/rss', { recursive: true })
-  fs.writeFileSync('./public/rss/feed.xml', feed.rss2())
-  fs.writeFileSync('./public/rss/atom.xml', feed.atom1())
-  fs.writeFileSync('./public/rss/feed.json', feed.json1())
+  return feed
+}
+
+/**
+ * @deprecated Use buildRssFeed() instead. This function is kept for backward compatibility
+ * with the home page generation during build.
+ */
+const generatedRssFeed = async (): Promise<void> => {
+  // In Astro, RSS feeds are generated via API endpoints (src/pages/rss/*.ts)
+  // This function is a no-op to avoid breaking existing imports
 }
 
 export default generatedRssFeed

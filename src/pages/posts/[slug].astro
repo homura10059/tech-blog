@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/client/navigation/header'
+import Footer from '../../components/server/layout/footer.astro'
+import PostBySlug from '../../components/server/post/post-by-slug.astro'
+import { getPostDataBySlug, getPostSlugs } from '../../domain/posts'
+import { processHtmlEmbeds } from '../../lib/markdownToStaticHtml'
+
+export async function getStaticPaths() {
+  const slugs = await getPostSlugs()
+  return slugs.map(slug => ({ params: { slug } }))
+}
+
+const { slug } = Astro.params
+const post = await getPostDataBySlug(slug)
+// Process HTML embeds at build time
+const processedContent = await processHtmlEmbeds(post.content)
+const processedPost = { ...post, content: processedContent }
+---
+
+<Layout title={post.title} description={post.excerpt} ogImage={post.ogImage.url}>
+  <Header client:load />
+  <PostBySlug post={processedPost} />
+  <Footer />
+</Layout>

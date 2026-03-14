@@ -1,30 +1,30 @@
 'use client'
 
-import { usePathname, useSearchParams } from 'next/navigation'
-import Script from 'next/script'
-import { Suspense, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { GA_TRACKING_ID, pageview } from '../../../lib/gtag'
 
 const GoogleAnalytics = () => {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
   useEffect(() => {
-    if (!searchParams) return
-    const url = pathname + searchParams.toString()
-    pageview(url)
-  }, [pathname, searchParams])
+    const handleRouteChange = () => {
+      pageview(window.location.pathname)
+    }
+    // Track initial page view
+    pageview(window.location.pathname)
+    // Track navigation (for client-side navigation if any)
+    window.addEventListener('popstate', handleRouteChange)
+    return () => window.removeEventListener('popstate', handleRouteChange)
+  }, [])
 
   return (
     <>
-      <Script
-        strategy="afterInteractive"
+      <script
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
-      <Script
+      <script
         id="gtag-init"
-        strategy="afterInteractive"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: analytics initialization
         dangerouslySetInnerHTML={{
           __html: `
         window.dataLayer = window.dataLayer || [];
@@ -41,13 +41,5 @@ const GoogleAnalytics = () => {
 }
 
 export default function Analytics(): JSX.Element {
-  return (
-    <>
-      {GA_TRACKING_ID && (
-        <Suspense fallback={null}>
-          <GoogleAnalytics />
-        </Suspense>
-      )}
-    </>
-  )
+  return <>{GA_TRACKING_ID && <GoogleAnalytics />}</>
 }

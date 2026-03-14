@@ -1,4 +1,4 @@
-import { PostData } from '../../domain/posts'
+import type { PostData } from '../../domain/posts'
 import PostCards from '../client/posts/post-card'
 import Container from '../server/headless/container'
 

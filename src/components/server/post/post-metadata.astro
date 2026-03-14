@@ -1,0 +1,45 @@
+---
+import { format, parseISO } from 'date-fns'
+import type { PostData } from '../../../domain/posts'
+import Series from '../series/index.astro'
+import Tags from '../tags/index.astro'
+
+interface Props {
+  post: PostData
+  variant: 'mobile' | 'desktop'
+}
+const { post, variant } = Astro.props
+---
+{variant === 'mobile' ? (
+  <div class="mt-4 grid grid-cols-1 gap-y-4 md:invisible md:h-0">
+    {post.series && (
+      <div class="">
+        <Series {...post.series} />
+      </div>
+    )}
+    {post.tags.length > 0 && (
+      <div class="">
+        <Tags tags={post.tags} />
+      </div>
+    )}
+  </div>
+) : (
+  <div class="invisible sticky top-[70px] z-50 grid h-fit w-0 grid-cols-1 divide-y-[1px] md:visible md:w-fit md:px-2">
+    <div class="py-2">{post.title}</div>
+    <div class="py-2">
+      <time datetime={post.date}>
+        {format(parseISO(post.date), 'yyyy-MM-dd')}
+      </time>
+    </div>
+    {post.series && (
+      <div class="py-2">
+        <Series {...post.series} />
+      </div>
+    )}
+    {post.tags.length > 0 && (
+      <div class="py-2">
+        <Tags tags={post.tags} />
+      </div>
+    )}
+  </div>
+)}

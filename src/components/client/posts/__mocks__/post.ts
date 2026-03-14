@@ -1,4 +1,4 @@
-import { PostData } from '../../../../domain/posts'
+import type { PostData } from '../../../../domain/posts'
 
 export const mockedPost: PostData = {
   slug: 'slug',

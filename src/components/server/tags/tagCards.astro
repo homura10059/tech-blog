@@ -1,0 +1,19 @@
+---
+import type { TagMetaData } from '../../../domain/tags'
+
+interface Props {
+  tags: TagMetaData[]
+}
+const { tags } = Astro.props
+---
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+  {tags.map(meta => (
+    <a href={`/tags/${meta.hash}`}>
+      <div class="flex flex-col items-center rounded-lg border border-primary-light p-4 text-primary-light hover:bg-background-light">
+        <span class="text-xl before:mr-0.5 before:content-['#']">
+          {meta.title}
+        </span>
+      </div>
+    </a>
+  ))}
+</div>

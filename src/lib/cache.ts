@@ -1,7 +1,7 @@
 import { createHash } from 'crypto'
 import NodeCache from 'node-cache'
 
-import { OgpMeta } from './getOgp'
+import type { OgpMeta } from './getOgp'
 
 const cache = new NodeCache({ stdTTL: 24 * 60 * 60 })
 

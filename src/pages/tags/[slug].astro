@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/client/navigation/header'
+import Footer from '../../components/server/layout/footer.astro'
+import MoreStories from '../../components/server/post/more-stories.astro'
+import Container from '../../components/server/headless/container.astro'
+import { getAllPostData } from '../../domain/posts'
+import { getAllTags } from '../../domain/tags'
+
+export async function getStaticPaths() {
+  const tags = await getAllTags()
+  return tags.map(tag => ({ params: { slug: tag.hash } }))
+}
+
+const { slug } = Astro.params
+const tagMetaData = (await getAllTags()).find(tag => tag.hash === slug)
+const tag = tagMetaData?.title ?? ''
+const title = `${tag}の記事一覧`
+const allPosts = await getAllPostData()
+const posts = allPosts.filter(x => x.tags.some(y => y.hash === slug))
+const ogImages = posts.flatMap(x => x.ogImage ?? [])
+const ogImage = ogImages[0]?.url
+---
+
+<Layout title={title} ogImage={ogImage}>
+  <Header client:load />
+  <Container>
+    <section class="flex flex-col items-center pb-16 pt-8 md:flex-row md:justify-between md:pb-6">
+      <h1 class="mb-6 text-5xl font-bold leading-tight tracking-tighter before:mr-2 before:content-['#'] md:pr-8 md:text-8xl">
+        {tag}
+      </h1>
+      <a href="/tags" class="link mb-6 self-end text-lg">
+        All Tags
+      </a>
+    </section>
+    <MoreStories posts={posts} postsOnly />
+  </Container>
+  <Footer />
+</Layout>

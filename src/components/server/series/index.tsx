@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 type Props = {
   title: string
   hash: string
@@ -7,9 +5,9 @@ type Props = {
 
 const Series = ({ title, hash }: Props) => {
   return (
-    <Link href={`/series/${hash}`}>
+    <a href={`/series/${hash}`}>
       シリーズ：<span className="link">{title}</span>
-    </Link>
+    </a>
   )
 }
 

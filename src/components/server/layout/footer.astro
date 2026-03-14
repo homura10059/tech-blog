@@ -1,0 +1,19 @@
+---
+import Container from '../headless/container.astro'
+import { getCopyright } from '../../../lib/copyright'
+---
+<footer class="bg-background-light text-surface">
+  <Container>
+    <div class="flex flex-col items-center py-8 lg:flex-row">
+      <div class="flex items-center justify-center lg:w-1/2 lg:pl-4">
+        <a href="/about/privacy_policy" class="mx-3 font-bold hover:underline">
+          Privacy Policy
+        </a>
+        <a href="/about/disclaimer" class="mx-3 font-bold hover:underline">
+          Disclaimer
+        </a>
+      </div>
+      <p>{getCopyright()}</p>
+    </div>
+  </Container>
+</footer>
