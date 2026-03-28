@@ -90,9 +90,9 @@ export async function processHtmlEmbeds(html: string): Promise<string> {
   const anchors = Array.from(document.querySelectorAll('a'))
   const bareLinkAnchors = anchors.filter(isBareLink)
 
-  for (const anchor of bareLinkAnchors) {
+  const tasks = bareLinkAnchors.map(async anchor => {
     const href = anchor.getAttribute('href') ?? ''
-    if (!href) continue
+    if (!href) return { anchor, replacement: null }
 
     let replacement: string
 
@@ -105,10 +105,19 @@ export async function processHtmlEmbeds(html: string): Promise<string> {
         const meta = await getOgp(href)
         replacement = buildOgpCard(meta)
       } catch {
-        // If OGP fetch fails, keep as a regular link
         replacement = `<a href="${href}" target="_blank" rel="noopener noreferrer">${href}</a>`
       }
     }
+
+    return { anchor, replacement }
+  })
+
+  const results = await Promise.allSettled(tasks)
+
+  for (const result of results) {
+    if (result.status === 'rejected') continue
+    const { anchor, replacement } = result.value
+    if (!replacement) continue
 
     const wrapper = document.createElement('div')
     wrapper.innerHTML = replacement

@@ -75,8 +75,11 @@ export const intoPostData = async (
   series: intoSeries(post.series)
 })
 
+let postDataCache: PostData[] | null = null
+
 export const getAllPostData = async (): Promise<PostData[]> => {
+  if (postDataCache) return postDataCache
   const contents = await getAllMicroCmsContents<Post>('posts')
-  const allContents = await Promise.all(contents.map(intoPostData))
-  return allContents
+  postDataCache = await Promise.all(contents.map(intoPostData))
+  return postDataCache
 }

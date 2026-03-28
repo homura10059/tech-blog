@@ -10,5 +10,6 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     sitemap()
   ],
-  output: 'static'
+  output: 'static',
+  build: { concurrency: 4 }
 })

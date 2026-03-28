@@ -37,7 +37,14 @@ export const getOgp = async (url: string): Promise<OgpMeta> => {
 
   const headers = { 'User-Agent': 'bot' }
 
-  const res = await fetch(encodedUri, { headers: headers })
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), 10_000)
+  let res: Response
+  try {
+    res = await fetch(encodedUri, { headers, signal: controller.signal })
+  } finally {
+    clearTimeout(timer)
+  }
   const html = await res.text()
   const dom = new JSDOM(html)
   const meta = isAmazon
