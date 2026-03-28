@@ -1,9 +1,10 @@
 import { ExclamationIcon } from '@heroicons/react/outline'
+import { type VFC } from 'react'
 
 type Props = {
   text: string
 }
-const Warning: React.VFC<Props> = ({ text }) => {
+const Warning: VFC<Props> = ({ text }) => {
   return (
     <div className="mx-auto min-w-full max-w-7xl bg-yellow-300 p-1 sm:px-3 sm:py-2 lg:px-4">
       <div className="flex flex-wrap items-center justify-between">

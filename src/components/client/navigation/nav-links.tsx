@@ -1,12 +1,10 @@
 'use client'
 import cx from 'classnames'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 
-import { NAVIGATIONS, Nav } from '../../../lib/constants'
+import { NAVIGATIONS, type Nav } from '../../../lib/constants'
 
 const NavLinks = () => {
-  const pathname = usePathname()
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
 
   const isCurrent = (nav: Nav) => {
     return (
@@ -18,7 +16,7 @@ const NavLinks = () => {
     <div className="hidden sm:ml-6 sm:block">
       <div className="flex space-x-4">
         {NAVIGATIONS.map(item => (
-          <Link
+          <a
             key={item.name}
             href={item.href}
             className={cx(
@@ -30,7 +28,7 @@ const NavLinks = () => {
             aria-current={isCurrent(item) ? 'page' : undefined}
           >
             {item.name}
-          </Link>
+          </a>
         ))}
       </div>
     </div>

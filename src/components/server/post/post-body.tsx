@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import type { ReactNode } from 'react'
 
 import { processor } from '../../../lib/htmlToReact'
 import markdownStyles from './markdown-styles.module.css'
@@ -10,7 +11,7 @@ type Props = {
 const PostBody = ({ content }: Props) => {
   return (
     <div className={cx([markdownStyles.markdown])}>
-      {processor.processSync(content).result}
+      {processor.processSync(content).result as ReactNode}
     </div>
   )
 }

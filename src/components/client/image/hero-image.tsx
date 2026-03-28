@@ -1,9 +1,8 @@
 'use client'
 
 import { format, parseISO } from 'date-fns'
-import Image from 'next/image'
 
-import { customLoader } from '../../../lib/image-loader'
+import { getImgurUrl } from '../../../lib/image-loader'
 
 type Props = {
   title: string
@@ -16,16 +15,15 @@ type Props = {
 }
 
 const HeroImage = ({ title, coverImage, date, description }: Props) => {
+  const imgSrc = getImgurUrl(coverImage.url, 1200)
   return (
     <div className="relative">
       <figure className="relative h-screen">
-        <Image
-          loader={customLoader}
-          src={coverImage.url}
-          alt={`Cover Image for ${title}`}
-          fill={true}
-          style={{ objectFit: 'cover' }}
-          priority={true} // hero image なので preload する
+        <img
+          src={imgSrc}
+          alt={title}
+          style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+          loading="eager"
         />
       </figure>
       <div className="absolute inset-0 flex items-center bg-black/40 p-1 md:p-6">

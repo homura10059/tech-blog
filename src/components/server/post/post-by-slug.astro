@@ -1,0 +1,34 @@
+---
+import { differenceInYears, parseISO } from 'date-fns'
+import type { PostData } from '../../../domain/posts'
+import Warning from '../banners/warning.astro'
+import Container from '../headless/container.astro'
+import PostBody from './post-body.astro'
+import PostHeader from './post-header.astro'
+import PostMetadata from './post-metadata.astro'
+
+interface Props {
+  post: PostData
+}
+const { post } = Astro.props
+const diff = differenceInYears(new Date(), parseISO(post.date))
+---
+<article>
+  <div>
+    <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} />
+  </div>
+  <Container>
+    {diff > 1 && (
+      <Warning text={`この記事は最終更新日から${diff}年以上が経過しています。`} />
+    )}
+    <PostMetadata post={post} variant="mobile" />
+    <div class="grid grid-cols-1 md:grid-cols-4">
+      <div class="md:col-span-3">
+        <PostBody content={post.content} />
+      </div>
+      <div class="h-0 md:col-span-1 md:h-full">
+        <PostMetadata post={post} variant="desktop" />
+      </div>
+    </div>
+  </Container>
+</article>

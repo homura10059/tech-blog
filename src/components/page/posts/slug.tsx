@@ -1,6 +1,6 @@
 import { differenceInYears, parseISO } from 'date-fns'
 
-import { PostData } from '../../../domain/posts'
+import type { PostData } from '../../../domain/posts'
 import Warning from '../../server/banners/warning'
 import Container from '../../server/headless/container'
 import PostBody from '../../server/post/post-body'

@@ -1,8 +1,13 @@
-import { MicroCMSListContent, createClient } from 'microcms-js-sdk'
+import { type MicroCMSListContent, createClient } from 'microcms-js-sdk'
 
-export const client = createClient({
+const apiKey = process.env.MICRO_CMS_API_KEY
+if (!apiKey) {
+  throw new Error('MICRO_CMS_API_KEY is not set')
+}
+
+const client = createClient({
   serviceDomain: 'homura-tech-blog',
-  apiKey: process.env.MICRO_CMS_API_KEY ?? ''
+  apiKey
 })
 
 export const getAllMicroCmsContents = async <T>(

@@ -1,6 +1,6 @@
 import { format, parseISO } from 'date-fns'
 
-import { PostData } from '../../../domain/posts'
+import type { PostData } from '../../../domain/posts'
 import Series from '../series'
 import Tags from '../tags'
 

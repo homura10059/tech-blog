@@ -1,0 +1,16 @@
+---
+import HeroImage from '../../client/image/hero-image'
+
+interface Props {
+  title: string
+  coverImage: {
+    url: string
+    aspectRatio?: string
+  }
+  date: string
+}
+const { title, coverImage, date } = Astro.props
+---
+<div class="mb-4 sm:mx-0 md:mb-8">
+  <HeroImage title={title} coverImage={coverImage} date={date} client:load />
+</div>

@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro'
+import HeroPost from '../components/server/post/hero-post.astro'
+import MoreStories from '../components/server/post/more-stories.astro'
+import MainVisual from '../components/client/image/main-visual'
+import Header from '../components/client/navigation/header'
+import Footer from '../components/server/layout/footer.astro'
+import { getAllPostData } from '../domain/posts'
+import generatedRssFeed from '../lib/feed'
+
+await generatedRssFeed()
+const allPosts = await getAllPostData()
+const heroPost = allPosts[0]
+const morePosts = allPosts.slice(1)
+---
+
+<Layout>
+  <Header client:load />
+  <MainVisual client:load />
+  {heroPost && (
+    <HeroPost
+      title={heroPost.title}
+      coverImage={heroPost.coverImage}
+      date={heroPost.date}
+      slug={heroPost.slug}
+      description={heroPost.excerpt}
+    />
+  )}
+  {morePosts.length > 0 && (
+    <div class="container mx-auto p-5">
+      <MoreStories posts={morePosts} />
+    </div>
+  )}
+  <Footer />
+</Layout>

@@ -1,0 +1,11 @@
+---
+import TwitterEmbedActivator from '../../client/embed/twitter-embed-activator'
+import markdownStyles from './markdown-styles.module.css'
+
+interface Props {
+  content: string
+}
+const { content } = Astro.props
+---
+<div class={markdownStyles.markdown} set:html={content} />
+<TwitterEmbedActivator client:load />

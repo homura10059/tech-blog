@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Header from '../components/client/navigation/header'
+import Footer from '../components/server/layout/footer.astro'
+import ProfilePage from '../components/page/profile'
+---
+
+<Layout title="Profile">
+  <Header client:load />
+  <ProfilePage client:load />
+  <Footer />
+</Layout>

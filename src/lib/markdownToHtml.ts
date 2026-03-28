@@ -1,12 +1,12 @@
 import { rehype } from 'rehype'
+import rehypeDocument from 'rehype-document'
 import rehypeHighlight from 'rehype-highlight'
+import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
+import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import remarkMath from 'remark-math'
-import rehypeKatex from 'rehype-katex'
-import rehypeDocument from 'rehype-document'
 
 export const processor = rehype()
   .use(remarkParse)

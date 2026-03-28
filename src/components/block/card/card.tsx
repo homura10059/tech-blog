@@ -1,9 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-
-import { customLoader } from '../../../lib/image-loader'
+import { getImgurUrl } from '../../../lib/image-loader'
 
 export type CardProps = {
   title: string
@@ -13,19 +10,20 @@ export type CardProps = {
 }
 
 export const Card = ({ image, url, title, description }: CardProps) => {
+  const imgSrc = getImgurUrl(image, 200)
   return (
     <div className="not-prose">
-      <Link
+      <a
         href={url}
         className="flex flex-row place-items-center rounded-lg bg-white shadow-lg shadow-surface @container hover:cursor-pointer"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <figure className="relative h-24 w-24 @sm:h-48 @sm:w-48">
-          <Image
-            loader={customLoader}
-            src={image}
-            alt={`Cover Image for ${title}`}
-            layout="fill"
-            objectFit="contain"
+        <figure className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-l-lg @sm:h-48 @sm:w-48">
+          <img
+            src={imgSrc}
+            alt={title}
+            style={{ objectFit: 'contain', width: '100%', height: '100%' }}
             className={'rounded-lg'}
           />
         </figure>
@@ -39,7 +37,7 @@ export const Card = ({ image, url, title, description }: CardProps) => {
             </p>
           )}
         </div>
-      </Link>
+      </a>
     </div>
   )
 }

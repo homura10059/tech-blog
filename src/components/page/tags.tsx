@@ -1,4 +1,4 @@
-import { TagMetaData } from '../../domain/tags'
+import type { TagMetaData } from '../../domain/tags'
 import TagCards from '../server/tags/tagCards'
 
 type Props = {

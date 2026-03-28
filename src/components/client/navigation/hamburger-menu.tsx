@@ -1,12 +1,11 @@
 'use client'
 import { Disclosure } from '@headlessui/react'
 import cx from 'classnames'
-import { usePathname } from 'next/navigation'
 
-import { NAVIGATIONS, Nav } from '../../../lib/constants'
+import { NAVIGATIONS, type Nav } from '../../../lib/constants'
 
 const HamburgerMenu = () => {
-  const pathname = usePathname()
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
 
   const isCurrent = (nav: Nav) => {
     return (

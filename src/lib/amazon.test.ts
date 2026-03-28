@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 
-import { ImageSize, getAmazonImageUrl, getAmazonShortUrl } from './amazon'
+import { type ImageSize, getAmazonImageUrl, getAmazonShortUrl } from './amazon'
 
 test.each([
   {

@@ -1,5 +1,5 @@
 'use client'
-import { VFC } from 'react'
+import { type VFC } from 'react'
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 
 type Props = {

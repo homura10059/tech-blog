@@ -2,7 +2,6 @@
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, RssIcon, XIcon } from '@heroicons/react/outline'
 import cx from 'classnames'
-import Link from 'next/link'
 import { Fragment } from 'react'
 
 import { RSS_FEEDS } from '../../../lib/constants'
@@ -39,9 +38,9 @@ const Header = ({ hidden }: Props) => {
               {/* Left menu*/}
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex shrink-0 items-center">
-                  <Link href={'/'}>
+                  <a href={'/'}>
                     <Logo width={36} height={36} />
-                  </Link>
+                  </a>
                 </div>
                 <NavLinks />
               </div>
@@ -67,7 +66,7 @@ const Header = ({ hidden }: Props) => {
                       {RSS_FEEDS.map(feed => (
                         <Menu.Item key={feed.name}>
                           {({ active }) => (
-                            <Link
+                            <a
                               href={feed.href}
                               className={cx(
                                 active ? 'bg-gray-100' : '',
@@ -75,7 +74,7 @@ const Header = ({ hidden }: Props) => {
                               )}
                             >
                               {feed.name}
-                            </Link>
+                            </a>
                           )}
                         </Menu.Item>
                       ))}

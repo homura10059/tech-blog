@@ -1,4 +1,4 @@
-import { IconDefinition, library } from '@fortawesome/fontawesome-svg-core'
+import { type IconDefinition, library } from '@fortawesome/fontawesome-svg-core'
 import {
   faGithub,
   faLinkedin,
@@ -7,9 +7,8 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { faBlog } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
 
-import { Card, CardProps } from '../block/card/card'
+import { Card, type CardProps } from '../block/card/card'
 import Logo from '../client/image/logo'
 
 library.add(
@@ -44,7 +43,7 @@ const accountList: Account[] = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/%E5%8B%87%E4%BA%BA-%E5%A4%A7%E6%9D%91-25067b128/',
+    href: 'https://www.linkedin.com/in/%E5%8B%97%E4%BA%BA-%E5%A4%A7%E6%9D%91-25067b128/',
     icon: faLinkedin as IconDefinition
   },
   {
@@ -215,12 +214,12 @@ const Profile = () => {
           <ul className="mt-8 flex gap-x-4">
             {accountList.map(({ name, icon, href }) => (
               <li key={name}>
-                <Link href={href}>
+                <a href={href} target="_blank" rel="noopener noreferrer">
                   <FontAwesomeIcon
                     icon={icon}
                     className="inline-block h-7 w-7 text-surface hover:cursor-pointer hover:text-primary-dark"
                   />
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

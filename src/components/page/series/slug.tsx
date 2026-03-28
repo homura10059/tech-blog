@@ -1,4 +1,4 @@
-import { PostData } from '../../../domain/posts'
+import type { PostData } from '../../../domain/posts'
 import MoreStories from '../../server/post/more-stories'
 
 type Props = {

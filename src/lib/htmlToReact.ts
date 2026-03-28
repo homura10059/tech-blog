@@ -5,7 +5,10 @@ import { unified } from 'unified'
 
 import CustomLink from '../components/server/links/custom-link'
 
-export const processor = unified()
+// biome-ignore lint/suspicious/noExplicitAny: unified plugin types are incompatible
+const u = unified as any
+
+export const processor = u()
   .use(rehypeParse, { fragment: true }) // fragmentは必ずtrueにする
   .use(rehypeReact, {
     createElement,

@@ -1,0 +1,10 @@
+---
+interface Props {
+  title: string
+  hash: string
+}
+const { title, hash } = Astro.props
+---
+<a href={`/series/${hash}`}>
+  シリーズ：<span class="link">{title}</span>
+</a>
