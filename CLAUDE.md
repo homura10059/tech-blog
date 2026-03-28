@@ -6,13 +6,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Development
-yarn dev                    # Start development server with Tailwind watch mode
-yarn build                  # Build for production with sitemap generation
-yarn start                  # Start production server
+yarn dev                    # Start Astro development server
+yarn build                  # Build for production (SSG + sitemap generation)
+yarn start                  # Start Astro preview server
 
 # Code Quality
 yarn lint                   # Run Biome linter and formatter (auto-fix enabled)
-yarn typecheck              # Run TypeScript type checking
+yarn typecheck              # Run Astro + TypeScript type checking
 
 # Testing
 yarn test                   # Run Vitest tests
@@ -24,7 +24,6 @@ yarn storybook              # Start Storybook on port 6006
 yarn build-storybook        # Build Storybook for deployment
 
 # Utilities
-yarn clean                  # Clear Next.js fetch cache
 yarn ts <file>              # Run TypeScript files with esbuild
 ```
 
@@ -36,52 +35,54 @@ yarn ts <file>              # Run TypeScript files with esbuild
 - **Content Types**: Posts, Series, and Tags with recursive fetching and pagination
 - **Domain Layer**: Business logic in `src/domain/` transforms raw CMS data into clean types
 
-### Next.js App Router Structure
+### Astro File-based Routing
 
-- **Static Generation**: All content pages use SSG with ISR capability
-- **Route Organization**: `/posts/[slug]`, `/series/[slug]`, `/tags/[slug]` patterns
-- **API Routes**: OGP metadata generation in `/api/ogp/route.ts`
+- **Static Generation**: 全ページ SSG（`output: 'static'`）
+- **Route Organization**: `src/pages/posts/[slug].astro`, `src/pages/series/[slug].astro`, `src/pages/tags/[slug].astro`
+- **Layout**: `src/layouts/Layout.astro` がルートレイアウト（`<head>` メタデータ管理含む）
+- **Static Paths**: `getStaticPaths()` でスラッグ一覧を生成
 
 ### Component Organization
 
-- **Server Components** (`src/components/server/`): Layout, post rendering, static content
-- **Client Components** (`src/components/client/`): Interactive navigation, embeds, analytics
-- **Page Components** (`src/components/page/`): Route-specific compositions
-- **Component Development**: All components have Storybook stories for isolation
+- **Astro Components** (`src/layouts/`): ルートレイアウト
+- **Server Components** (`src/components/server/`): 静的コンテンツ表示（React）
+- **Client Components** (`src/components/client/`): インタラクティブなナビゲーション・埋め込み・アナリティクス（`client:load` で hydrate）
+- **Page Components** (`src/components/page/`): ルート固有のコンポジション
+- **Component Development**: 全コンポーネントに Storybook ストーリーあり
 
 ### Content Processing Pipeline
 
-1. **Markdown Processing**: Unified/Rehype ecosystem with syntax highlighting and KaTeX math
-2. **HTML to React**: Safe transformation via rehype-react with custom link components
-3. **Rich Embeds**: Twitter, YouTube, GitHub integration with OGP link previews
-4. **Caching**: 24-hour TTL for external content via node-cache
+1. **Markdown Processing**: Unified/Rehype エコシステムによる構文ハイライト・KaTeX 数式処理
+2. **Static HTML Generation**: `markdownToStaticHtml.ts` でビルド時に静的 HTML を生成（OGP データも含む）
+3. **Rich Embeds**: Twitter、YouTube、GitHub の埋め込みと OGP リンクプレビュー（ビルド時プリフェッチ）
+4. **RSS Feed**: `src/lib/feed.ts` でビルド時に `public/rss/` へ生成
 
 ### Key Integrations
 
-- **Analytics**: Google Analytics 4 with privacy-compliant tracking
-- **SEO**: Automatic sitemap and RSS feed generation
-- **Image Optimization**: Custom loader supporting Imgur CDN
-- **Amazon Links**: Special handling with affiliate link processing
+- **Analytics**: Google Analytics 4（`BaseLayout.astro` にインラインスクリプトで組み込み）
+- **SEO**: `@astrojs/sitemap` による自動サイトマップ生成 + RSS フィード
+- **Image**: `<img>` タグ + カスタムローダー関数（`src/lib/image-loader.ts`）で Imgur CDN に対応
+- **Amazon Links**: アフィリエイトリンク処理
 
 ## Development Guidelines
 
 ### Code Quality
 
-- **Linting**: Biome replaces ESLint/Prettier - use `yarn lint` before commits
-- **Type Safety**: Comprehensive TypeScript usage required
-- **Component Standards**: Follow server/client component separation patterns
+- **Linting**: Biome を使用 — コミット前に `yarn lint` を実行
+- **Type Safety**: TypeScript を徹底使用。`yarn typecheck` は `astro check` を実行
+- **Component Standards**: Astro ページ内で React クライアントコンポーネントを使う場合は `client:load` を付与
 
 ### Content Development
 
-- **Environment Variables**: MicroCMS API configuration required for content fetching
-- **Static Generation**: Content changes require rebuild for production updates
-- **Rich Content**: Markdown supports math (KaTeX), code highlighting, and HTML embeds
+- **Environment Variables**: MicroCMS API の設定が必要（`MICRO_CMS_API_KEY` 等）
+- **Static Generation**: コンテンツ変更は再ビルドが必要
+- **Rich Content**: Markdown で数式（KaTeX）、コードハイライト、HTML 埋め込みをサポート
 
 ### Performance Considerations
 
-- **Static First**: Prefer SSG over SSR for content pages
-- **Client Components**: Use sparingly, only for true interactivity
-- **Image Loading**: Leverage custom image loader for external content optimization
+- **Static First**: コンテンツページはすべて SSG
+- **Client Components**: 真のインタラクティビティが必要な場合のみ使用
+- **Embed Pre-fetching**: OGP データはビルド時に取得済み（ランタイム API 不要）
 
 ## Pre-completion Checklist
 
@@ -91,7 +92,7 @@ Before considering any work completed, ensure all of the following commands exec
 
 ```bash
 yarn install
-````
+```
 
 Installs all required dependencies and updates lock file if needed.
 Important: If `yarn.lock` file is updated, commit the changes immediately.
@@ -99,8 +100,8 @@ Important: If `yarn.lock` file is updated, commit the changes immediately.
 ### Build and Compilation
 
 ```bash
-yarn build # for production build
-yarn build-storybook # for Storybook
+yarn build
+yarn build-storybook
 ```
 
 Ensures the project compiles without errors and generates production-ready assets.
@@ -108,7 +109,7 @@ Ensures the project compiles without errors and generates production-ready asset
 ### Code Quality and Linting
 
 ```bash
-yarn lint # Auto-fix linting issues where possible
+yarn lint
 ```
 
 Validates code follows project standards and style guidelines.
@@ -116,7 +117,7 @@ Validates code follows project standards and style guidelines.
 ### Type Checking
 
 ```bash
-yarn type-check
+yarn typecheck
 ```
 
 Confirms TypeScript types are correct and no type errors exist.
