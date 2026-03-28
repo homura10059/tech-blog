@@ -1,6 +1,6 @@
 {
 	"private": true,
-	"packageManager": "yarn@1.22.22",
+	"packageManager": "pnpm@9.15.4",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -49,7 +49,8 @@
 		"remark-math": "^5.1.1",
 		"remark-parse": "^10.0.1",
 		"remark-rehype": "^10.1.0",
-		"typescript": "^5.8.3"
+		"typescript": "^5.8.3",
+		"unified": "^10.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.8",
@@ -84,7 +85,9 @@
 		"vitest": "^0.30.1"
 	},
 	"description": "↓ https://github.com/storybookjs/storybook/issues/22431",
-	"resolutions": {
-		"jackspeak": "2.1.1"
+	"pnpm": {
+		"overrides": {
+			"jackspeak": "2.1.1"
+		}
 	}
 }

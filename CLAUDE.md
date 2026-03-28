@@ -6,25 +6,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Development
-yarn dev                    # Start Astro development server
-yarn build                  # Build for production (SSG + sitemap generation)
-yarn start                  # Start Astro preview server
+pnpm dev                    # Start Astro development server
+pnpm build                  # Build for production (SSG + sitemap generation)
+pnpm start                  # Start Astro preview server
 
 # Code Quality
-yarn lint                   # Run Biome linter and formatter (auto-fix enabled)
-yarn typecheck              # Run Astro + TypeScript type checking
+pnpm lint                   # Run Biome linter and formatter (auto-fix enabled)
+pnpm typecheck              # Run Astro + TypeScript type checking
 
 # Testing
-yarn test                   # Run Vitest tests
-yarn test:watch             # Run tests in watch mode
-yarn test:cov               # Run tests with coverage
+pnpm test                   # Run Vitest tests
+pnpm test:watch             # Run tests in watch mode
+pnpm test:cov               # Run tests with coverage
 
 # Component Development
-yarn storybook              # Start Storybook on port 6006
-yarn build-storybook        # Build Storybook for deployment
+pnpm storybook              # Start Storybook on port 6006
+pnpm build-storybook        # Build Storybook for deployment
 
 # Utilities
-yarn ts <file>              # Run TypeScript files with esbuild
+pnpm ts <file>              # Run TypeScript files with esbuild
 ```
 
 ## Architecture Overview
@@ -68,8 +68,8 @@ yarn ts <file>              # Run TypeScript files with esbuild
 
 ### Code Quality
 
-- **Linting**: Biome を使用 — コミット前に `yarn lint` を実行
-- **Type Safety**: TypeScript を徹底使用。`yarn typecheck` は `astro check` を実行
+- **Linting**: Biome を使用 — コミット前に `pnpm lint` を実行
+- **Type Safety**: TypeScript を徹底使用。`pnpm typecheck` は `astro check` を実行
 - **Component Standards**: Astro ページ内で React クライアントコンポーネントを使う場合は `client:load` を付与
 
 ### Content Development
@@ -91,17 +91,17 @@ Before considering any work completed, ensure all of the following commands exec
 ### Dependency Installation
 
 ```bash
-yarn install
+pnpm install
 ```
 
 Installs all required dependencies and updates lock file if needed.
-Important: If `yarn.lock` file is updated, commit the changes immediately.
+Important: If `pnpm-lock.yaml` file is updated, commit the changes immediately.
 
 ### Build and Compilation
 
 ```bash
-yarn build
-yarn build-storybook
+pnpm build
+pnpm build-storybook
 ```
 
 Ensures the project compiles without errors and generates production-ready assets.
@@ -109,7 +109,7 @@ Ensures the project compiles without errors and generates production-ready asset
 ### Code Quality and Linting
 
 ```bash
-yarn lint
+pnpm lint
 ```
 
 Validates code follows project standards and style guidelines.
@@ -117,7 +117,7 @@ Validates code follows project standards and style guidelines.
 ### Type Checking
 
 ```bash
-yarn typecheck
+pnpm typecheck
 ```
 
 Confirms TypeScript types are correct and no type errors exist.
@@ -125,8 +125,8 @@ Confirms TypeScript types are correct and no type errors exist.
 ### Testing
 
 ```bash
-yarn test
-yarn test:cov  # Ensure coverage thresholds are met
+pnpm test
+pnpm test:cov  # Ensure coverage thresholds are met
 ```
 
 Runs all test suites and validates functionality works as expected.
