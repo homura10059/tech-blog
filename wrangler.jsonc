@@ -3,5 +3,8 @@
   "compatibility_date": "2026-03-28",
   "assets": {
     "directory": "./dist"
+  },
+  "build": {
+    "command": "pnpm run build"
   }
 }
