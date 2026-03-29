@@ -11,7 +11,7 @@ interface Props {
 const { post, variant } = Astro.props
 ---
 {variant === 'mobile' ? (
-  <div class="mt-4 grid grid-cols-1 gap-y-4 md:invisible md:h-0">
+  <div class="mt-4 grid grid-cols-1 gap-y-4 md:hidden">
     {post.series && (
       <div class="">
         <Series {...post.series} />
@@ -24,7 +24,7 @@ const { post, variant } = Astro.props
     )}
   </div>
 ) : (
-  <div class="invisible sticky top-[70px] z-50 grid h-fit w-0 grid-cols-1 divide-y-[1px] md:visible md:w-fit md:px-2">
+  <div class="sticky top-[70px] z-50 grid h-fit w-fit grid-cols-1 divide-y-[1px] px-2">
     <div class="py-2">{post.title}</div>
     <div class="py-2">
       <time datetime={post.date}>
