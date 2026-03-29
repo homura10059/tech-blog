@@ -10,7 +10,7 @@ type Props = {
 
 export const PostMetadataMobile = ({ post }: Props) => {
   return (
-    <div className="mt-4 grid grid-cols-1 gap-y-4 md:invisible md:h-0">
+    <div className="mt-4 grid grid-cols-1 gap-y-4 md:hidden">
       {post.series && (
         <div className="">
           <Series {...post.series} />
@@ -27,7 +27,7 @@ export const PostMetadataMobile = ({ post }: Props) => {
 
 export const PostMetadataDesktop = ({ post }: Props) => {
   return (
-    <div className="invisible sticky top-[70px] z-50 grid h-fit w-0 grid-cols-1 divide-y-[1px] md:visible md:w-fit md:px-2">
+    <div className="hidden sticky top-[70px] z-50 h-fit grid-cols-1 divide-y-[1px] md:grid md:w-fit md:px-2">
       <div className="py-2">{post.title}</div>
       <div className="py-2">
         <time dateTime={post.date}>
