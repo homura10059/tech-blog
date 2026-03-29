@@ -27,7 +27,7 @@ export const PostMetadataMobile = ({ post }: Props) => {
 
 export const PostMetadataDesktop = ({ post }: Props) => {
   return (
-    <div className="hidden sticky top-[70px] z-50 h-fit grid-cols-1 divide-y-[1px] md:grid md:w-fit md:px-2">
+    <div className="sticky top-[70px] z-50 grid h-fit w-fit grid-cols-1 divide-y-[1px] px-2">
       <div className="py-2">{post.title}</div>
       <div className="py-2">
         <time dateTime={post.date}>
