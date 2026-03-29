@@ -5,7 +5,7 @@ type Props = {
 }
 
 const Container: FunctionComponent<Props> = ({ children }) => {
-  return <div className="container mx-auto md:px-5">{children}</div>
+  return <div className="container mx-auto px-4 md:px-5">{children}</div>
 }
 
 export default Container
