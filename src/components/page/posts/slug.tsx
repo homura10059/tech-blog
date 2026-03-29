@@ -36,7 +36,7 @@ const PostBySlug = ({ post }: Props) => {
           <div className="md:col-span-3">
             <PostBody content={post.content} />
           </div>
-          <div className="h-0 md:col-span-1 md:h-full">
+          <div className="hidden md:block md:col-span-1 md:h-full">
             <PostMetadataDesktop post={post} />
           </div>
         </div>

@@ -26,7 +26,7 @@ const diff = differenceInYears(new Date(), parseISO(post.date))
       <div class="md:col-span-3">
         <PostBody content={post.content} />
       </div>
-      <div class="h-0 md:col-span-1 md:h-full">
+      <div class="hidden md:block md:col-span-1 md:h-full">
         <PostMetadata post={post} variant="desktop" />
       </div>
     </div>
