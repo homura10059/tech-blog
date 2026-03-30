@@ -1,5 +1,6 @@
 .markdown {
-  @apply prose prose-invert tracking-wide max-w-full;
+  @apply prose prose-invert tracking-wide;
+  max-width: 100%;
 
   /* Headings */
   @apply prose-headings:mb-4 prose-headings:border-b prose-headings:border-background-light prose-headings:pb-1 prose-headings:font-normal prose-headings:leading-snug prose-headings:text-background-light;
